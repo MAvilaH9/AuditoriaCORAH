@@ -32,7 +32,7 @@ require "../Recursos/Conexion.php";
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <?php 
-                                                            $sql= $pdo->prepare("SELECT id_estado, estado FROM t_estado ORDER BY estado");
+                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM almacen ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -44,7 +44,7 @@ require "../Recursos/Conexion.php";
                                                                     Almacen</option>
                                                                 <?php 
                                                                 foreach ($resultado as $dato) {
-                                                                    echo '<option value="'.$dato['id_estado'].'">'.$dato['estado'].'</option>';
+                                                                    echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
                                                                 }?>
                                                             </select>
                                                         </div>
@@ -54,38 +54,57 @@ require "../Recursos/Conexion.php";
                                                             <input name="Articuloi" id="Articuloi" type="text" class="form-control" placeholder="Ingrese el artículo">
                                                         </div>
                                                         <!-- Text Categoria -->
+                                                        <?php 
+                                                            $sqlcat= $pdo->prepare("SELECT IdCategoria, Categoria FROM categoria ORDER BY Categoria ASC");
+                                                            $sqlcat->execute();
+                                                            $resultadocat=$sqlcat->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
                                                             <label class="login2">Categoría</label>
                                                             <select name="Categoria" id="Categoria" class="form-control">
                                                                 <option value="none" selected="" disabled="">Seleccione Categoría</option>
+                                                                <?php 
+                                                                foreach ($resultadocat as $cat) {
+                                                                    echo '<option value="'.$cat['IdCategoria'].'">'.$cat['Categoria'].'</option>';
+                                                                }?>
                                                             </select>
                                                         </div>
                                                         <!-- Select Familia -->
+                                                        <?php 
+                                                            $sqlfam= $pdo->prepare("SELECT IdFamilia, Familia FROM familia ORDER BY Familia ASC");
+                                                            $sqlfam->execute();
+                                                            $resultadofam=$sqlfam->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
                                                             <label class="login2">Familia</label>
                                                             <select name="Familia" id="Familia" class="form-control">
                                                                 <option value="none" selected="" disabled="">Seleccione
                                                                     Familia
                                                                 </option>
-                                                                <option value="0">Surat</option>
-                                                                <option value="1">Baroda</option>
-                                                                <option value="2">Navsari</option>
-                                                                <option value="3">Baroda</option>
-                                                                <option value="4">Surat</option>
+                                                                <?php 
+                                                                foreach ($resultadofam as $fam) {
+                                                                    echo '<option value="'.$fam['IdFamilia'].'">'.$fam['Familia'].'</option>';
+                                                                }
+                                                                ?>
                                                             </select>
                                                         </div>
                                                         <!-- Select Proveedor -->
+                                                        <?php 
+                                                            $sqlpro= $pdo->prepare("SELECT IdProveedor, Nombre FROM proveedor ORDER BY Nombre ASC");
+                                                            $sqlpro->execute();
+                                                            $resultadopro=$sqlpro->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
                                                             <label class="login2">Proveedor</label>
                                                             <select name="Proveedor" id="Proveedor" class="form-control">
                                                                 <option value="none" selected="" disabled="">Seleccione
                                                                     Proveedor
                                                                 </option>
-                                                                <option value="0">Surat</option>
-                                                                <option value="1">Baroda</option>
-                                                                <option value="2">Navsari</option>
-                                                                <option value="3">Baroda</option>
-                                                                <option value="4">Surat</option>
+                                                                <?php 
+                                                                foreach ($resultadopro as $pro) {
+                                                                    echo '<option value="'.$pro['IdProveedor'].'">'.$pro['Nombre'].'</option>';
+                                                                }
+                                                                ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -104,40 +123,62 @@ require "../Recursos/Conexion.php";
                                                             <input name="Articulof" id="Articulof" type="text" class="form-control" placeholder="Ingrese el artículo">
                                                         </div>
                                                         <!-- Select Rama -->
+                                                        <?php 
+                                                            $sqlram= $pdo->prepare("SELECT IdRama, Nombre FROM rama ORDER BY Nombre ASC");
+                                                            $sqlram->execute();
+                                                            $resultadoram=$sqlram->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
                                                             <label class="login2">Rama</label>
                                                             <select name="Rama" id="Rama" class="form-control">
                                                                 <option value="none" selected="" disabled="">Seleccione
                                                                     Rama
                                                                 </option>
+                                                                <?php 
+                                                                foreach ($resultadoram as $ram) {
+                                                                    echo '<option value="'.$ram['IdRama'].'">'.$ram['Nombre'].'</option>';
+                                                                }
+
+                                                                ?>
                                                             </select>
                                                         </div>
                                                         <!-- Select Grupo -->
+                                                        <?php 
+                                                            $sqlgpo= $pdo->prepare("SELECT IdGrupo, Grupo FROM grupo ORDER BY Grupo ASC");
+                                                            $sqlgpo->execute();
+                                                            $resultadogpo=$sqlgpo->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
                                                             <label class="login2">Grupo</label>
                                                             <select name="Grupo" id="Grupo" class="form-control">
                                                                 <option value="none" selected="" disabled="">Seleccione
                                                                     Grupo
                                                                 </option>
-                                                                <option value="0">Surat</option>
-                                                                <option value="1">Baroda</option>
-                                                                <option value="2">Navsari</option>
-                                                                <option value="3">Baroda</option>
-                                                                <option value="4">Surat</option>
+                                                                <?php
+                                                                foreach ($resultadogpo as $gpo) {
+                                                                    echo '<option value="'.$gpo['IdGrupo'].'">'.$gpo['Grupo'].'</option>';
+                                                                }
+
+                                                                ?>
                                                             </select>
                                                         </div>
                                                         <!-- Select Fabricante -->
+                                                        <?php 
+                                                            $sqlfab= $pdo->prepare("SELECT IdFabricante, Fabricante FROM fabricante ORDER BY Fabricante ASC");
+                                                            $sqlfab->execute();
+                                                            $resultadofab=$sqlfab->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
                                                             <label class="login2">Fabricante</label>
                                                             <select name="Fabricante" id="Fabricante" class="form-control">
                                                                 <option value="none" selected="" disabled="">Seleccione
                                                                     Fabricante
                                                                 </option>
-                                                                <option value="0">Surat</option>
-                                                                <option value="1">Baroda</option>
-                                                                <option value="2">Navsari</option>
-                                                                <option value="3">Baroda</option>
-                                                                <option value="4">Surat</option>
+                                                                <?php
+                                                                foreach ($resultadofab as $fab) {
+                                                                    echo '<option value="'.$fab['IdFabricante'].'">'.$fab['Fabricante'].'</option>';
+                                                                }
+                                                                ?>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -216,34 +257,34 @@ require "../Recursos/Conexion.php";
 <script language="javascript">
 
 // Municipio
-$(document).ready(function () {
-    $("#Almacen").change(function () { 
-        // e.preventDefault();
+// $(document).ready(function () {
+//     $("#Almacen").change(function () { 
+//         // e.preventDefault();
 
-        $("#Almacen option:selected").each(function () {
-            id_estado = $(this).val();
-            $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
-            function(data){
-                $("#Categoria").html(data);
-            });            
-        });
-    });
-});
+//         $("#Almacen option:selected").each(function () {
+//             id_estado = $(this).val();
+//             $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
+//             function(data){
+//                 $("#Categoria").html(data);
+//             });            
+//         });
+//     });
+// });
 
-$(document).ready(function () {
-    $("#Categoria").change(function () {
+// $(document).ready(function () {
+//     $("#Categoria").change(function () {
         
-        $("#Categoria option:selected").each(function () {
-            id_municipio = $(this).val();
-            $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
-            function(data) {
-                $("#Rama").html(data);
-            });
+//         $("#Categoria option:selected").each(function () {
+//             id_municipio = $(this).val();
+//             $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
+//             function(data) {
+//                 $("#Rama").html(data);
+//             });
             
-        });
+//         });
         
-    });
-});
+//     });
+// });
 
 </script>
 

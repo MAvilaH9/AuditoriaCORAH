@@ -84,14 +84,34 @@
                             </div>
                             <div class="row">
                                 <!-- Nombres -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Nombre (s)</label>
                                         <input name="Nombre" id="Nombre" type="text" class="form-control"
                                             placeholder="Nombre (s)" required />
                                     </div>
                                 </div>
+                                <!-- Usuario -->
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="login2">Usuario</label>
+                                        <input name="Usuario" id="Usuario" type="text" class="form-control"
+                                            placeholder="Usuario" required />
+                                    </div>
+                                </div>
 
+                                <!-- Contraseña -->
+                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="login2">Contraseña</label>
+                                        <input name="Contrasenia" id="Contrasenia" type="text" class="form-control"
+                                            placeholder="Contraseña" required />
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
                                 <!-- Select Perfil -->
                                 <?php 
                                     include_once ("../Recursos/Conexion.php");
@@ -111,23 +131,23 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <!-- Usuario -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <label class="login2">Nombre de Usuario</label>
-                                        <input name="Usuario" id="Usuario" type="text" class="form-control"
-                                            placeholder="Usuario" required />
-                                    </div>
-                                </div>
 
-                                <!-- Contraseña -->
+                                <!-- Select Empresa -->
+                                <?php 
+                                    $sql= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
+                                    $sql->execute();
+                                    $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                                ?>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
-                                        <label class="login2">Contraseña</label>
-                                        <input name="Contrasenia" id="Contrasenia" type="text" class="form-control"
-                                            placeholder="Contraseña" required />
+                                        <label class="login2">Empresa</label>
+                                        <select name="Empresa" id="Empresa" class="form-control">
+                                            <?php
+                                            foreach ($resultado as $dato) { ?>
+                                            <option value="<?php echo $dato['ClaveEmpresa']; ?>">
+                                                <?php echo $dato['Nombre']; ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +199,10 @@
             <div class="modal-body">
                 <div class="review-content-section">
                     <div id="edit" class="pro-ad">
-
+                    <button type="submit" id="Actualizar" class="btn btn-custon-rounded-two btn-success">
+            <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
+            Actualizar
+        </button>
                     </div> <br>
                     <!-- Alertas  -->
                     <div id="AlertExito" class="alert alert-success" role="alert" style="display:none">
@@ -271,7 +294,9 @@
                     $.ajax({
                         type: "POST",
                         url: "../Recursos/Eliminar_Auditor.php",
-                        data: {id: id,},
+                        data: {
+                            id: id,
+                        },
                         success: function (resp) {
                             if (resp == 1) {
                                 mostrar_datos();
@@ -281,9 +306,9 @@
                         }
                     });
                     Swal.fire(
-                    'Eliminado!',
-                    'El registro ha sido eliminado.',
-                    'success'
+                        'Eliminado!',
+                        'El registro ha sido eliminado.',
+                        'success'
                     )
                 }
             })
@@ -319,7 +344,7 @@
             var parametros = $('#editarusuario').serialize();
             $.ajax({
                 type: "POST",
-                url: "../Recursos/Actualiar.php",
+                url: "../Recursos/Actualizar.php",
                 data: parametros,
                 success: function (re) {
                     if (re == 1) {

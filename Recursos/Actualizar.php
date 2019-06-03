@@ -15,7 +15,7 @@ include "Conexion.php";
     $sentencia = $pdo->prepare($sql_actualizar);
     
     if ($sentencia->execute(array($Nombre,$ApellidoPat,$ApellidoMat,$Usuario,$Contra,$Perfil))) {
-        echo 1;
+        header('Location:../Interfaz/Auditor.php');
     } else {
         echo 2;
     }

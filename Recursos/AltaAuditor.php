@@ -6,6 +6,7 @@ $ApellidoMat = $_POST["ApellidoMat"]; $ApellidoMat= strtoupper($ApellidoMat); $A
 $Usuario = $_POST["Usuario"]; $Usuario= strtoupper($Usuario); $Usuario=trim($Usuario);
 $Contraseña= $_POST["Contrasenia"]; $Contraseña= strtoupper($Contraseña); $Contraseña= trim($Contraseña);
 $Perfil = $_POST["Perfil"];
+$empresa = $_POST['Empresa'];
 
 // Consulta para la validación del usuario
 $Sql = 'SELECT * FROM usuario WHERE Usuario=?';
@@ -29,12 +30,12 @@ if ($nom==$Nombre && $ap=$ApellidoPat && $am==$ApellidoMat || $Usuario == $us &&
     $sql_agregar = 'INSERT INTO usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) VALUES (?,?,?,?,?,NULL,?)';
     $sentencia_agregar = $pdo->prepare($sql_agregar);
 
-    if ($sentencia_agregar->execute(array($Nombre, $ApellidoPat, $ApellidoMat, $Usuario, $Contraseña, $Perfil))) {
+    if ($sentencia_agregar->execute(array($Nombre, $ApellidoPat, $ApellidoMat, $Usuario, $Contraseña, $empresa, $Perfil))) {
         echo 1;
     } else {
         echo 2;
         die();
     }
-}
+
 ?>
 
