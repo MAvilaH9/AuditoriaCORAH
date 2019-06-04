@@ -11,12 +11,32 @@
                             <h1>Lista <span class="table-project-n">de</span> Auditores</h1>
                         </div>
                     </div>
+                    <!-- Alertas  -->
+                    <div id="AlertExito" class="alert alert-success" role="alert" style="display:none">
+                        <strong>Exitoso!</strong> Datos guardados con exito
+                    </div>
+                    <div id="AlertError" class="alert alert-danger alert-mg-b" style="display:none">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Error!</strong> Al agregar los datos en la base de datos.
+                    </div>
+                    <div id="AlertUsuario" class="alert alert-danger alert-mg-b" style="display:none">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Advertencia!</strong> Usuario ya existe en la base de datos.
+                    </div>
                     <div class="sparkline13-graph">
-                        <a class="btn btn-custon-rounded-two btn-primary" href="#" data-toggle="modal"
-                            data-target="#AgregarAuditor"><i class="fa fa-plus" aria-hidden="true"></i>
+                        <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"
+                            id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
+                                aria-hidden="true"></i></button>
+
+                        <!-- <a class="btn btn-custon-rounded-two btn-primary" href="#" data-toggle="modal"
+                            data-target="#Auditor"><i class="fa fa-plus" aria-hidden="true"></i>
                             Agregar Nuevo
-                        </a>
-                        <div id="tabla_auditor" class="datatable-dashv1-list custom-datatable-overright">
+                        </a> -->
+                        <div id="tabla_Usuario" class="datatable-dashv1-list custom-datatable-overright">
 
                         </div>
                     </div>
@@ -28,33 +48,13 @@
 <!-- Static Table End -->
 
 
-<!-- Modal Cancelar -->
+<!-- Modal Auditor -->
 
-<div id="CancelarConsulta" class="modal modal-edu-general FullColor-popup-DangerModal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-close-area modal-close-df">
-                <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
-            </div>
-            <div class="modal-body">
-                <span class="educate-icon educate-danger modal-check-pro information-icon-pro"></span>
-                <h2>Cancelar!</h2>
-                <p>¿Está seguro que desea cancelar el proceso?</p>
-            </div>
-            <div class="modal-footer danger-md">
-                <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Index.php">Aceptar</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal Agregar -->
-
-<div id="AgregarAuditor" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+<div id="ModalUsuario" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header header-color-modal bg-color-1">
-                <h4 class="modal-title">Registrar nuevo auditor</h4>
+                <h4 class="modal-title">Registrar nuevo Usuario</h4>
                 <!-- <div class="modal-close-area modal-close-df">
                     <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                 </div> -->
@@ -62,7 +62,7 @@
             <div class="modal-body">
                 <div class="review-content-section">
                     <div id="dropzone1" class="pro-ad">
-                        <form id="frmauditor" class="dropzone dropzone-custom needsclick add-professors">
+                        <form id="frmUsuario" class="dropzone dropzone-custom needsclick add-professors">
                             <div class="row">
                                 <!-- Apellido Paterno -->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -91,6 +91,7 @@
                                             placeholder="Nombre (s)" required />
                                     </div>
                                 </div>
+
                                 <!-- Usuario -->
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
@@ -122,7 +123,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Perfil</label>
-                                        <select name="Perfil" id="Pefil" class="form-control">
+                                        <select name="Perfil" id="Perfil" class="form-control">
                                             <?php
                                             foreach ($resultado as $dato) { ?>
                                             <option value="<?php echo $dato['IdPerfil']; ?>" selected>
@@ -152,129 +153,114 @@
                                 </div>
                             </div>
                             <br>
+                            <input type="hidden" name="IdUsuario" id="IdUsuario" />
+                            <input type="hidden" name="operation" id="operation" />
                             <button type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
                                 <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                                 Cancelar
                             </button>
                             <!-- <a data-dismiss="modal" href="#">Cancel</a> -->
-                            <button type="submit" id="agregar" class="btn btn-custon-rounded-two btn-success">
+                            <button type="submit" name="action" id="action" value="Add"
+                                class="btn btn-custon-rounded-two btn-success">
                                 <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
-                                Agregar
+                                Guardar
                             </button>
                         </form>
                     </div> <br>
-                    <!-- Alertas  -->
-                    <div id="AlertExito" class="alert alert-success" role="alert" style="display:none">
-                        <strong>Exitoso!</strong> Auditor agrregado con exito
-                    </div>
-                    <div id="AlertError" class="alert alert-danger alert-mg-b" style="display:none">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>Error!</strong> Al agregar los datos en la base de datos.
-                    </div>
-                    <div id="AlertUsuario" class="alert alert-danger alert-mg-b" style="display:none">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>Advertencia!</strong> Usuario ya existe en la base de datos.
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Editar -->
 
-<div id="EditarAuditor" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header header-color-modal bg-color-1">
-                <h4 class="modal-title">Registrar nuevo auditor</h4>
-                <!-- <div class="modal-close-area modal-close-df">
-                    <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
-                </div> -->
-            </div>
-            <div class="modal-body">
-                <div class="review-content-section">
-                    <div id="edit" class="pro-ad">
-                    <button type="submit" id="Actualizar" class="btn btn-custon-rounded-two btn-success">
-            <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
-            Actualizar
-        </button>
-                    </div> <br>
-                    <!-- Alertas  -->
-                    <div id="AlertExito" class="alert alert-success" role="alert" style="display:none">
-                        <strong>Exitoso!</strong> Auditor agrregado con exito
-                    </div>
-                    <div id="AlertError" class="alert alert-danger alert-mg-b" style="display:none">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>Error!</strong> Al agregar los datos en la base de datos.
-                    </div>
-                    <div id="AlertUsuario" class="alert alert-danger alert-mg-b" style="display:none">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>Advertencia!</strong> Usuario ya existe en la base de datos.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script type="text/javascript">
+<?php include "Templete/Footer.php"; ?>
+
+<script type="text/javascript" language="javascript">
     $(document).ready(function () {
+        MostrarDatos();
 
-        // Mostrar tabla
-        function mostrar_datos() {
+        // Modal Agregar
+        $('#btn_agregar').click(function () {
+            $('#frmUsuario')[0].reset();
+            $('.modal-title').text("Agregar Nuevo Auditor");
+            $('#action').val("Add");
+            $('#operation').val("Add");
+        });
+
+        // Agregar
+        $(document).on('submit', '#frmUsuario', function (event) {
+            event.preventDefault();
+            var datos = $('#frmUsuario').serialize();
+            // alert(datos);
             $.ajax({
-                url: "../Recursos/Tabla_Auditor.php",
-                type: "Post",
+                url: "../Recursos/Usuario.php",
+                method: 'POST',
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
                 success: function (data) {
-                    $("#tabla_auditor").html(data);
-                }
-            });
-        }
-        // Funcion mostrar que se ejecuta
-        mostrar_datos();
-
-        // Funcion Agregar
-        $('#frmauditor').submit(function (e) {
-            // e.preventDefault();
-            var datos = $('#frmauditor').serialize();
-            $.ajax({
-                type: "POST",
-                url: "../Recursos/AltaAuditor.php",
-                data: datos,
-                success: function (r) {
-                    if (r == 1) {
-                        $("#AlertExito").fadeIn(r);
+                    // alert(data);
+                    $('#frmUsuario')[0].reset();
+                    if (data == 1) {
+                        // alert(dato);
+                        MostrarDatos();
+                        $("#AlertExito").fadeIn();
                         setTimeout(function () {
-                            $("#AlertExito").fadeOut(r);
+                            $("#AlertExito").fadeOut();
                         }, 2000);
-                        Limpiar();
-                        mostrar_datos(r);
-                    } else if (r == 2) {
-                        $("#AlertError").delay(500).fadeIn("slow");
+                        $("#ModalUsuario").modal("hide");
+                    } else if (data == 2) {
+                        MostrarDatos();
+                        $("#ModalUsuario").modal("hide");
+                        $("#AlertError").fadeIn();
                         setTimeout(function () {
-                            $("#AlertError").fadeOut(r);
+                            $("#AlertError").fadeOut();
                         }, 2000);
-                        Limpiar();
                     } else {
-                        $("#AlertUsuario").delay(500).fadeIn("slow");
+                        $("#AlertUsuario").fadeIn();
+                        $("#ModalUsuario").modal("hide");
                         setTimeout(function () {
-                            $("#AlertUsuario").fadeOut(r);
+                            $("#AlertUsuario").fadeOut();
                         }, 2000);
-                        Limpiar();
                     }
                 }
             });
-            return false;
+
+
         });
+
+        // Actualizar
+        $(document).on("click", "#Editar", function () {
+            var idUsuario = $(this).data("id");
+            // alert(idUsuario);
+            $.ajax({
+                url: "../Recursos/Datos_Usuario.php",
+                method: "POST",
+                data: {
+                    idUsuario: idUsuario
+                },
+                dataType: "json",
+                success: function (data) {
+                    // alert(data);
+                    $('#ModalUsuario').modal('show');
+                    $('#ApellidoPat').val(data.ApellidoPaterno);
+                    $('#ApellidoMat').val(data.ApellidoMaterno);
+                    $('#Nombre').val(data.Nombres);
+                    $('#Usuario').val(data.Usuario);
+                    $('#Contrasenia').val(data.Contrasenia);
+                    $('#Empresa').val(data.ClaveEmpresa);
+                    $('#Perfil').val(data.IdPerfil);
+                    $('.modal-title').text("Actualizar datos");
+                    $('#IdUsuario').val(idUsuario);
+                    $('#action').val("Edit");
+                    $('#operation').val("Edit");
+                    var cla = data.ClaveEmpresa;
+                }
+            })
+        });
+
 
         // Eliminar
         $(document).on("click", "#Eliminar", function () {
@@ -293,13 +279,13 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "../Recursos/Eliminar_Auditor.php",
+                        url: "../Recursos/Eliminar_Usuario.php",
                         data: {
                             id: id,
                         },
                         success: function (resp) {
                             if (resp == 1) {
-                                mostrar_datos();
+                                MostrarDatos();
                             } else {
                                 alert("No eliminado");
                             }
@@ -314,66 +300,11 @@
             })
         });
 
-        // Limpiar Campoas
-        function Limpiar() {
-            $(':text').each(function () {
-                $($(this).val(''));
-            });
-        }
-
-        // Mostrar modal
-        $(document).on("click", "#Editar", function () {
-            var idu = $(this).data("id");
-            // alert(id);
-            $.ajax({
-                type: "POST",
-                url: "../Recursos/Actualizar_Auditor.php",
-                data: {
-                    id: idu,
-                },
-                success: function (datos) {
-                    $("#edit").html(datos);
-                }
-            });
-            $('#EditarAuditor').modal('show');
-
-        });
-
-        // Envio de datos para actualizar
-        $('#editarusuario').submit(function () {
-            var parametros = $('#editarusuario').serialize();
-            $.ajax({
-                type: "POST",
-                url: "../Recursos/Actualizar.php",
-                data: parametros,
-                success: function (re) {
-                    if (re == 1) {
-                        alertify.success("Actualizado con exito :)");
-                        // $("#AlertExito").fadeIn(re);
-                        // setTimeout(function () {
-                        //     $("#AlertExito").fadeOut(r);
-                        // }, 2000);
-                        // Limpiar();
-                        // mostrar_datos(re);
-                    } else if (re == 2) {
-                        alert("No");
-                        // $("#AlertError").delay(500).fadeIn("slow");
-                        // setTimeout(function () {
-                        //     $("#AlertError").fadeOut(re);
-                        // }, 2000);
-                        // Limpiar();
-                    } else {
-                        // $("#AlertUsuario").delay(500).fadeIn("slow");
-                        // setTimeout(function () {
-                        //     $("#AlertUsuario").fadeOut(re);
-                        // }, 2000);
-                        // Limpiar();
-                    }
-                }
-            });
-            return false;
-        });
     });
 </script>
 
-<?php include "Templete/Footer.php"; ?>
+<script>
+    function MostrarDatos() {
+        $('#tabla_Usuario').load('../Recursos/Tabla_Usuario.php');
+    }
+</script>
