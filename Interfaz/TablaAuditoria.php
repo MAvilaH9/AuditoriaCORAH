@@ -32,23 +32,23 @@
                                         data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Usuario</th>
-                                                <th>Contrasenia</th>
+                                                <th>Articulo</th>
+                                                <th>Descripción</th>
+                                                <th>Precio Lista</th>
                                             </tr>
                                         </thead>
                                         <?php 
                                             require_once ("../Recursos/Conexion.php");
-                                            $sql= $pdo->prepare("SELECT IdUsuario, Usuario, Contrasenia FROM usuario ORDER BY IdUsuario ASC");
+                                            $sql= $pdo->prepare("SELECT * FROM articulo ORDER BY Articulo ASC");
                                             $sql->execute();
                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                         ?>
                                         <tbody>
                                         <?php foreach ($resultado as $dato) {?>
                                             <tr>
-                                                <td><?php echo $dato['IdUsuario']; ?></td>
-                                                <td><?php echo $dato['Usuario']; ?></td>
-                                                <td><?php echo $dato['Contrasenia']; ?></td>
+                                                <td><?php echo $dato['Articulo']; ?></td>
+                                                <td><?php echo $dato['Descripcion1']; ?></td>
+                                                <td><?php echo $dato['PrecioLista']; ?></td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>

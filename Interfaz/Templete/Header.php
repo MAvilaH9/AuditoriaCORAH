@@ -11,23 +11,23 @@ session_start();
     <title>Auditorias | CORAH</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
     <!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo.png">
     <!-- Google Fonts
 		============================================ -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
 
     <!-- sweetalert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        <!-- Bootstrap CSS
+    <!-- Bootstrap CSS
 		============================================ -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 
     <!-- chosen CSS
 	    ============================================ -->
-        <link rel="stylesheet" href="../css/bootstrap-chosen.css">
+    <link rel="stylesheet" href="../css/bootstrap-chosen.css">
 
     <!-- Bootstrap CSS
 		============================================ -->
@@ -100,61 +100,77 @@ session_start();
     <!-- Start Left menu area -->
     <?php
     if (!empty($_SESSION['Perfil']==1)) { ?>
-        <!-- Session Administrador -->
-        <div class="left-sidebar-pro">
-            <nav id="sidebar" class="">
-                <div class="sidebar-header">
-                    <a href="#"><img class="main-logo" src="../img/corah.png" alt="" /></a>
-                    <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
-                </div>
+    <!-- Session Administrador -->
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="#"><img class="main-logo" src="../img/corah.png" alt="" /></a>
+                <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
+            </div>
 
-                <div class="left-custom-menu-adp-wrap comment-scrollbar">
-                    <nav class="sidebar-nav left-sidebar-menu-pro">
-                        <ul class="metismenu" id="menu1">
-                            <br>
-                            <li>
-                                <a title="Auditar" href="Consulta.php" aria-expanded="false">
-                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
-                                    <span class="mini-click-non">Auditar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap">
-                                    </span> <span class="mini-click-non">Auditores</span>
-                                </a>
-                                <ul class="submenu-angle" aria-expanded="false">
-                                    <li><a title="Lista de Auditores" href="../Interfaz/Auditor.php"><span class="mini-sub-pro">Lista de Auditores</span></a></li>
-                                </ul> 
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </nav>
-        </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <br>
+                        <li>
+                            <a title="Auditar" class="has-arrow" href="#" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap"></span>
+                                <span class="mini-click-non">Auditar</span>
+                            </a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li>
+                                    <a title="Almacén" href="../Interfaz/Consulta_Almacen.php">
+                                        <span class="mini-sub-pro">Almacén</span>
+                                    </a>
+                                    <a title="Sucursal" href="../Interfaz/Consulta_Sucursal.php">
+                                        <span class="mini-sub-pro">Sucursal</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a title="Auditores" class="has-arrow" href="#" aria-expanded="false">
+                                <span class="educate-icon educate-professor icon-wrap"></span>
+                                <span class="mini-click-non">Auditores</span>
+                            </a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li>
+                                    <a title="Lista de Auditores" href="../Interfaz/Usuario.php">
+                                        <span class="mini-sub-pro">Lista de Auditores</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
     <?php } else if(!empty($_SESSION['Perfil']==2)) { ?>
-        <!-- Session Auditor -->
-        <div class="left-sidebar-pro">
-            <nav id="sidebar" class="">
-                <div class="sidebar-header">
-                    <a href="#"><img class="main-logo" src="../img/corah.png" alt="" /></a>
-                    <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
-                </div>
+    <!-- Session Auditor -->
+    <div class="left-sidebar-pro">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <a href="#"><img class="main-logo" src="../img/corah.png" alt="" /></a>
+                <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
+            </div>
 
-                <div class="left-custom-menu-adp-wrap comment-scrollbar">
-                    <nav class="sidebar-nav left-sidebar-menu-pro">
-                        <ul class="metismenu" id="menu1">
-                            <br>
-                            <li>
-                                <a title="Auditar" href="Consulta.php" aria-expanded="false">
-                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
-                                    <span class="mini-click-non">Auditar</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </nav>
-        </div>
+            <div class="left-custom-menu-adp-wrap comment-scrollbar">
+                <nav class="sidebar-nav left-sidebar-menu-pro">
+                    <ul class="metismenu" id="menu1">
+                        <br>
+                        <li>
+                            <a title="Auditar" href="Consulta.php" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap sub-icon-mg"
+                                    aria-hidden="true"></span>
+                                <span class="mini-click-non">Auditar</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
     <?php } ?>
 
     <!-- End Left menu area -->
@@ -189,13 +205,13 @@ session_start();
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                         <div class="header-top-menu tabl-d-n">
                                             <ul class="nav navbar-nav mai-top-nav">
-                                                <li class="nav-item"><a href="#" class="nav-link">Home</a>
+                                                <li class="nav-item"><a href="../Interfaz/Index.php" class="nav-link">Inicio</a>
                                                 </li>
-                                                <li class="nav-item"><a href="#" class="nav-link">About</a>
+                                                <li class="nav-item"><a href="#" class="nav-link">Inventario</a>
                                                 </li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Services</a>
+                                                <li class="nav-item"><a href="#" class="nav-link">Ventas</a>
                                                 </li>
-                                                <li class="nav-item dropdown res-dis-nn">
+                                                <!-- <li class="nav-item dropdown res-dis-nn">
                                                     <a href="#" data-toggle="dropdown" role="button"
                                                         aria-expanded="false" class="nav-link dropdown-toggle">Project
                                                         <span class="angle-down-topmenu"><i
@@ -208,7 +224,7 @@ session_start();
                                                     </div>
                                                 </li>
                                                 <li class="nav-item"><a href="#" class="nav-link">Support</a>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                     </div>
@@ -220,7 +236,8 @@ session_start();
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button"
                                                         aria-expanded="false" class="nav-link dropdown-toggle">
-                                                        <span class="admin-name"><?php echo $_SESSION['Usuario'];?></span>
+                                                        <span
+                                                            class="admin-name"><?php echo $_SESSION['Usuario'];?></span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
                                                     <ul role="menu"
@@ -269,6 +286,52 @@ session_start();
 
 
             <!-- Mobile Menu start -->
+            <?php 
+                if (!empty($_SESSION['Perfil']==1)) {?>
+                <!-- Session Administardor -->
+            <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                <ul class="mobile-menu-nav">
+                                        <br>
+                                        <li>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar 
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                            </a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <li>
+                                                    <a href="../Interfaz/Consulta_Almacen.php">Almacén</a>
+                                                </li>
+                                                <li>
+                                                    <a href="../Interfaz/Consulta_Sucursal.php">Sucursal</a>
+                                                </li>
+                                            </ul>
+                                            
+                                        </li>
+                                        <li>
+                                        <li>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditores 
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                            </a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <li>
+                                                    <a href="../Interfaz/Usuario.php">Lista de Auditores</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } elseif (!empty($_SESSION['Perfil']==2)) { ?>
+                <!-- Session Auditor -->
             <div class="mobile-menu-area">
                 <div class="container">
                     <div class="row">
@@ -277,19 +340,19 @@ session_start();
                                 <nav id="dropdown">
                                     <ul class="mobile-menu-nav">
                                         <br>
-                                        <li><a href="Consulta.php">Auditar</a></li>
-                                        <!-- <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top"> -->
-                                        <!-- <li><a href="all-professors.html">All Professors</a>
+                                        <li>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar 
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                            </a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <li>
+                                                    <a href="../Interfaz/Consulta_Almacen.php">Almacén</a>
                                                 </li>
-                                                <li><a href="add-professor.html">Add Professor</a>
+                                                <li>
+                                                    <a href="../Interfaz/Consulta_Sucursal.php">Sucursal</a>
                                                 </li>
-                                                <li><a href="edit-professor.html">Edit Professor</a>
-                                                </li>
-                                                <li><a href="professor-profile.html">Professor Profile</a>
-                                                </li> -->
-                                    </ul>
-                                    </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -297,36 +360,8 @@ session_start();
                     </div>
                 </div>
             </div>
+            <?php }
+            ?>
             <!-- Mobile Menu end -->
             <br>
-            <!-- Buscar
-            <div class="breadcome-area">
-                    <br>
-                <div class="container-fluid"> 
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="breadcome-list">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="sr-input-func">
-                                                <input type="text" placeholder="Buscar..." class="search-int form-control">
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <ul class="breadcome-menu">
-                                            <li><a href="#">Home</a> <span class="bread-slash">/</span>
-                                            </li>
-                                            <li><span class="bread-blod">Dashboard V.1</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
