@@ -1,0 +1,30 @@
+
+
+        <html>
+            <table border="1">
+                <tr>
+                    <th>Articulo</th>
+                    <th>Descripción</th>
+                    <th>Precio Lista</th>
+                </tr>
+                
+                <tr>
+                    <td> K5120/127</td>
+                    <td>MOTOR SPEED AUTOMATICO CABEZAL T-COMERCIAL VDS</td>
+                    <td>27778</td>
+                </tr>
+                
+                <tr>
+                    <td>00005770</td>
+                    <td>KIT ACCESORIOS MOS. ENROLL. DO</td>
+                    <td>195</td>
+                </tr>
+                
+                <tr>
+                    <td>0102260N41</td>
+                    <td>Jaladera Niquel Rayado Brillante C-C 12.80cm 2267BF Fincsa</td>
+                    <td>32</td>
+                </tr>
+                            </table>
+        </html>
+    

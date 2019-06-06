@@ -67,10 +67,14 @@ session_start();
 		============================================ -->
     <link rel="stylesheet" href="../css/fullcalendar.min.css">
     <link rel="stylesheet" href="../css/fullcalendar.print.min.css">
-
+       
     <!-- modals CSS
 		============================================ -->
     <link rel="stylesheet" href="../css/modals.css">
+
+    <!-- forms CSS
+	============================================ -->
+    <link rel="stylesheet" href="../css/all-type-forms.css">
 
     <!-- x-editor CSS para las tablas
 		============================================ -->
@@ -119,10 +123,10 @@ session_start();
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a title="Almacén" href="../Interfaz/Consulta_Almacen.php">
+                                    <a title="Almacén" href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a title="Sucursal" href="../Interfaz/Consulta_Sucursal.php">
+                                    <a title="Sucursal" href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
@@ -160,11 +164,20 @@ session_start();
                     <ul class="metismenu" id="menu1">
                         <br>
                         <li>
-                            <a title="Auditar" href="Consulta.php" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap sub-icon-mg"
-                                    aria-hidden="true"></span>
+                            <a title="Auditar" class="has-arrow" href="#" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap"></span>
                                 <span class="mini-click-non">Auditar</span>
                             </a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li>
+                                    <a title="Almacén" href="../Interfaz/Articulos_Almacen.php">
+                                        <span class="mini-sub-pro">Almacén</span>
+                                    </a>
+                                    <a title="Sucursal" href="../Interfaz/Articulos_Sucursal.php">
+                                        <span class="mini-sub-pro">Sucursal</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -205,26 +218,40 @@ session_start();
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                         <div class="header-top-menu tabl-d-n">
                                             <ul class="nav navbar-nav mai-top-nav">
-                                                <li class="nav-item"><a href="../Interfaz/Index.php" class="nav-link">Inicio</a>
+                                                <li class="nav-item">
+                                                    <a href="../Interfaz/Index.php" class="nav-link">
+                                                        Inicio
+                                                    </a>
                                                 </li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Inventario</a>
-                                                </li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Ventas</a>
-                                                </li>
-                                                <!-- <li class="nav-item dropdown res-dis-nn">
+                                                <li class="nav-item dropdown res-dis-nn">
                                                     <a href="#" data-toggle="dropdown" role="button"
-                                                        aria-expanded="false" class="nav-link dropdown-toggle">Project
+                                                        aria-expanded="false" class="nav-link dropdown-toggle">
+                                                        Inventario
                                                         <span class="angle-down-topmenu"><i
                                                                 class="fa fa-angle-down"></i></span></a>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
-                                                        <a href="#" class="dropdown-item">Documentation</a>
-                                                        <a href="#" class="dropdown-item">Expert Backend</a>
-                                                        <a href="#" class="dropdown-item">Expert FrontEnd</a>
-                                                        <a href="#" class="dropdown-item">Contact Support</a>
+                                                        <a href="../Interfaz/Inventario_Almacen.php" class="dropdown-item">Almacen</a>
+                                                        <a href="../Interfaz/Inventario_Sucursal.php" class="dropdown-item">Sucursal</a>
                                                     </div>
+                                                    </a>
                                                 </li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Support</a>
-                                                </li> -->
+                                                <li class="nav-item dropdown res-dis-nn">
+                                                    <a href="#" data-toggle="dropdown" role="button"
+                                                        aria-expanded="false" class="nav-link dropdown-toggle">
+                                                        Ventas
+                                                        <span class="angle-down-topmenu"><i
+                                                                class="fa fa-angle-down"></i></span></a>
+                                                    <div role="menu" class="dropdown-menu animated zoomIn">
+                                                        <a href="../Interfaz/Ventas_Almacen.php" class="dropdown-item">Almacen</a>
+                                                        <a href="../Interfaz/Ventas_Sucursal.php" class="dropdown-item">Sucursal</a>
+                                                    </div>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="../Interfaz/Excel.php" class="nav-link">
+                                                        Subir Archivos
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -346,10 +373,10 @@ session_start();
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a href="../Interfaz/Consulta_Almacen.php">Almacén</a>
+                                                    <a href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a href="../Interfaz/Consulta_Sucursal.php">Sucursal</a>
+                                                    <a href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
                                         </li>

@@ -7,15 +7,17 @@ require "../Recursos/Conexion.php";
 <div class="single-pro-review-area mt-t-30 mg-b-15">
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-payment-inner-st">
+                <div id="Titulo" class="product-payment-inner-st">
+                    <!-- Título  -->
                     <ul id="myTabedu1" class="tab-review-design">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <li class="active"><a>Reporte de Auditoría</a></li>
+                        <li class="active"><a>Ventas Almacén</a></li>
                     </ul>
                             
                     <!-- Formulario para la Consula  -->
@@ -25,8 +27,7 @@ require "../Recursos/Conexion.php";
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad">
-                                            <form id="frmConsulta" class="dropzone dropzone-custom needsclick add-professors"
-                                                id="demo1-upload">
+                                            <form id="frmVentasAlm" class="dropzone dropzone-custom needsclick add-professors">
                                                 <div class="row">
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
@@ -38,15 +39,17 @@ require "../Recursos/Conexion.php";
                                                         ?>
                                                         <!-- Select Almacen -->
                                                         <div class="form-group">
-                                                            <label class="login2">Almacén</label>
-                                                            <select name="Almacen" id="Almacen" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione
-                                                                    Almacen</option>
-                                                                <?php 
-                                                                foreach ($resultado as $dato) {
-                                                                    echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
-                                                                }?>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label>Almacén</label>
+                                                                <select name="Almacen" id="Almacen" class="chosen-select" tabindex="-1">
+                                                                    <option value="" >Seleccione
+                                                                        Almacen</option>
+                                                                    <?php 
+                                                                    foreach ($resultado as $dato) {
+                                                                        echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
+                                                                    }?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <!-- Text Articulo -->
                                                         <div class="form-group">
@@ -60,14 +63,16 @@ require "../Recursos/Conexion.php";
                                                             $resultadocat=$sqlcat->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Categoría</label>
-                                                            <select name="Categoria" id="Categoria" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione Categoría</option>
-                                                                <?php 
-                                                                foreach ($resultadocat as $cat) {
-                                                                    echo '<option value="'.$cat['IdCategoria'].'">'.$cat['Categoria'].'</option>';
-                                                                }?>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Categoría</label>
+                                                                <select name="Categoria" id="Categoria" class="chosen-select" tabindex="-1">
+                                                                    <option value="none" selected="" disabled="">Seleccione Categoría</option>
+                                                                    <?php 
+                                                                    foreach ($resultadocat as $cat) {
+                                                                        echo '<option value="'.$cat['IdCategoria'].'">'.$cat['Categoria'].'</option>';
+                                                                    }?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <!-- Select Familia -->
                                                         <?php 
@@ -76,17 +81,19 @@ require "../Recursos/Conexion.php";
                                                             $resultadofam=$sqlfam->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Familia</label>
-                                                            <select name="Familia" id="Familia" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione
-                                                                    Familia
-                                                                </option>
-                                                                <?php 
-                                                                foreach ($resultadofam as $fam) {
-                                                                    echo '<option value="'.$fam['IdFamilia'].'">'.$fam['Familia'].'</option>';
-                                                                }
-                                                                ?>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Familia</label>
+                                                                <select name="Familia" id="Familia" class="chosen-select" tabindex="-1">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Familia
+                                                                    </option>
+                                                                    <?php 
+                                                                    foreach ($resultadofam as $fam) {
+                                                                        echo '<option value="'.$fam['IdFamilia'].'">'.$fam['Familia'].'</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <!-- Select Proveedor -->
                                                         <?php 
@@ -95,27 +102,31 @@ require "../Recursos/Conexion.php";
                                                             $resultadopro=$sqlpro->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Proveedor</label>
-                                                            <select name="Proveedor" id="Proveedor" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione
-                                                                    Proveedor
-                                                                </option>
-                                                                <?php 
-                                                                foreach ($resultadopro as $pro) {
-                                                                    echo '<option value="'.$pro['IdProveedor'].'">'.$pro['Nombre'].'</option>';
-                                                                }
-                                                                ?>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Proveedor</label>
+                                                                <select name="Proveedor" id="Proveedor" class="chosen-select" tabindex="-1">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Proveedor
+                                                                    </option>
+                                                                    <?php 
+                                                                    foreach ($resultadopro as $pro) {
+                                                                        echo '<option value="'.$pro['IdProveedor'].'">'.$pro['Nombre'].'</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <!-- Select Excluir -->
                                                         <div class="form-group">
-                                                            <label class="login2">Excluir Planeación</label>
-                                                            <select name="Excluir" id="Excluir" class="form-control">
-                                                                <option value="0" Selected>Si</option>
-                                                                <option value="1">No</option>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Excluir Planeación</label>
+                                                                <select name="Excluir" id="Excluir" class="chosen-select" tabindex="-1">
+                                                                    <option value="0" Selected>Si</option>
+                                                                    <option value="1">No</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <!-- Select Articulo -->
                                                         <div class="form-group">
@@ -129,18 +140,20 @@ require "../Recursos/Conexion.php";
                                                             $resultadoram=$sqlram->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Rama</label>
-                                                            <select name="Rama" id="Rama" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione
-                                                                    Rama
-                                                                </option>
-                                                                <?php 
-                                                                foreach ($resultadoram as $ram) {
-                                                                    echo '<option value="'.$ram['IdRama'].'">'.$ram['Nombre'].'</option>';
-                                                                }
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Rama</label>
+                                                                <select name="Rama" id="Rama" class="chosen-select" tabindex="-1">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Rama
+                                                                    </option>
+                                                                    <?php 
+                                                                    foreach ($resultadoram as $ram) {
+                                                                        echo '<option value="'.$ram['IdRama'].'">'.$ram['Nombre'].'</option>';
+                                                                    }
 
-                                                                ?>
-                                                            </select>
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <!-- Select Grupo -->
                                                         <?php 
@@ -149,18 +162,19 @@ require "../Recursos/Conexion.php";
                                                             $resultadogpo=$sqlgpo->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Grupo</label>
-                                                            <select name="Grupo" id="Grupo" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione
-                                                                    Grupo
-                                                                </option>
-                                                                <?php
-                                                                foreach ($resultadogpo as $gpo) {
-                                                                    echo '<option value="'.$gpo['IdGrupo'].'">'.$gpo['Grupo'].'</option>';
-                                                                }
-
-                                                                ?>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Grupo</label>
+                                                                <select name="Grupo" id="Grupo" class="chosen-select" tabindex="-1">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Grupo
+                                                                    </option>
+                                                                    <?php
+                                                                    foreach ($resultadogpo as $gpo) {
+                                                                        echo '<option value="'.$gpo['IdGrupo'].'">'.$gpo['Grupo'].'</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <!-- Select Fabricante -->
                                                         <?php 
@@ -169,17 +183,19 @@ require "../Recursos/Conexion.php";
                                                             $resultadofab=$sqlfab->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Fabricante</label>
-                                                            <select name="Fabricante" id="Fabricante" class="form-control">
-                                                                <option value="none" selected="" disabled="">Seleccione
-                                                                    Fabricante
-                                                                </option>
-                                                                <?php
-                                                                foreach ($resultadofab as $fab) {
-                                                                    echo '<option value="'.$fab['IdFabricante'].'">'.$fab['Fabricante'].'</option>';
-                                                                }
-                                                                ?>
-                                                            </select>
+                                                            <div class="chosen-select-single mg-b-20">
+                                                                <label class="login2">Fabricante</label>
+                                                                <select name="Fabricante" id="Fabricante" class="chosen-select" tabindex="-1">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Fabricante
+                                                                    </option>
+                                                                    <?php
+                                                                    foreach ($resultadofab as $fab) {
+                                                                        echo '<option value="'.$fab['IdFabricante'].'">'.$fab['Fabricante'].'</option>';
+                                                                    }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -195,14 +211,12 @@ require "../Recursos/Conexion.php";
                                                                 <div class="button-style-two btn-mg-b-10">
                                                                     <br>
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <a href="TablaAuditoria.php"
-                                                                        class="btn btn-custon-rounded-two btn-success">
-                                                                        <i class="fa fa-check edu-checked-pro"
-                                                                            aria-hidden="true"></i>
-                                                                        Consultar
-                                                                    </a>
+                                                                    <button type="submit" id="Consular" class="btn btn-custon-rounded-two btn-success">
+                                                                        <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
+                                                                        Consultar                                                                    
+                                                                    </button>
                                                                     <button type="button"
-                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarConsulta">
+                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarConsultaAlm">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -229,13 +243,17 @@ require "../Recursos/Conexion.php";
                     </div>
                 </div>
             </div>
+            <div id="Resultado" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Cancelar -->
 
-<div id="CancelarConsulta" class="modal modal-edu-general FullColor-popup-DangerModal fade" role="dialog">
+
+<!-- Modal Cancelar Consulta Almacen -->
+
+<div id="CancelarVentaAlm" class="modal modal-edu-general FullColor-popup-DangerModal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-close-area modal-close-df">
@@ -248,44 +266,71 @@ require "../Recursos/Conexion.php";
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Index.php">Aceptar</a>
+                <a href="Ventas_Almacen.php">Aceptar</a>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Script Combos Dinamicos -->
 <script language="javascript">
 
-// // Municipio
-// $(document).ready(function () {
-//     $("#Almacen").change(function () { 
-//         // e.preventDefault();
+    // // Municipio
+    // $(document).ready(function () {
+    //     $("#Almacen").change(function () { 
+    //         // e.preventDefault();
 
-//         $("#Almacen option:selected").each(function () {
-//             id_estado = $(this).val();
-//             $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
-//             function(data){
-//                 $("#Categoria").html(data);
-//             });            
-//         });
-//     });
-// });
+    //         $("#Almacen option:selected").each(function () {
+    //             id_estado = $(this).val();
+    //             $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
+    //             function(data){
+    //                 $("#Categoria").html(data);
+    //             });            
+    //         });
+    //     });
+    // });
 
-// $(document).ready(function () {
-//     $("#Categoria").change(function () {
-        
-//         $("#Categoria option:selected").each(function () {
-//             id_municipio = $(this).val();
-//             $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
-//             function(data) {
-//                 $("#Rama").html(data);
-//             });
+    // $(document).ready(function () {
+    //     $("#Categoria").change(function () {
             
-//         });
-        
-//     });
-// });
+    //         $("#Categoria option:selected").each(function () {
+    //             id_municipio = $(this).val();
+    //             $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
+    //             function(data) {
+    //                 $("#Rama").html(data);
+    //             });
+                
+    //         });
+            
+    //     });
+    // });
 
 </script>
 
+
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function () {
+
+    $(document).on('submit', '#frmVentasAlm', function (e) {
+        e.preventDefault();
+        var datos = $('#frmVentasAlm').val();
+        // alert(datos);
+        $.ajax({
+            type: "Post",
+            url: "../Recursos/Ventas.php",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function (resp) {
+                // alert(resp);
+                $('#frmVentasAlm')[0].reset();
+                $('#frmVentasAlm').hide();
+                $('#Titulo').hide();
+                $('#Resultado').html(resp);
+            }
+        });
+    });
+});
+</script>
 <?php include_once "Templete/Footer.php"; ?>

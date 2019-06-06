@@ -56,7 +56,11 @@
     <script src="../js/metisMenu.min.js"></script>
     <script src="../js/metisMenu-active.js"></script>
     
-        <!-- data table JS
+        <!-- dropzone JS
+		============================================ -->
+    <script src="../js/dropzone.js"></script>
+
+    <!-- data table JS
 		============================================ -->
     <script src="../js/tablas.js"></script>
     <script src="../js/tableExport.js"></script> 
@@ -102,6 +106,10 @@
 		============================================ -->
     <script src="../js/jquery.peity.min.js"></script>
     <script src="../js/peity-active.js"></script>
+        <!-- icheck JS
+		============================================ -->
+    <script src="../js/icheck.min.js"></script>
+    <script src="../js/icheck-active.js"></script>
     <!-- tab JS
 		============================================ -->
     <script src="../js/tab.js"></script>

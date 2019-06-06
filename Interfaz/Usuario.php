@@ -102,7 +102,7 @@
                                 </div>
 
                                 <!-- Contraseña -->
-                                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Contraseña</label>
                                         <input name="Contrasenia" id="Contrasenia" type="text" class="form-control"
