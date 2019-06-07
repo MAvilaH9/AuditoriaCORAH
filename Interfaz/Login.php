@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// if (isset($_SESSION['Usuario'])) {
+// }else{
+// }
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 

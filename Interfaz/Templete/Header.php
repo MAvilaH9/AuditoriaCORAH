@@ -1,5 +1,10 @@
 <?php 
-session_start();
+    session_start();
+    if (empty($_SESSION['Usuario'])) {
+        header('location:Login.php');
+    }else{
+
+    }
 ?>
 
 <!doctype html>
@@ -108,38 +113,37 @@ session_start();
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="#"><img class="main-logo" src="../img/corah.png" alt="" /></a>
+                <a data-toggle="tooltip" title="Ir al inicio" href="../Interfaz/Index.php"><img class="main-logo" src="../img/corah.png" alt="" /></a>
                 <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
-            </div>
-
+            </div><br>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <br>
                         <li>
-                            <a title="Auditar" class="has-arrow" href="#" aria-expanded="false">
+                            <a class="has-arrow" href="#" aria-expanded="false">
                                 <span class="educate-icon educate-event icon-wrap"></span>
                                 <span class="mini-click-non">Auditar</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a title="Almacén" href="../Interfaz/Articulos_Almacen.php">
+                                    <a data-toggle="tooltip" title="Articulos Almacen" href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a title="Sucursal" href="../Interfaz/Articulos_Sucursal.php">
+                                    <a data-toggle="tooltip" title="Articulos Sucursal" href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a title="Auditores" class="has-arrow" href="#" aria-expanded="false">
+                            <a class="has-arrow" href="#" aria-expanded="false">
                                 <span class="educate-icon educate-professor icon-wrap"></span>
                                 <span class="mini-click-non">Auditores</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a title="Lista de Auditores" href="../Interfaz/Usuario.php">
+                                    <a data-toggle="tooltip" title="Auditores" href="../Interfaz/Usuario.php">
                                         <span class="mini-sub-pro">Lista de Auditores</span>
                                     </a>
                                 </li>
@@ -155,25 +159,25 @@ session_start();
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="#"><img class="main-logo" src="../img/corah.png" alt="" /></a>
+                <a data-toggle="tooltip" title="Ir al nicio" href="../Interfaz/Index.php"><img class="main-logo" src="../img/corah.png" alt="" /></a>
                 <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
             </div>
-
+            <br>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <br>
                         <li>
-                            <a title="Auditar" class="has-arrow" href="#" aria-expanded="false">
+                            <a data-toggle="tooltip" title="Auditar" class="has-arrow" href="#" aria-expanded="false">
                                 <span class="educate-icon educate-event icon-wrap"></span>
                                 <span class="mini-click-non">Auditar</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a title="Almacén" href="../Interfaz/Articulos_Almacen.php">
+                                    <a data-toggle="tooltip" tile="Articulos Almacen"  href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a title="Sucursal" href="../Interfaz/Articulos_Sucursal.php">
+                                    <a data-toggle="tooltip" tile="Articulos Sucursal"  href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
@@ -208,7 +212,7 @@ session_start();
                                 <div class="row">
                                     <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                         <div class="menu-switcher-pro">
-                                            <button type="button" id="sidebarCollapse"
+                                            <button type="button" id="sidebarCollapse" title="Ocultar"
                                                 class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
                                                 <i class="educate-icon educate-nav"></i>
                                             </button>
@@ -270,7 +274,7 @@ session_start();
                                                     <ul role="menu"
                                                         class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li>
-                                                            <a href="#" data-toggle="modal"
+                                                            <a  href="#" data-toggle="modal"
                                                                 data-target="#WarningModalalert">
                                                                 <span class="edu-icon edu-locked author-log-ic"></span>
                                                                 Cerrar Sesión
@@ -330,10 +334,10 @@ session_start();
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a href="../Interfaz/Consulta_Almacen.php">Almacén</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Almacen" href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a href="../Interfaz/Consulta_Sucursal.php">Sucursal</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
                                             
@@ -345,7 +349,7 @@ session_start();
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a href="../Interfaz/Usuario.php">Lista de Auditores</a>
+                                                    <a data-toggle="tooltip" tile="Auditores" href="../Interfaz/Usuario.php">Lista de Auditores</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -373,10 +377,10 @@ session_start();
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a href="../Interfaz/Articulos_Almacen.php">Almacén</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Almacen" href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
                                         </li>

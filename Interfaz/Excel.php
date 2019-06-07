@@ -7,8 +7,15 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
-                        <div class="main-sparkline13-hd">
-                            <h1>Subir <span class="table-project-n">Archivo</span> de reporte</h1>
+                        <div class="main-sparkline13-hd" style="text-align: center">
+                            <h1>Subir <span class="table-project-n">archivo</span> de reporte</h1>
+                            <ul class="breadcome-menu">
+                                <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
+                                    <span class="bread-slash">/</span>
+                                </li>
+                                <li><span class="bread-blod">Reportes</span>
+                                </li>
+                            </ul>
                         </div>
                     </div> <br> <br>
                     <form id="frmExcel">
@@ -26,7 +33,8 @@
                                             <div class="file-button">
                                                 Agregar
                                                 <input type="file" name="Archivo"
-                                                    onchange="document.getElementById('prepend-big-btn').value = this.value;">
+                                                    onchange="document.getElementById('prepend-big-btn').value = this.value;"
+                                                    accept=".xls">
                                             </div>
                                             <input type="text" id="prepend-big-btn"
                                                 placeholder="No se ha seleccionado ningun archivo">
@@ -40,7 +48,7 @@
                                         Guardar
                                     </button>
                                 </div>
-                            </div> <br> <br> 
+                            </div> <br> <br>
                             <div class="row">
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 </div>
@@ -54,6 +62,12 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         <strong>Error!</strong> Archivo no guardado.
+                                    </div>
+                                    <div id="AlertArcExistente" class="alert alert-danger alert-mg-b" style="display:none">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <strong>Advertencia!</strong> Archivo ya existe.
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -81,7 +95,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    // alert(data);
+                    alert(data);
                     $('#frmExcel')[0].reset();
                     if (data == 1) {
                         $("#AlertExito").fadeIn();
@@ -92,6 +106,11 @@
                         $("#AlertError").fadeIn();
                         setTimeout(function () {
                             $("#AlertError").fadeOut();
+                        }, 2000);
+                    }else{
+                        $("#AlertArcExistente").fadeIn();
+                        setTimeout(function () {
+                            $("#AlertArcExistente").fadeOut();
                         }, 2000);
                     }
                 }

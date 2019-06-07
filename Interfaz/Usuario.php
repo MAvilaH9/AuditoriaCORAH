@@ -7,7 +7,7 @@
             <div id="" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
-                        <div class="main-sparkline13-hd">
+                        <div class="main-sparkline13-hd" style="text-align: center">
                             <h1>Lista <span class="table-project-n">de</span> Auditores</h1>
                         </div>
                     </div>
@@ -28,14 +28,20 @@
                         <strong>Advertencia!</strong> Usuario ya existe en la base de datos.
                     </div>
                     <div class="sparkline13-graph">
-                        <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"
-                            id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
-                                aria-hidden="true"></i></button>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"
+                                id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
+                                    aria-hidden="true"></i></button>
+                        </div>
 
-                        <!-- <a class="btn btn-custon-rounded-two btn-primary" href="#" data-toggle="modal"
-                            data-target="#Auditor"><i class="fa fa-plus" aria-hidden="true"></i>
-                            Agregar Nuevo
-                        </a> -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <ul class="breadcome-menu">
+                                <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a> <span class="bread-slash">/</span>
+                                </li>
+                                <li><span class="bread-blod">Auditores</span>
+                                </li>
+                            </ul>
+                        </div> <br>
                         <div id="tabla_Usuario" class="datatable-dashv1-list custom-datatable-overright">
 
                         </div>
@@ -146,7 +152,8 @@
                                             <?php
                                             foreach ($resultado as $dato) { ?>
                                             <option value="<?php echo $dato['ClaveEmpresa']; ?>">
-                                                <?php echo $dato['Nombre']; ?></option>
+                                                <?php echo $dato['Nombre']; ?>
+                                            </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -256,7 +263,7 @@
                     $('#IdUsuario').val(idUsuario);
                     $('#action').val("Edit");
                     $('#operation').val("Edit");
-                    var cla = data.ClaveEmpresa;
+                    // var cla = data.ClaveEmpresa;
                 }
             })
         });
