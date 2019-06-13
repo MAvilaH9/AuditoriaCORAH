@@ -181,7 +181,6 @@
 </div>
 
 
-
 <?php include "Templete/Footer.php"; ?>
 
 <script type="text/javascript" language="javascript">
@@ -202,7 +201,7 @@
             var datos = $('#frmUsuario').serialize();
             // alert(datos);
             $.ajax({
-                url: "../Recursos/Usuario.php",
+                url: "../SQLServer/Usuario.php",
                 method: 'POST',
                 data: new FormData(this),
                 contentType: false,
@@ -243,14 +242,14 @@
             var idUsuario = $(this).data("id");
             // alert(idUsuario);
             $.ajax({
-                url: "../Recursos/Datos_Usuario.php",
+                url: "../SQLServer/Datos_Usuario.php",
                 method: "POST",
                 data: {
                     idUsuario: idUsuario
                 },
                 dataType: "json",
                 success: function (data) {
-                    // alert(data);
+                    //alert(data);
                     $('#ModalUsuario').modal('show');
                     $('#ApellidoPat').val(data.ApellidoPaterno);
                     $('#ApellidoMat').val(data.ApellidoMaterno);
@@ -268,11 +267,10 @@
             })
         });
 
-
         // Eliminar
         $(document).on("click", "#Eliminar", function () {
             var id = $(this).data("id");
-            // alert(id);
+             alert(id);
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Será eliminado de la base de datos!",
@@ -286,23 +284,28 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "../Recursos/Eliminar_Usuario.php",
+                        url: "../SQLServer/Eliminar_Usuario.php",
                         data: {
                             id: id,
                         },
                         success: function (resp) {
                             if (resp == 1) {
                                 MostrarDatos();
+                                Swal.fire(
+                                    'Eliminado!',
+                                    'El registro ha sido eliminado.',
+                                    'success'
+                                )
                             } else {
-                                alert("No eliminado");
+                                MostrarDatos();
+                                Swal.fire({
+                                type: 'error',
+                                title: 'Error',
+                                text: 'No se pudo eliminar!',
+                                })
                             }
                         }
                     });
-                    Swal.fire(
-                        'Eliminado!',
-                        'El registro ha sido eliminado.',
-                        'success'
-                    )
                 }
             })
         });
@@ -312,6 +315,6 @@
 
 <script>
     function MostrarDatos() {
-        $('#tabla_Usuario').load('../Recursos/Tabla_Usuario.php');
+        $('#tabla_Usuario').load('../SQLServer/Tabla_Usuario.php');
     }
 </script>

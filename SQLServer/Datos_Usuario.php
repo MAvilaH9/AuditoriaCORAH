@@ -1,17 +1,17 @@
 <?php
-    session_start();
-	include("Conexion.php");
+    // session_start();
+	require_once "Conexion.php";
 
 	if(isset($_POST["idUsuario"]))
 	{
+		$id=$_POST['idUsuario'];
 		$output = array();
-		$statement = $pdo->prepare(
+		$sql=$conn->prepare(
 			"SELECT * FROM Usuario 
-			WHERE IdUsuario = 1 
-			LIMIT 1"
+			WHERE IdUsuario = '$id'"
 		);
-		$statement->execute();
-		$result = $statement->fetchAll();
+		$sql->execute();
+		$result = $sql->fetchAll(PDO::FETCH_ASSOC);
 		foreach($result as $row)
 		{
 			$output["ApellidoPaterno"] = $row["ApellidoPaterno"];
