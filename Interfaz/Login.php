@@ -76,13 +76,13 @@ session_start();
   <div class="error-pagewrap" style="background-image: url('../img/fondo1.jpg');">
     <div class="error-page-int">
       <div class="text-center m-b-md custom-login">
-        <h3>Inicio de Sesión Auditorias</h3>
-        <p>Por Favor Ingrese su Usuario y Contraseña</p>
+        <h3>Inicio de Sesión </h3>
+        <p>Por favor ingrese su usuario y contraseña.</p>
       </div> <br>
       <div class="content-error">
         <div class="hpanel">
           <div class="panel-body"> <br>
-            <form action="../Recursos/Login.php" id="loginForm">
+            <form action="../SQLServer/Login.php" id="loginForm">
               <div class="form-group">
                 <label class="control-label" for="username">Usuario</label>
                 <input type="text" placeholder="Ejemplo: MAvila" title="Por favor, ingrese su nombre de usuario"
@@ -91,9 +91,13 @@ session_start();
               </div>
               <div class="form-group">
                 <label class="control-label" for="password">Contraseña</label>
-                <input type="password" title="Por favor, ingrese su contraseña" placeholder="******" required=""
-                  value="" name="Contrasenia" id="Contrasenia" class="form-control">
-                <span class="help-block small">Tú contraseña segura</span>
+                <div class="input-group custom-go-button">
+                  <input type="password" name="Contrasenia" id="Contrasenia" class="form-control" placeholder="******"
+                    required="" value="" maxlength="40">
+                  <span class="input-group-btn"><button class="btn btn-primary " type="button"
+                      onclick="mostrarContrasena()"><span class="glyphicon glyphicon-eye-close icon"></span></button></span>
+                </div>
+                <span class="help-block small">Ingresa tu contraseña de manera correcta</span>
               </div>
               <?php
                 if(isset($_GET["Error"]) && $_GET["Error"] == 'true'){
@@ -113,6 +117,19 @@ session_start();
       </div>
     </div>
   </div>
+
+  <script>
+    function mostrarContrasena() {
+      var tipo = document.getElementById("Contrasenia");
+      if (tipo.type == "password") {
+        tipo.type = "text";
+        $('.icon').removeClass('glyphicon glyphicon-eye-close').addClass('glyphicon glyphicon-eye-open');
+      } else {
+        tipo.type = "password";
+        $('.icon').removeClass('glyphicon glyphicon-eye-open').addClass('glyphicon glyphicon-eye-close');
+      }
+    }
+  </script>
   <!-- jquery
 		============================================ -->
   <script src="../js/jquery-1.12.4.min.js"></script>

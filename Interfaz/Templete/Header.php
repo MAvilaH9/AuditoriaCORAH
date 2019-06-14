@@ -72,7 +72,7 @@
 		============================================ -->
     <link rel="stylesheet" href="../css/fullcalendar.min.css">
     <link rel="stylesheet" href="../css/fullcalendar.print.min.css">
-       
+
     <!-- modals CSS
 		============================================ -->
     <link rel="stylesheet" href="../css/modals.css">
@@ -113,7 +113,8 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a data-toggle="tooltip" title="Ir al inicio" href="../Interfaz/Index.php"><img class="main-logo" src="../img/corah.png" alt="" /></a>
+                <a data-toggle="tooltip" title="Ir al inicio" href="../Interfaz/Index.php"><img class="main-logo"
+                        src="../img/corah.png" alt="" /></a>
                 <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
             </div><br>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -127,10 +128,12 @@
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" title="Articulos Almacen" href="../Interfaz/Articulos_Almacen.php">
+                                    <a data-toggle="tooltip" title="Articulos Almacen"
+                                        href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a data-toggle="tooltip" title="Articulos Sucursal" href="../Interfaz/Articulos_Sucursal.php">
+                                    <a data-toggle="tooltip" title="Articulos Sucursal"
+                                        href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
@@ -159,7 +162,8 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a data-toggle="tooltip" title="Ir al nicio" href="../Interfaz/Index.php"><img class="main-logo" src="../img/corah.png" alt="" /></a>
+                <a data-toggle="tooltip" title="Ir al nicio" href="../Interfaz/Index.php"><img class="main-logo"
+                        src="../img/corah.png" alt="" /></a>
                 <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
             </div>
             <br>
@@ -174,10 +178,12 @@
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" tile="Articulos Almacen"  href="../Interfaz/Articulos_Almacen.php">
+                                    <a data-toggle="tooltip" tile="Articulos Almacen"
+                                        href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a data-toggle="tooltip" tile="Articulos Sucursal"  href="../Interfaz/Articulos_Sucursal.php">
+                                    <a data-toggle="tooltip" tile="Articulos Sucursal"
+                                        href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
@@ -234,8 +240,10 @@
                                                         <span class="angle-down-topmenu"><i
                                                                 class="fa fa-angle-down"></i></span></a>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
-                                                        <a href="../Interfaz/Inventario_Almacen.php" class="dropdown-item">Almacen</a>
-                                                        <a href="../Interfaz/Inventario_Sucursal.php" class="dropdown-item">Sucursal</a>
+                                                        <a href="../Interfaz/Inventario_Almacen.php"
+                                                            class="dropdown-item">Almacen</a>
+                                                        <a href="../Interfaz/Inventario_Sucursal.php"
+                                                            class="dropdown-item">Sucursal</a>
                                                     </div>
                                                     </a>
                                                 </li>
@@ -246,8 +254,10 @@
                                                         <span class="angle-down-topmenu"><i
                                                                 class="fa fa-angle-down"></i></span></a>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
-                                                        <a href="../Interfaz/Ventas_Almacen.php" class="dropdown-item">Almacen</a>
-                                                        <a href="../Interfaz/Ventas_Sucursal.php" class="dropdown-item">Sucursal</a>
+                                                        <a href="../Interfaz/Ventas_Almacen.php"
+                                                            class="dropdown-item">Almacen</a>
+                                                        <a href="../Interfaz/Ventas_Sucursal.php"
+                                                            class="dropdown-item">Sucursal</a>
                                                     </div>
                                                     </a>
                                                 </li>
@@ -274,7 +284,7 @@
                                                     <ul role="menu"
                                                         class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li>
-                                                            <a  href="#" data-toggle="modal"
+                                                            <a href="#" data-toggle="modal"
                                                                 data-target="#WarningModalalert">
                                                                 <span class="edu-icon edu-locked author-log-ic"></span>
                                                                 Cerrar Sesión
@@ -295,8 +305,8 @@
             </div>
 
             <!-- Modal Cerrar Session -->
-            <div id="WarningModalalert" class="modal modal-edu-general Customwidth-popup-WarningModal fade"
-                role="dialog">
+
+            <div id="WarningModalalert" class="modal modal-edu-general default-popup-PrimaryModal PrimaryModal-bgcolor fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-close-area modal-close-df">
@@ -307,9 +317,9 @@
                             <h2>Cerrar Sesión!</h2>
                             <p>¿Está seguro que desea cerrar sesión?</p>
                         </div>
-                        <div class="modal-footer warning-md">
+                        <div class="modal-footer footer-modal-admin">
                             <a data-dismiss="modal" href="#">Cancelar</a>
-                            <a href="../Recursos/Log_out.php">Aceptar</a>
+                            <a href="../SQLServer/Log_out.php">Aceptar</a>
                         </div>
                     </div>
                 </div>
@@ -319,37 +329,40 @@
             <!-- Mobile Menu start -->
             <?php 
                 if (!empty($_SESSION['Perfil']==1)) {?>
-                <!-- Session Administardor -->
+            <!-- Session Administardor -->
             <div class="mobile-menu-area">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="mobile-menu">
                                 <nav id="dropdown">
-                                <ul class="mobile-menu-nav">
+                                    <ul class="mobile-menu-nav">
                                         <br>
                                         <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar 
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar
                                                 <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Almacen" href="../Interfaz/Articulos_Almacen.php">Almacén</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Almacen"
+                                                        href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Sucursal"
+                                                        href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
-                                            
+
                                         </li>
                                         <li>
                                         <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditores 
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditores
                                                 <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Auditores" href="../Interfaz/Usuario.php">Lista de Auditores</a>
+                                                    <a data-toggle="tooltip" tile="Auditores"
+                                                        href="../Interfaz/Usuario.php">Lista de Auditores</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -362,7 +375,7 @@
                 </div>
             </div>
             <?php } elseif (!empty($_SESSION['Perfil']==2)) { ?>
-                <!-- Session Auditor -->
+            <!-- Session Auditor -->
             <div class="mobile-menu-area">
                 <div class="container">
                     <div class="row">
@@ -372,15 +385,17 @@
                                     <ul class="mobile-menu-nav">
                                         <br>
                                         <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar 
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar
                                                 <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Almacen" href="../Interfaz/Articulos_Almacen.php">Almacén</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Almacen"
+                                                        href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
+                                                    <a data-toggle="tooltip" tile="Articulos Sucursal"
+                                                        href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -396,3 +411,5 @@
             <!-- Mobile Menu end -->
             <br>
         </div>
+
+

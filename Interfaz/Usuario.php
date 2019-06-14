@@ -1,4 +1,7 @@
-<?php include "Templete/Header.php"; ?>
+<?php 
+    include "Templete/Header.php"; 
+    require_once ("../SQLServer/Conexion.php");
+?>
 
 <!-- Static Table Start -->
 <div class="data-table-area mg-b-15">
@@ -121,8 +124,7 @@
                             <div class="row">
                                 <!-- Select Perfil -->
                                 <?php 
-                                    include_once ("../Recursos/Conexion.php");
-                                    $sql= $pdo->prepare("SELECT IdPerfil, Perfil FROM perfil ORDER BY IdPerfil");
+                                    $sql= $conn->prepare("SELECT IdPerfil, Perfil FROM perfil ORDER BY IdPerfil");
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                 ?>
@@ -141,7 +143,7 @@
 
                                 <!-- Select Empresa -->
                                 <?php 
-                                    $sql= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
+                                    $sql= $conn->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                 ?>

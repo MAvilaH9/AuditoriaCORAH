@@ -1,15 +1,14 @@
-    
-            <div class="footer-copyright-area">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-copy-right">
-                            <p>CORAH | <a href="#">Corporativo de Aluminios y Herrajes</a></p>
-                        </div>
-                    </div>
-                </div>
+      <div class="footer-copyright-area">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="footer-copy-right">
+                <p>CORAH | <a href="#">Corporativo de Aluminios y Herrajes</a></p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- jquery
@@ -55,26 +54,26 @@
 		============================================ -->
     <script src="../js/metisMenu.min.js"></script>
     <script src="../js/metisMenu-active.js"></script>
-    
-        <!-- dropzone JS
+
+    <!-- dropzone JS
 		============================================ -->
     <script src="../js/dropzone.js"></script>
 
     <!-- data table JS
 		============================================ -->
     <script src="../js/tablas.js"></script>
-    <script src="../js/tableExport.js"></script> 
+    <script src="../js/tableExport.js"></script>
     <script src="../js/data-table-active.js"></script>
-    <script src="../js/bootstrap-table-editable.js"></script> 
+    <script src="../js/bootstrap-table-editable.js"></script>
     <script src="../js/bootstrap-editable.js"></script>
     <script src="../js/bootstrap-table-resizable.js"></script>
     <script src="../js/colResizable-1.5.source.js"></script>
     <script src="../js/bootstrap-table-export.js"></script>
-            <!-- chosen JS
+    <!-- chosen JS
 		============================================ -->
     <script src="../js/chosen.jquery.js"></script>
     <script src="../js/chosen-active.js"></script>
-        <!--  editable JS
+    <!--  editable JS
 		============================================ -->
     <script src="../js/jquery.mockjax.js"></script>
     <script src="../js/mock-active.js"></script>
@@ -101,12 +100,12 @@
     <script src="../js/moment.min.js"></script>
     <script src="../js/fullcalendar.min.js"></script>
     <script src="../js/fullcalendar-active.js"></script>
-    
-     <!-- Chart JS
+
+    <!-- Chart JS
 		============================================ -->
     <script src="../js/jquery.peity.min.js"></script>
     <script src="../js/peity-active.js"></script>
-        <!-- icheck JS
+    <!-- icheck JS
 		============================================ -->
     <script src="../js/icheck.min.js"></script>
     <script src="../js/icheck-active.js"></script>
@@ -122,6 +121,6 @@
     <!-- tawk chat JS
 		============================================ -->
     <!-- <script src="../js/tawk-chat.js"></script> -->
-</body>
+    </body>
 
-</html>
+    </html>
