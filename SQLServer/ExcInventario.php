@@ -13,7 +13,7 @@
         $NombSuc=$resultadosuc['Nombre'];
 
         header('Content-type:application/xls');
-        header("Content-Disposition:attachment; filename= Inventario_$NombSuc _$fecha.xls");
+        header("Content-Disposition:attachment; filename= Inventario_".$NombSuc."_".$fecha.".xls");
 
         $sql= $pdo->prepare("SELECT * FROM Articulo WHERE Sucursal='$Sucursal' ORDER BY Articulo ASC");
         $sql->execute();
@@ -50,7 +50,7 @@
         $NombAlm=$resultadoAlm['Nombre'];
 
         header('Content-type:application/xls');
-        header("Content-Disposition:attachment; filename= Inventario_$NombAlm _$fecha.xls");
+        header("Content-Disposition:attachment; filename= Inventario_".$NombAlm."_".$fecha.".xls");
         
         $sqla= $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
         $sqla->execute();

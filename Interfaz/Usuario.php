@@ -263,6 +263,7 @@
                     $('.modal-title').text("Actualizar datos");
                     $('#IdUsuario').val(idUsuario);
                     $('#action').val("Edit");
+                    $('#action').text("Actualizar");
                     $('#operation').val("Edit");
                     // var cla = data.ClaveEmpresa;
                 }

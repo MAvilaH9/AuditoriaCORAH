@@ -6,6 +6,7 @@
 
         $fecha= date("d/m/Y");
         $Sucursal=$_GET['Sucursal'];
+        $us=$_SESSION['Usuario'];
 
         $sqlsuc = $pdo->prepare("SELECT Nombre FROM Sucursal where Sucursal=$Sucursal");
         $sqlsuc -> execute(array($Sucursal));
@@ -13,7 +14,7 @@
         $NombSuc=$resultadosuc['Nombre'];
 
         header('Content-type:application/xls');
-        header("Content-Disposition:attachment; filename= Articulos_$NombSuc _$fecha.xls");
+        header("Content-Disposition:attachment; filename= Articulos_".$NombSuc."_".$fecha."_".$us.".xls");
 
         $sql= $pdo->prepare("SELECT * FROM Articulo WHERE Sucursal='$Sucursal' ORDER BY Articulo ASC");
         $sql->execute();
@@ -50,9 +51,9 @@
         $NombAlm=$resultadoAlm['Nombre'];
 
         header('Content-type:application/xls');
-        header("Content-Disposition:attachment; filename= Articulos_$NombAlm _$fecha.xls");
+        header("Content-Disposition:attachment; filename= Articulos_".$NombAlm."_".$fecha.".xls");
         
-        $sqla= $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
+        $sqla = $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
         $sqla->execute();
         $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 

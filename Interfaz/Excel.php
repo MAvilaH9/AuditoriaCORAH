@@ -95,7 +95,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmExcel')[0].reset();
                     if (data == 1) {
                         $("#AlertExito").fadeIn();
