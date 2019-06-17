@@ -6,7 +6,7 @@
 
     $sql = "DELETE FROM Usuario WHERE IdUsuario=$id";
     $params = array($_POST['id']);
-    $result = $conn->prepare($sql);
+    $result = $pdo->prepare($sql);
     if ($result->execute($params)) {
         echo 1;
     }

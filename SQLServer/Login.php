@@ -9,8 +9,8 @@ $Usuario= strtoupper($Usuario);
 $Contrasenia= $_REQUEST['Contrasenia'];
 
 // Consulta para la validación del usuario
-$Sql = 'SELECT * FROM usuario WHERE Usuario=?';
-$Sentencia = $conn->prepare($Sql);
+$Sql = 'SELECT * FROM Usuario WHERE Usuario=?';
+$Sentencia = $pdo->prepare($Sql);
 $Sentencia->execute(array($Usuario));
 $Resultado = $Sentencia->fetch();
 

@@ -124,7 +124,7 @@
                             <div class="row">
                                 <!-- Select Perfil -->
                                 <?php 
-                                    $sql= $conn->prepare("SELECT IdPerfil, Perfil FROM perfil ORDER BY IdPerfil");
+                                    $sql= $pdo->prepare("SELECT IdPerfil, Perfil FROM perfil ORDER BY IdPerfil");
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                 ?>
@@ -143,7 +143,7 @@
 
                                 <!-- Select Empresa -->
                                 <?php 
-                                    $sql= $conn->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
+                                    $sql= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                 ?>

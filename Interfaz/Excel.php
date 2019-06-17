@@ -89,7 +89,7 @@
             var datos = $('#frmExcel').serialize();
             // alert(datos);
             $.ajax({
-                url: "../Recursos/Excel.php",
+                url: "../SQLServer/Excel.php",
                 method: 'POST',
                 data: new FormData(this),
                 contentType: false,

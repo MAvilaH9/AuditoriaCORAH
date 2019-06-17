@@ -21,8 +21,8 @@
      $uid = '';
      $pwd = '';
      try{
-        $conn = new PDO("sqlsrv:server=$server; database = $dbName", $uid, $pwd);
-        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        $pdo = new PDO("sqlsrv:server=$server; database = $dbName", $uid, $pwd);
+        $pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
       }catch (PDOException $e) {
           print "¡Error!: " . $e->getMessage() . "<br/>";
           die($e -> getMessage());

@@ -1,14 +1,13 @@
 <?php
     session_start();
     require_once "Conexion.php";
-    $sql= $conn->prepare("SELECT IdUsuario, Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia FROM Usuario ORDER BY IdUsuario ASC");
+    $sql= $pdo->prepare("SELECT IdUsuario, Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia FROM Usuario ORDER BY IdUsuario ASC");
     $sql->execute();
     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 ?>
 
 
-    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true" data-cookie="true"
-    data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
+    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true" data-cookie="true" data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
         <thead>
             <tr>
                 <th>ID</th>

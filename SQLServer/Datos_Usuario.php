@@ -6,7 +6,7 @@
 	{
 		$id=$_POST['idUsuario'];
 		$output = array();
-		$sql=$conn->prepare(
+		$sql=$pdo->prepare(
 			"SELECT * FROM Usuario 
 			WHERE IdUsuario = '$id'"
 		);

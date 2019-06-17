@@ -15,7 +15,7 @@
 
             // Consulta para la validación del usuario
             $Sql = 'SELECT * FROM Usuario WHERE Usuario=?';
-            $Sentencia = $conn->prepare($Sql);
+            $Sentencia = $pdo->prepare($Sql);
             $Sentencia->execute(array($Usuario));
             $Resultado = $Sentencia->fetch();
             $nom=$Resultado['Nombres'];
@@ -33,7 +33,7 @@
 
 
                 $sql_agregar = 'INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) VALUES (?,?,?,?,?,?,?)';
-                $sentencia_agregar = $conn->prepare($sql_agregar);
+                $sentencia_agregar = $pdo->prepare($sql_agregar);
 
                 if ($sentencia_agregar->execute(array($Nombre, $ApellidoPat, $ApellidoMat, $Usuario, $Contraseña, $empresa, $Perfil))) {
                     echo 1;
@@ -58,7 +58,7 @@
             $sql_actualizar = "UPDATE Usuario SET  ApellidoPaterno='$ApellidoPat', 
             ApellidoMaterno='$ApellidoMat', Nombres='$Nombre', Usuario='$Usuario', Contrasenia='$Contra', ClaveEmpresa='$empresa', IdPerfil='$Perfil' 
             WHERE IdUsuario='$idusuario'";
-            $sentencia = $conn->prepare($sql_actualizar);
+            $sentencia = $pdo->prepare($sql_actualizar);
             
             if ($sentencia->execute(array($Nombre,$ApellidoPat,$ApellidoMat,$Usuario,$Contra,$empresa,$Perfil))) {
                 echo 1;

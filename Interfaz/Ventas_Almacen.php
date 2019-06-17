@@ -1,5 +1,5 @@
 <?php include_once "Templete/Header.php"; 
-require "../Recursos/Conexion.php";
+require "../SQLServer/Conexion.php";
 ?>
 <br>
 <!-- Espacio paraFormularios -->
@@ -43,7 +43,7 @@ require "../Recursos/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label>Almacén</label>
                                                                 <select name="Almacen" id="Almacen" class="chosen-select" tabindex="-1">
-                                                                    <option value="" >Seleccione
+                                                                    <option value="none" selected="" disabled="">Seleccione
                                                                         Almacen</option>
                                                                     <?php 
                                                                     foreach ($resultado as $dato) {
@@ -319,7 +319,7 @@ $(document).ready(function () {
         // alert(datos);
         $.ajax({
             type: "Post",
-            url: "../Recursos/Ventas.php",
+            url: "../SQLServer/Ventas.php",
             data: new FormData(this),
             contentType: false,
             processData: false,
