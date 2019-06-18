@@ -216,7 +216,7 @@ require "../SQLServer/Conexion.php";
                                                                         Consultar                                                                    
                                                                     </button>
                                                                     <button type="button"
-                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarConsulta">
+                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarVentaSuc">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -266,7 +266,7 @@ require "../SQLServer/Conexion.php";
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Ventas_Sucursal.php">Aceptar</a>
+                <a href="Index.php" class="external">Aceptar</a>
             </div>
         </div>
     </div>
@@ -318,7 +318,7 @@ require "../SQLServer/Conexion.php";
             // alert(datos);
             $.ajax({
                 type: "Post",
-                url: "../SQLServer/Ventas.php",
+                url: "../SQLServer/Ventas_Sucursal.php",
                 data: new FormData(this),
                 contentType: false,
                 processData: false,
@@ -333,4 +333,19 @@ require "../SQLServer/Conexion.php";
         });
     });
 </script>
+
+<!-- Boton Aceptar del modal cancelar consulta-->
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("a.external").click(function() {
+            url = $(this).attr("href");
+            window.open(url,'_blank');
+            return false;
+        });
+        
+        $("a.external").off('click');
+    });
+</script>
+
 <?php include_once "Templete/Footer.php"; ?>

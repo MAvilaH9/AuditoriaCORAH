@@ -1,10 +1,11 @@
-<?php 
-    session_start();
-    if (empty($_SESSION['Usuario'])) {
-        header('location:Login.php');
-    }else{
+<?php
+session_start();
+if (empty($_SESSION['Usuario'])) {
+    header('location:Login.php');
+} else {
 
-    }
+}
+
 ?>
 
 <!doctype html>
@@ -108,7 +109,7 @@
 <body>
     <!-- Start Left menu area -->
     <?php
-    if (!empty($_SESSION['Perfil']==1)) { ?>
+if (!empty($_SESSION['Perfil'] == 1)) {?>
     <!-- Session Administrador -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -130,11 +131,11 @@
                                 <li>
                                     <a data-toggle="tooltip" title="Articulos Almacen"
                                         href="../Interfaz/Articulos_Almacen.php">
-                                        <span class="mini-sub-pro">Almacén</span>
+                                        <span class="mini-sub-pro external">Almacén</span>
                                     </a>
                                     <a data-toggle="tooltip" title="Articulos Sucursal"
                                         href="../Interfaz/Articulos_Sucursal.php">
-                                        <span class="mini-sub-pro">Sucursal</span>
+                                        <span class="mini-sub-pro external">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -142,12 +143,12 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <span class="educate-icon educate-professor icon-wrap"></span>
-                                <span class="mini-click-non">Auditores</span>
+                                <span class="mini-click-non external">Auditores</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
                                     <a data-toggle="tooltip" title="Auditores" href="../Interfaz/Usuario.php">
-                                        <span class="mini-sub-pro">Lista de Auditores</span>
+                                        <span class="mini-sub-pro external">Lista de Auditores</span>
                                     </a>
                                 </li>
                             </ul>
@@ -157,12 +158,12 @@
             </div>
         </nav>
     </div>
-    <?php } else if(!empty($_SESSION['Perfil']==2)) { ?>
+    <?php } else if (!empty($_SESSION['Perfil'] == 2)) {?>
     <!-- Session Auditor -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a data-toggle="tooltip" title="Ir al nicio" href="../Interfaz/Index.php"><img class="main-logo"
+                <a data-toggle="tooltip" title="Ir al nicio" href="../Interfaz/Index.php"><img class="main-logo external"
                         src="../img/corah.png" alt="" /></a>
                 <strong><a href="#"><img src="../img/corah.png" alt="" /></a></strong>
             </div>
@@ -180,11 +181,11 @@
                                 <li>
                                     <a data-toggle="tooltip" tile="Articulos Almacen"
                                         href="../Interfaz/Articulos_Almacen.php">
-                                        <span class="mini-sub-pro">Almacén</span>
+                                        <span class="mini-sub-pro external">Almacén</span>
                                     </a>
                                     <a data-toggle="tooltip" tile="Articulos Sucursal"
                                         href="../Interfaz/Articulos_Sucursal.php">
-                                        <span class="mini-sub-pro">Sucursal</span>
+                                        <span class="mini-sub-pro external">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -194,12 +195,12 @@
             </div>
         </nav>
     </div>
-    <?php } ?>
+    <?php }?>
 
     <!-- End Left menu area -->
 
     <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
+    <div class="all-content-wrapper" id="Usuario">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -229,7 +230,7 @@
                                         <div class="header-top-menu tabl-d-n">
                                             <ul class="nav navbar-nav mai-top-nav">
                                                 <li class="nav-item">
-                                                    <a href="../Interfaz/Index.php" class="nav-link">
+                                                    <a href="../Interfaz/Index.php" class="nav-link external">
                                                         Inicio
                                                     </a>
                                                 </li>
@@ -241,9 +242,9 @@
                                                                 class="fa fa-angle-down"></i></span></a>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
                                                         <a href="../Interfaz/Inventario_Almacen.php"
-                                                            class="dropdown-item">Almacen</a>
+                                                            class="dropdown-item external">Almacen</a>
                                                         <a href="../Interfaz/Inventario_Sucursal.php"
-                                                            class="dropdown-item">Sucursal</a>
+                                                            class="dropdown-item external">Sucursal</a>
                                                     </div>
                                                     </a>
                                                 </li>
@@ -255,14 +256,14 @@
                                                                 class="fa fa-angle-down"></i></span></a>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
                                                         <a href="../Interfaz/Ventas_Almacen.php"
-                                                            class="dropdown-item">Almacen</a>
+                                                            class="dropdown-item external">Almacen</a>
                                                         <a href="../Interfaz/Ventas_Sucursal.php"
-                                                            class="dropdown-item">Sucursal</a>
+                                                            class="dropdown-item external">Sucursal</a>
                                                     </div>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="../Interfaz/Excel.php" class="nav-link">
+                                                    <a href="../Interfaz/Excel.php" class="nav-link external">
                                                         Subir Archivos
                                                     </a>
                                                 </li>
@@ -278,7 +279,7 @@
                                                     <a href="#" data-toggle="dropdown" role="button"
                                                         aria-expanded="false" class="nav-link dropdown-toggle">
                                                         <span
-                                                            class="admin-name"><?php echo $_SESSION['Usuario'];?></span>
+                                                            class="admin-name"><?php echo $_SESSION['Usuario']; ?></span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
                                                     <ul role="menu"
@@ -293,7 +294,7 @@
                                                     </ul>
                                                 </li>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <?php } ?>
+                                                <?php }?>
                                             </ul>
                                         </div>
                                     </div>
@@ -327,8 +328,8 @@
 
 
             <!-- Mobile Menu start -->
-            <?php 
-                if (!empty($_SESSION['Perfil']==1)) {?>
+            <?php
+            if (!empty($_SESSION['Perfil'] == 1)) {?>
             <!-- Session Administardor -->
             <div class="mobile-menu-area">
                 <div class="container">
@@ -374,7 +375,7 @@
                     </div>
                 </div>
             </div>
-            <?php } elseif (!empty($_SESSION['Perfil']==2)) { ?>
+            <?php } elseif (!empty($_SESSION['Perfil'] == 2)) {?>
             <!-- Session Auditor -->
             <div class="mobile-menu-area">
                 <div class="container">
@@ -406,10 +407,21 @@
                     </div>
                 </div>
             </div>
-            <?php }
-            ?>
+            <?php } ?>
             <!-- Mobile Menu end -->
             <br>
         </div>
 
 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("a.external").click(function() {
+            url = $(this).attr("href");
+            window.open(url,'_blank');
+            return false;
+        });
+        
+        $("a.external").off('click');
+    });
+</script>

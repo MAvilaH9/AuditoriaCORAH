@@ -217,7 +217,7 @@ require "../SQLServer/Conexion.php";
                                                                         Consultar                                                                    
                                                                     </button>
                                                                     <button type="button"
-                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarConsultaAlm">
+                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarVentaAlm">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -267,7 +267,7 @@ require "../SQLServer/Conexion.php";
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Ventas_Almacen.php">Aceptar</a>
+                <a href="Index.php" class="external">Aceptar</a>
             </div>
         </div>
     </div>
@@ -311,27 +311,42 @@ require "../SQLServer/Conexion.php";
 
 <script type="text/javascript" language="javascript">
 
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    $(document).on('submit', '#frmVentasAlm', function (e) {
-        e.preventDefault();
-        var datos = $('#frmVentasAlm').val();
-        // alert(datos);
-        $.ajax({
-            type: "Post",
-            url: "../SQLServer/Ventas.php",
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success: function (resp) {
-                // alert(resp);
-                $('#frmVentasAlm')[0].reset();
-                $('#frmVentasAlm').hide();
-                $('#Titulo').hide();
-                $('#Resultado').html(resp);
-            }
+        $(document).on('submit', '#frmVentasAlm', function (e) {
+            e.preventDefault();
+            var datos = $('#frmVentasAlm').val();
+            // alert(datos);
+            $.ajax({
+                type: "Post",
+                url: "../SQLServer/Ventas_Almacen.php",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                success: function (resp) {
+                    // alert(resp);
+                    $('#frmVentasAlm')[0].reset();
+                    $('#frmVentasAlm').hide();
+                    $('#Titulo').hide();
+                    $('#Resultado').html(resp);
+                }
+            });
         });
     });
-});
 </script>
+
+<!-- Boton Aceptar del modal cancelar consulta-->
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("a.external").click(function() {
+            url = $(this).attr("href");
+            window.open(url,'_blank');
+            return false;
+        });
+        
+        $("a.external").off('click');
+    });
+</script>
+
 <?php include_once "Templete/Footer.php"; ?>

@@ -39,7 +39,8 @@
 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
-                                <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a> <span class="bread-slash">/</span>
+                                <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
+                                    <span class="bread-slash">/</span>
                                 </li>
                                 <li><span class="bread-blod">Auditores</span>
                                 </li>
@@ -59,11 +60,12 @@
 
 <!-- Modal Auditor -->
 
-<div id="ModalUsuario" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
-    <div class="modal-dialog">
+<div id="ModalUsuario" class="modal modal-edu-general default-popup-PrimaryModal fade modal fade bd-example-modal-lg"
+    role="dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header header-color-modal bg-color-1">
-                <h4 class="modal-title">Registrar nuevo Usuario</h4>
+                <h4 class="modal-title">Registrar nuevo usuario</h4>
                 <!-- <div class="modal-close-area modal-close-df">
                     <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                 </div> -->
@@ -74,7 +76,7 @@
                         <form id="frmUsuario" class="dropzone dropzone-custom needsclick add-professors">
                             <div class="row">
                                 <!-- Apellido Paterno -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Apellido Paterno</label>
                                         <input name="ApellidoPat" id="ApellidoPat" type="text" class="form-control"
@@ -83,15 +85,14 @@
                                 </div>
 
                                 <!-- Apellido Materno -->
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Apellido Materno</label>
                                         <input name="ApellidoMat" id="ApellidoMat" type="text" class="form-control"
                                             placeholder="Apellido Materno" required />
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+
                                 <!-- Nombres -->
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
@@ -100,7 +101,10 @@
                                             placeholder="Nombre (s)" required />
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                </div>
                                 <!-- Usuario -->
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
@@ -118,17 +122,20 @@
                                             placeholder="Contraseña" required />
                                     </div>
                                 </div>
-
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                </div>
 
                             </div>
                             <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                </div>
                                 <!-- Select Perfil -->
                                 <?php 
                                     $sql= $pdo->prepare("SELECT IdPerfil, Perfil FROM perfil ORDER BY IdPerfil");
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                 ?>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Perfil</label>
                                         <select name="Perfil" id="Perfil" class="form-control">
@@ -147,7 +154,7 @@
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                 ?>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Empresa</label>
                                         <select name="Empresa" id="Empresa" class="form-control">
@@ -159,6 +166,8 @@
                                             <?php } ?>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 </div>
                             </div>
                             <br>
@@ -302,9 +311,9 @@
                             } else {
                                 MostrarDatos();
                                 Swal.fire({
-                                type: 'error',
-                                title: 'Error',
-                                text: 'No se pudo eliminar!',
+                                    type: 'error',
+                                    title: 'Error',
+                                    text: 'No se pudo eliminar!',
                                 })
                             }
                         }

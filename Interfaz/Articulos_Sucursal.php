@@ -44,7 +44,7 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Sucursal" id="Sucursal"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">Seleccione
-                                                                        Sucrsal</option>
+                                                                        Sucursal</option>
                                                                     <?php 
                                                                     foreach ($resultado as $dato) {
                                                                         echo '<option value="'.$dato['Sucursal'].'">'.$dato['Nombre'].'</option>';
@@ -236,7 +236,7 @@ require "../SQLServer/Conexion.php";
                                                                     <button type="button"
                                                                         class="btn btn-custon-rounded-two btn-danger"
                                                                         data-toggle="modal"
-                                                                        data-target="#CancelarConsulta">
+                                                                        data-target="#CancelarArticulosSuc">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -286,7 +286,7 @@ require "../SQLServer/Conexion.php";
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Articulos_Sucursal.php">Aceptar</a>
+                <a href="Index.php" class="external" >Aceptar</a>
             </div>
         </div>
     </div>
@@ -336,7 +336,7 @@ require "../SQLServer/Conexion.php";
             // alert(datos);
             $.ajax({
                 type: "Post",
-                url: "../SQLServer/Articulos.php",
+                url: "../SQLServer/Articulos_Sucursal.php",
                 data: new FormData(this),
                 contentType: false,
                 processData: false,
@@ -351,4 +351,19 @@ require "../SQLServer/Conexion.php";
         });
     });
 </script>
+
+<!-- Boton Aceptar del modal cancelar consulta-->
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("a.external").click(function() {
+            url = $(this).attr("href");
+            window.open(url,'_blank');
+            return false;
+        });
+        
+        $("a.external").off('click');
+    });
+</script>
+
 <?php include_once "Templete/Footer.php"; ?>

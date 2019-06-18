@@ -113,7 +113,7 @@ session_start();
         </div>
       </div><br> <br>
       <div class="text-center login-footer">
-        <p> <a href="#">CORAH | Corporativo de Aluminio y Herrajes</a></p>
+        <p> <a href="#">CORAH | Corporativo de Aluminios y Herrajes</a></p>
       </div>
     </div>
   </div>
