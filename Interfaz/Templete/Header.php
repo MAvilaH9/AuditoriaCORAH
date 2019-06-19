@@ -9,7 +9,7 @@ if (empty($_SESSION['Usuario'])) {
 ?>
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html  lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -120,10 +120,9 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             </div><br>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
-                    <ul class="metismenu" id="menu1">
-                        <br>
+                    <ul class="nav metismenu" id="menu1">
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false">
+                            <a class="has-arrow" href="#">
                                 <span class="educate-icon educate-event icon-wrap"></span>
                                 <span class="mini-click-non">Auditar</span>
                             </a>
@@ -133,6 +132,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                         href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro external">Almacén</span>
                                     </a>
+                                </li>
+                                <li>
                                     <a data-toggle="tooltip" title="Articulos Sucursal"
                                         href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro external">Sucursal</span>
@@ -140,7 +141,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li id="removable">
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <span class="educate-icon educate-professor icon-wrap"></span>
                                 <span class="mini-click-non external">Auditores</span>
@@ -423,5 +424,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
         });
         
         $("a.external").off('click');
+
     });
 </script>
+

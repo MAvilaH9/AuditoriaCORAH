@@ -15,4 +15,5 @@
     session_destroy();
 
     header('location:../Interfaz/Login.php');
+    
 ?>

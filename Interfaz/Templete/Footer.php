@@ -15,7 +15,6 @@
 	============================================ -->
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script language="javascript" src="../js/jquery-3.1.1.min.js"></script>
-    <script src="../js/funciones.js"></script>
     <script src="../js/alertify.min.js"></script>
     <script src="../js/alertify.js"></script>
     <!-- bootstrap JS
@@ -90,8 +89,6 @@
     <script src="../js/jquery.sparkline.min.js"></script>
     <script src="../js/jquery.charts-sparkline.js"></script>
     <script src="../js/sparkline-active.js"></script>
-
-
 
     <!-- calendar JS
  		============================================ -->
