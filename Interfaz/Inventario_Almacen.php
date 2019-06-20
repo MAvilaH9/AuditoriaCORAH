@@ -33,8 +33,10 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                        <?php 
-                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM almacen ORDER BY Nombre ASC");
+                                                        <?php
+                                                        
+                                                            $Empresa = $_SESSION['Empresa'];
+                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Almacen WHERE ClaveEmpresa='$Empresa' ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>

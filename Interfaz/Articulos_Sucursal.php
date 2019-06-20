@@ -19,7 +19,6 @@ require "../SQLServer/Conexion.php";
                     <ul id="myTabedu1" class="tab-review-design" style="text-align: center">
                         <li class="active"><a>Articulos Sucursal</a></li>
                     </ul>
-
                     <!-- Formulario para la Consula  -->
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="description">
@@ -33,7 +32,8 @@ require "../SQLServer/Conexion.php";
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <?php 
-                                                            $sql= $pdo->prepare("SELECT Sucursal, Nombre FROM sucursal ORDER BY Nombre ASC");
+                                                            $Empresa=$_SESSION['Empresa'];                                                           
+                                                            $sql= $pdo->prepare("SELECT Sucursal, Nombre FROM sucursal WHERE ClaveEmpresa='$Empresa' ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>

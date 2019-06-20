@@ -22,7 +22,6 @@ $Resultado['ClaveEmpresa'];
     
 
 
-$_SESSION['tiempo'] = time();
 
 if ($Contrasenia == $Resultado['Contrasenia'] && $Resultado['Usuario'] == $Usuario) {
     $_SESSION['Usuario'] = $Resultado['Usuario'];
@@ -37,14 +36,5 @@ if ($Contrasenia == $Resultado['Contrasenia'] && $Resultado['Usuario'] == $Usuar
     
     header('location:../Interfaz/Login.php?Error=true');
 }
-$inactivo = 2000;
 
-// if(isset($_SESSION['Usuario']) ) {
-//     $vida_session = time() - $_SESSION['Usuario'];
-//     if($vida_session > $inactivo)
-//     {
-//         session_destroy();
-//         header("Location:../Interfaz/Login.php"); 
-//     }
-// }
 ?>

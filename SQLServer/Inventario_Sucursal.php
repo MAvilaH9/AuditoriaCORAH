@@ -1,9 +1,15 @@
 <?php 
     include "Conexion.php";
-
+    session_start();
     if (isset($_POST['Sucursal'] )) {
         $sucursal=$_POST['Sucursal'];
-        $sql= $pdo->prepare("SELECT * FROM Articulo WHERE Sucursal='$sucursal' ORDER BY Articulo ASC");
+        $empresa= $_SESSION['Empresa'];
+        $sql= $pdo->prepare("SELECT * from Articulo a 
+            inner join Sucursal s on a.Sucursal=s.Sucursal
+            inner join Empresa e on e.ClaveEmpresa=s.ClaveEmpresa
+            where s.Sucursal=$sucursal and s.ClaveEmpresa='$empresa'
+            ORDER BY Articulo ASC"
+        );
         $sql->execute();
         $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
     ?>
