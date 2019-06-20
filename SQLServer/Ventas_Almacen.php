@@ -51,7 +51,7 @@
                     </tbody>
                 </table> <br>
                 <button type="button" class="btn btn-custon-rounded-two btn-danger" data-toggle="modal"
-                    data-target="#CancelarInventarioaAlm">
+                    data-target="#CancelarVentaAlm">
                     <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                     Cancelar
                 </button>

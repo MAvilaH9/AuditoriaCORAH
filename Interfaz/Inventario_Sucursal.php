@@ -32,13 +32,13 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <!-- Select Sucursal -->
                                                         <?php
                                                             $Empresa = $_SESSION['Empresa'];
                                                             $sql= $pdo->prepare("SELECT Sucursal, Nombre FROM sucursal WHERE ClaveEmpresa='$Empresa' ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
-                                                        <!-- Select Sucursal -->
                                                         <div class="form-group">
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label>Sucursal</label>
@@ -59,7 +59,7 @@ require "../SQLServer/Conexion.php";
                                                             <input name="Articuloi" id="Articuloi" type="text"
                                                                 class="form-control" placeholder="Ingrese el artículo">
                                                         </div>
-                                                        <!-- Text Categoria -->
+                                                        <!-- Select Categoria -->
                                                         <?php 
                                                             $sqlcat= $pdo->prepare("SELECT IdCategoria, Categoria FROM categoria ORDER BY Categoria ASC");
                                                             $sqlcat->execute();
@@ -326,8 +326,9 @@ require "../SQLServer/Conexion.php";
     // });
 </script>
 
-
+<!-- Envia formulario pra consulta -->
 <script type="text/javascript" language="javascript">
+
     $(document).ready(function () {
 
         $(document).on('submit', '#frmInventarioSuc', function (e) {
@@ -350,6 +351,7 @@ require "../SQLServer/Conexion.php";
             });
         });
     });
+
 </script>
 
 <!-- Boton Aceptar del modal cancelar consulta-->
@@ -364,6 +366,7 @@ require "../SQLServer/Conexion.php";
         
         $("a.external").off('click');
     });
+
 </script>
 
 <?php include_once "Templete/Footer.php"; ?>

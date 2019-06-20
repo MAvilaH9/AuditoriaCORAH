@@ -7,7 +7,6 @@ require "../SQLServer/Conexion.php";
 <div class="single-pro-review-area mt-t-30 mg-b-15">
     <div class="container-fluid">
         <div class="row">
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div id="Titulo" class="product-payment-inner-st">
                     <ul class="breadcome-menu">
@@ -33,13 +32,13 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <!-- Select Almacen -->
                                                         <?php 
                                                             $Empresa = $_SESSION['Empresa'];
                                                             $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Almacen WHERE ClaveEmpresa='$Empresa' ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
-                                                        <!-- Select Almacen -->
                                                         <div class="form-group">
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label>Almacén</label>
@@ -309,7 +308,7 @@ require "../SQLServer/Conexion.php";
 
 </script>
 
-
+<!-- Envio de formulario para la consulta -->
 <script type="text/javascript" language="javascript">
 
     $(document).ready(function () {
@@ -334,6 +333,7 @@ require "../SQLServer/Conexion.php";
             });
         });
     });
+
 </script>
 
 <!-- Boton Aceptar del modal cancelar consulta-->

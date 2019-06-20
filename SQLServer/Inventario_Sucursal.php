@@ -1,6 +1,7 @@
 <?php 
-    include "Conexion.php";
     session_start();
+    include "Conexion.php";
+
     if (isset($_POST['Sucursal'] )) {
         $sucursal=$_POST['Sucursal'];
         $empresa= $_SESSION['Empresa'];

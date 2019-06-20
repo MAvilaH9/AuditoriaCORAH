@@ -1,5 +1,5 @@
 <?php include_once "Templete/Header.php"; ?>
-
+    <!-- Titulo -->
     <div class="breadcome-area">
         <div class="container-fluid">
             <div class="row">
@@ -17,6 +17,7 @@
             </div>
         </div>
     </div>
+    <!-- Principios  -->
     <div class="widgets-programs-area">
         <div class="container-fluid">
             <div class="row">
@@ -147,6 +148,7 @@
             </div>
         </div>
     </div>
+    <!-- Pie de pagina -->
     <div class="breadcome-area">
         <div class="container-fluid">
             <div class="row">

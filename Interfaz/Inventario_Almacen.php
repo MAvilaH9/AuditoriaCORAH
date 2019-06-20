@@ -34,7 +34,6 @@ require "../SQLServer/Conexion.php";
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <?php
-                                                        
                                                             $Empresa = $_SESSION['Empresa'];
                                                             $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Almacen WHERE ClaveEmpresa='$Empresa' ORDER BY Nombre ASC");
                                                             $sql->execute();
@@ -295,6 +294,7 @@ require "../SQLServer/Conexion.php";
     </div>
 </div>
 
+<!-- Combos dinamicos -->
 <script language="javascript">
     // // Municipio
     // $(document).ready(function () {
@@ -327,8 +327,9 @@ require "../SQLServer/Conexion.php";
     // });
 </script>
 
-<!-- Script combos dinamicos -->
+<!-- Envia formulario para la consulta -->
 <script type="text/javascript" language="javascript">
+
     $(document).ready(function () {
 
         $(document).on('submit', '#frmInventarioAlm', function (e) {
@@ -351,6 +352,7 @@ require "../SQLServer/Conexion.php";
             });
         });
     });
+    
 </script>
 
 <!-- Boton Aceptar del modal cancelar consulta-->
@@ -365,6 +367,7 @@ require "../SQLServer/Conexion.php";
         
         $("a.external").off('click');
     });
+
 </script>
 
 <?php include_once "Templete/Footer.php"; ?>

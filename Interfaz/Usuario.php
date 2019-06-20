@@ -30,13 +30,15 @@
                         </button>
                         <strong>Advertencia!</strong> Usuario ya existe en la base de datos.
                     </div>
+
                     <div class="sparkline13-graph">
+                        <!-- Boton agragar -->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"
                                 id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
                                     aria-hidden="true"></i></button>
                         </div>
-
+                        <!-- Estado -->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
@@ -46,6 +48,8 @@
                                 </li>
                             </ul>
                         </div> <br>
+
+                        <!-- Muesta la lista -->
                         <div id="tabla_Usuario" class="datatable-dashv1-list custom-datatable-overright">
 
                         </div>

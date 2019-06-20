@@ -113,8 +113,7 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Proveedor" id="Proveedor"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
-                                                                        Seleccione
-                                                                        Proveedor
+                                                                        Seleccione Proveedor
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadopro as $pro) {
@@ -325,7 +324,7 @@ require "../SQLServer/Conexion.php";
     // });
 </script>
 
-
+<!-- Envia formulario para realizar la consulta -->
 <script type="text/javascript" language="javascript">
 
     $(document).ready(function () {
@@ -350,6 +349,7 @@ require "../SQLServer/Conexion.php";
             });
         });
     });
+    
 </script>
 
 <!-- Boton Aceptar del modal cancelar consulta-->
@@ -364,6 +364,7 @@ require "../SQLServer/Conexion.php";
         
         $("a.external").off('click');
     });
+
 </script>
 
 <?php include_once "Templete/Footer.php"; ?>

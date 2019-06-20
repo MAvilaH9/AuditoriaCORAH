@@ -182,8 +182,7 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Grupo" id="Grupo" class="chosen-select"
                                                                     tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
-                                                                        Seleccione
-                                                                        Grupo
+                                                                        Seleccione Grupo
                                                                     </option>
                                                                     <?php
                                                                     foreach ($resultadogpo as $gpo) {
@@ -205,8 +204,7 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Fabricante" id="Fabricante"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
-                                                                        Seleccione
-                                                                        Fabricante
+                                                                        Seleccione Fabricante
                                                                     </option>
                                                                     <?php
                                                                     foreach ($resultadofab as $fab) {
@@ -328,7 +326,7 @@ require "../SQLServer/Conexion.php";
     // });
 </script>
 
-
+<!-- Envia los datos de formulario para la consulta -->
 <script type="text/javascript" language="javascript">
     $(document).ready(function () {
 

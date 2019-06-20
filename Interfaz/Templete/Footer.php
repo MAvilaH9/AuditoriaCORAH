@@ -118,3 +118,11 @@
     <!-- <script src="../js/tawk-chat.js"></script> -->
 </body>
 </html>
+
+<!-- Cerrar Sesion despues de 5 minutos -->
+<script>
+   window.onload = function(){killerSession();}
+   function killerSession(){
+      setTimeout("window.open('../SQLServer/Log_out.php','_top');",300000);
+   }
+</script>

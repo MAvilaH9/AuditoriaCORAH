@@ -1,11 +1,9 @@
 <?php
-session_start();
-if (empty($_SESSION['Usuario'])) {
-    header('location:Login.php');
-} else {
-
-}
-
+    session_start();
+    if (empty($_SESSION['Usuario'])) {
+        header('location:Login.php');
+    } else {
+    }
 ?>
 
 <!doctype html>

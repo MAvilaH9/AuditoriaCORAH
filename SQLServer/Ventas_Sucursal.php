@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include "Conexion.php";
 
     if (isset($_POST['Sucursal'] )) {
@@ -51,7 +52,7 @@
                     </tbody>
                 </table> <br>
                 <button type="button" class="btn btn-custon-rounded-two btn-danger" data-toggle="modal"
-                    data-target="#CancelarInventarioaSuc">
+                    data-target="#CancelarVentaSuc">
                     <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                     Cancelar
                 </button>

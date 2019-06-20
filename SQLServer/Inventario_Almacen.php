@@ -1,6 +1,6 @@
 <?php 
-    include "Conexion.php";
     session_start();
+    include "Conexion.php";
 
     if (isset($_POST['Almacen'])) {
         $Almacen=$_POST['Almacen'];

@@ -39,7 +39,6 @@
                             <th>Precio Lista</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php foreach ($resultadoalm as $datoalm) {?>
                         <tr>
