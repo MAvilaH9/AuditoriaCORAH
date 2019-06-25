@@ -262,7 +262,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="../Interfaz/Excel.php" class="nav-link external">
+                                                    <a href="../Interfaz/Exc.php" class="nav-link external">
                                                         Subir Archivos
                                                     </a>
                                                 </li>

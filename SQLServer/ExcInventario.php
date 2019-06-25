@@ -1,6 +1,10 @@
 <?php
     session_start();
     require_once ("Conexion.php");
+    require_once "../ClasesExcel/PHPExcel.php";
+    $us=$_SESSION['Usuario'];
+
+    //Articulos Sucursal
 
     if (isset($_GET['Sucursal'])) {
 
@@ -11,68 +15,141 @@
         $sqlsuc -> execute(array($Sucursal));
         $resultadosuc = $sqlsuc->fetch();
         $NombSuc=$resultadosuc['Nombre'];
+        
+        // header('Content-type:application/xls');
+        // header("Content-Disposition:attachment; filename= Articulos_".$NombSuc."_".$fecha."_".$us.".xls");
 
-        header('Content-type:application/xls');
-        header("Content-Disposition:attachment; filename= Inventario_".$NombSuc."_".$fecha.".xls");
+        $objPHPExcel = new PHPExcel();
 
+        //Informacion del excel
+        $objPHPExcel->getProperties()
+            ->setCreator("Auditoria CORAH")
+            ->setLastModifiedBy("Auditoria")
+            ->setTitle("Office 2010 XLSX Documento de Reporte")
+            ->setSubject("Office 2010 XLSX Documento de Reporte")
+             ->setDescription("Documento de listado de articulos de sucursal"."$NombSuc")
+            ->setKeywords("office 2010")
+            ->setCategory("Consultas");    
+
+            // Titulos de celdas
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'Articulo')
+            ->setCellValue('B1', 'Descripción')
+            ->setCellValue('C1', 'Precio Lista');
+        
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(50);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);	
+
+        // Fuente de la primera fila en negrita
+        $boldArray = array('font' => array('bold' => true,),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
+        
+        // Aplicar el formato
+        $rango='A1:C1';
+        $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray($boldArray);
+
+        // Cambiar el nombre de hoja de cálculo
+        $objPHPExcel->getActiveSheet()->setTitle('Articulos');
+
+        
         $sql= $pdo->prepare("SELECT * FROM Articulo WHERE Sucursal='$Sucursal' ORDER BY Articulo ASC");
         $sql->execute();
-        $resultado=$sql->fetchALL(PDO::FETCH_ASSOC); ?>
 
-        <html>
-            <table border="1">
-                <tr>
-                    <th>Articulo</th>
-                    <th>Descripción</th>
-                    <th>Precio Lista</th>
-                </tr>
-                <?php foreach ($resultado as $dato) {?>
+        $i = 2;  
+        while ($fila = $sql->fetch()) {
 
-                <tr>
-                    <td><?php echo $dato['Articulo'];?></td>
-                    <td><?php echo $dato['Descripcion1'];?></td>
-                    <td><?php echo $dato['PrecioLista'];?></td>
-                </tr>
-                <?php }?>
-            </table>
-        </html>
-    <?php
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$i, $fila['Articulo'])
+                ->setCellValue('B'.$i, $fila['Descripcion1'])
+                ->setCellValue('C'.$i, $fila['PrecioLista']);
+            $i++;
+        }
+            
+
+        // Establecer activa a la primera hoja , 
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="Inventario_'.$NombSuc.'_'.$fecha.'_'.$us.'.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $objWriter=PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');
+        $objWriter->save('php://output');
+        exit;
+                
     }
+
+    //Articulos Almacen
 
     if (isset($_GET['Almacen'])){
 
         $fecha= date("d/m/Y");
         $Almacen=$_GET['Almacen'];
 
-        $sqlAlm = $pdo->prepare("SELECT Nombre FROM Almacen where Almacen=$Almacen");
+        $sqlAlm = $pdo->prepare("SELECT Nombre FROM Almacen where Almacen='$Almacen'");
         $sqlAlm -> execute(array($Almacen));
         $resultadoAlm = $sqlAlm->fetch();
         $NombAlm=$resultadoAlm['Nombre'];
 
-        header('Content-type:application/xls');
-        header("Content-Disposition:attachment; filename= Inventario_".$NombAlm."_".$fecha.".xls");
+        // header('Content-type:application/xls');
+        // header("Content-Disposition:attachment; filename= Articulos_".$NombAlm."_".$fecha.".xls");
+    
+        $objPHPExcel = new PHPExcel();
+
+        //Informacion del excel
+        $objPHPExcel->getProperties()
+            ->setCreator("Auditoria CORAH")
+            ->setLastModifiedBy("Auditoria")
+            ->setTitle("Office 2010 XLSX Documento de Reporte")
+            ->setSubject("Office 2010 XLSX Documento de Reporte")
+             ->setDescription("Documento de listado de articulos de sucursal"."$NombAlm")
+            ->setKeywords("office 2010")
+            ->setCategory("Consultas");    
+
+            // Titulos de celdas
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'Articulo')
+            ->setCellValue('B1', 'Descripción')
+            ->setCellValue('C1', 'Precio Lista');
         
-        $sqla= $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(50);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);	
+
+        // Fuente de la primera fila en negrita
+        $boldArray = array('font' => array('bold' => true,),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
+        
+        // Aplicar el formato
+        $rango='A1:C1';
+        $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray($boldArray);
+
+        // Cambiar el nombre de hoja de cálculo
+        $objPHPExcel->getActiveSheet()->setTitle('Articulos');
+
+        
+        $sqla = $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
         $sqla->execute();
-        $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
-        <html>
-            <table border="1">
-                <tr>
-                    <th>Articulo</th>
-                    <th>Descripción</th>
-                    <th>Precio Lista</th>
-                </tr>
-                <?php foreach ($resultadoalm as $datoalm) {?>
+        $i = 2;  
+        while ($fila = $sqla->fetch()) {
 
-                <tr>
-                    <td><?php echo $datoalm['Articulo'];?></td>
-                    <td><?php echo $datoalm['Descripcion1'];?></td>
-                    <td><?php echo $datoalm['PrecioLista'];?></td>
-                </tr>
-                <?php }?>
-            </table>
-        </html>
-    <?php
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$i, $fila['Articulo'])
+                ->setCellValue('B'.$i, $fila['Descripcion1'])
+                ->setCellValue('C'.$i, $fila['PrecioLista']);
+            $i++;
+        }
+            
+
+        // Establecer activa a la primera hoja , 
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="Inventario_'.$NombAlm.'_'.$fecha.'_'.$us.'.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $objWriter=PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');
+        $objWriter->save('php://output');
+        exit;
     }
 ?>

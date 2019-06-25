@@ -35,7 +35,7 @@
                                                 Agregar
                                                 <input type="file" name="Archivo"
                                                     onchange="document.getElementById('prepend-big-btn').value = this.value;"
-                                                    accept=".xls">
+                                                    accept=".xlsx">
                                             </div>
                                             <input type="text" id="prepend-big-btn"
                                                 placeholder="No se ha seleccionado ningun archivo">
@@ -50,11 +50,11 @@
                                     </button>
                                 </div>
                             </div> <br> <br>
+                            <!-- Alertas  -->
                             <div class="row">
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <!-- Alertas  -->
                                     <div id="AlertExito" class="alert alert-success" role="alert" style="display:none">
                                         <strong>Exitoso!</strong> Archivo guardados con exito
                                     </div>
@@ -76,6 +76,10 @@
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <div id="tabla" class="datatable-dashv1-list custom-datatable-overright">
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,6 +107,7 @@
                         setTimeout(function () {
                             $("#AlertExito").fadeOut();
                         }, 2000);
+                        $("#tabla").html(data);
                     } else if (data == 2) {
                         $("#AlertError").fadeIn();
                         setTimeout(function () {

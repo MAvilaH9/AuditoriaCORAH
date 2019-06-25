@@ -86,7 +86,7 @@
         $fecha= date("d/m/Y");
         $Almacen=$_GET['Almacen'];
 
-        $sqlAlm = $pdo->prepare("SELECT Nombre FROM Almacen where Almacen=$Almacen");
+        $sqlAlm = $pdo->prepare("SELECT Nombre FROM Almacen where Almacen='$Almacen'");
         $sqlAlm -> execute(array($Almacen));
         $resultadoAlm = $sqlAlm->fetch();
         $NombAlm=$resultadoAlm['Nombre'];
