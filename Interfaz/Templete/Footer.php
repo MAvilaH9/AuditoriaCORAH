@@ -90,6 +90,11 @@
     <script src="../js/jquery.charts-sparkline.js"></script>
     <script src="../js/sparkline-active.js"></script>
 
+        <!-- datapicker JS
+		============================================ -->
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/datepicker-active.js"></script>
+
     <!-- calendar JS
  		============================================ -->
     <script src="../js/moment.min.js"></script>

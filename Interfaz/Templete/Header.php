@@ -150,6 +150,11 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                         <span class="mini-sub-pro external">Lista de Auditores</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a data-toggle="tooltip" title="Suc. a auditar" href="../Interfaz/SucAuditar.php">
+                                        <span class="mini-sub-pro external">Calendario</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -368,6 +373,11 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                 <li>
                                                     <a data-toggle="tooltip" tile="Auditores"
                                                         href="../Interfaz/Usuario.php">Lista de Auditores</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tooltip" title="Suc. a auditar" href="../Interfaz/SucAuditar.php">
+                                                       Calendario
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </li>

@@ -85,13 +85,13 @@
     
                 for ($i=2; $i <= $numfilas ; $i++) { 
 
-                    $nombre = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
-                    $apat = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
-                    $amat = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
-                    $us = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
-                    $contra = $objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
-                    $emp = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
-                    $per = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
+                    $nombre = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue(); $nombre=strtoupper($nombre);
+                    $apat = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue(); $apat=strtoupper($apat);
+                    $amat = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue(); $amat=strtoupper($amat);
+                    $us = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue(); $us=strtoupper($us);
+                    $contra = $objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue(); $contra=strtoupper($contra);
+                    $emp = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue(); $emp=strtoupper($emp);
+                    $per = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue(); $per=strtoupper($per);
 
                     $sql_agregar = "INSERT INTO usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) 
                     VALUE ('$nombre','$apat','$amat','$us','$contra','$emp','$per')";
