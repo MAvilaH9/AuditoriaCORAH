@@ -86,18 +86,18 @@
 	============================================ -->
     <script src="../js/tablas.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function(){
-        $("a.external").click(function() {
-            url = $(this).attr("href");
-            window.open(url,'_blank');
-            return false;
+        $(document).ready(function(){
+            $("a.external").click(function() {
+                url = $(this).attr("href");
+                window.open(url,'_blank');
+                return false;
+            });
+            
+            $("a.external").off('click');
         });
-        
-        $("a.external").off('click');
-    });
-</script>
+    </script>
 
 
 

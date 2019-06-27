@@ -1,8 +1,10 @@
 <?php 
+    session_start();
+    $usuario = $_SESSION['Usuario'];
 
     // print_r($_FILES);
-    $Nombre = $_FILES['Archivo']['name'];
-    $Guardado=$_FILES['Archivo']['tmp_name'];
+    $Nombre = $usuario."_".$_FILES['Archivo']['name'];
+    $Guardado = $_FILES['Archivo']['tmp_name'];
     $directorio = '../Excel/'.$Nombre;
     
     if (!file_exists($directorio)) {

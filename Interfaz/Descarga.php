@@ -1,22 +1,19 @@
 <?php
-    require_once "../ClasesExcel/PHPExcel.php";
-
-    $Archivo = $_REQUEST["Archivo"];
-
-    $ruta = "C:\xampp\htdocs\AuditoriaCORAH\Excel/".$Archivo;
-
-    header('Content-Disposition: attachment; filename='.$Archivo);
-    
-    header('Content-Type: application/vnd.ms-excel');
+    if (!empty($_REQUEST['Archivo'])) {
         
-    header('Content-Length:'.filesize($ruta));
+        $Archivo = $_REQUEST["Archivo"];
 
-    header('Cache-Control: max-age=0');
-
-    readfile($ruta);
-    $objWriter=PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');
-    $objWriter->save('php://output');
-
-    exit;
-
+        $ruta = "../Excel/".$Archivo;
+    
+        // Define headers
+        header("Cache-Control: public");
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$Archivo");
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Transfer-Encoding: binary");
+            
+        // Read the file
+        readfile($ruta);
+        exit;
+    }
 ?>

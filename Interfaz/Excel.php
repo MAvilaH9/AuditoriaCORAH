@@ -25,7 +25,7 @@
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                     <label class="login2 pull-right pull-right-pro">Agregar Archivo Excel</label>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                                     <div class="file-upload-inner ts-forms">
                                         <div class="input prepend-big-btn">
                                             <label class="icon-right" for="prepend-big-btn">
@@ -33,7 +33,7 @@
                                             </label>
                                             <div class="file-button">
                                                 Agregar
-                                                <input type="file" name="Archivo"
+                                                <input type="file" name="Archivo" required
                                                     onchange="document.getElementById('prepend-big-btn').value = this.value;"
                                                     accept=".xlsx">
                                             </div>
@@ -42,12 +42,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                     <button type="submit" name="action" id="action" value="Add"
                                         class="btn btn-custon-rounded-two btn-success">
-                                        <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
+                                        <i class="fa fa-save" aria-hidden="true"></i>
                                         Guardar
                                     </button>
+                                    <a class="btn btn-custon-rounded-two btn-danger external" href="../Interfaz/Index.php">
+                                        <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
+                                        Cancelar
+                                    </a>
                                 </div>
                             </div> <br> <br>
                             <!-- Alertas  -->
@@ -77,9 +81,6 @@
                         </div>
                     </form>
                     <br>
-                    <div id="tabla" class="datatable-dashv1-list custom-datatable-overright">
-
-                    </div>
                 </div>
             </div>
         </div>
@@ -123,4 +124,15 @@
             });
         });
         
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("a.external").click(function() {
+                url = $(this).attr("href");
+                window.open(url,'_blank');
+                return false;
+            });
+            
+            $("a.external").off('click');
+        });
     </script>

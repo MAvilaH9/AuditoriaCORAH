@@ -51,7 +51,6 @@
 
                         <!-- Muesta la lista -->
                         <div id="tabla_Usuario" class="datatable-dashv1-list custom-datatable-overright">
-
                         </div>
                     </div>
                 </div>
@@ -113,7 +112,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Usuario</label>
-                                        <input name="Usuario" id="Usuario" type="text" class="form-control"
+                                        <input name="Usuario" id="usuario" type="text" class="form-control"
                                             placeholder="Usuario" required />
                                     </div>
                                 </div>
@@ -184,7 +183,7 @@
                             <!-- <a data-dismiss="modal" href="#">Cancel</a> -->
                             <button type="submit" name="action" id="action" value="Add"
                                 class="btn btn-custon-rounded-two btn-success">
-                                <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
+                                <i class="fa fa-save edu-checked-pro" aria-hidden="true"></i>
                                 Guardar
                             </button>
                         </form>
@@ -269,7 +268,7 @@
                     $('#ApellidoPat').val(data.ApellidoPaterno);
                     $('#ApellidoMat').val(data.ApellidoMaterno);
                     $('#Nombre').val(data.Nombres);
-                    $('#Usuario').val(data.Usuario);
+                    $('#usuario').val(data.Usuario);
                     $('#Contrasenia').val(data.Contrasenia);
                     $('#Empresa').val(data.ClaveEmpresa);
                     $('#Perfil').val(data.IdPerfil);

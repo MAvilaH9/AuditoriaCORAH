@@ -152,6 +152,12 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a data-toggle="tooltip" title="Archivos de reportes" class="external" href="../Interfaz/Reportes.php" aria-expanded="false">
+                                <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Reportes</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -262,7 +268,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="../Interfaz/Exc.php" class="nav-link external">
+                                                    <a href="../Interfaz/Excel.php" class="nav-link external">
                                                         Subir Archivos
                                                     </a>
                                                 </li>
@@ -318,8 +324,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             <p>¿Está seguro que desea cerrar sesión?</p>
                         </div>
                         <div class="modal-footer footer-modal-admin">
-                            <a data-dismiss="modal" href="#">Cancelar</a>
-                            <a href="../SQLServer/Log_out.php">Aceptar</a>
+                            <a  data-dismiss="modal" href="#">Cancelar</a>
+                            <a class="external" href="../SQLServer/Log_out.php">Aceptar</a>
                         </div>
                     </div>
                 </div>
@@ -355,7 +361,6 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
 
                                         </li>
                                         <li>
-                                        <li>
                                             <a data-toggle="collapse" data-target="#demoevent" href="#">Auditores
                                                 <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
@@ -366,6 +371,11 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li>
+                                            <a class="external" href="../Interfaz/Reportes.php" aria-expanded="false">
+                                                <span class="educate-icon educate-course icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                                <span class="mini-click-non">Reportes</span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -411,18 +421,18 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             <br>
         </div>
 
+                <!-- Script de botons a -->
+    <script type="text/javascript">
 
-<script type="text/javascript">
+        $(document).ready(function(){
+            $("a.external").click(function() {
+                url = $(this).attr("href");
+                window.open(url,'_blank');
+                return false;
+            });
+            
+            $("a.external").off('click');
 
-    $(document).ready(function(){
-        $("a.external").click(function() {
-            url = $(this).attr("href");
-            window.open(url,'_blank');
-            return false;
         });
-        
-        $("a.external").off('click');
-
-    });
-</script>
+    </script>
 
