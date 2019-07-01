@@ -1,12 +1,13 @@
 <?php
     session_start();
-    include "Conexion.php";
+    require_once "Conexion.php";
 
-    $id=$_POST["id"];
+    $id=$_POST['id'];
 
-    $sql = "DELETE FROM usuario WHERE IdUsuario=$id";
+    $sql = "DELETE FROM Usuario WHERE IdUsuario=$id";
+    $params = array($_POST['id']);
     $result = $pdo->prepare($sql);
-    if ($result->execute([':IdUsuario' => $id])) {
+    if ($result->execute($params)) {
         echo 1;
     }
 

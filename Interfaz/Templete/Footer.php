@@ -92,7 +92,7 @@
 
         <!-- datapicker JS
 		============================================ -->
-    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/bootstrap-datepickers.js"></script>
     <script src="../js/datepicker-active.js"></script>
 
     <!-- calendar JS

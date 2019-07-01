@@ -1,8 +1,10 @@
 <?php 
+    session_start();
     include "Conexion.php";
+
     if (isset($_POST['Sucursal'] )) {
         $sucursal=$_POST['Sucursal'];
-        $sql= $pdo->prepare("SELECT * FROM articulo WHERE Sucursal='$sucursal' ORDER BY Articulo ASC");
+        $sql= $pdo->prepare("SELECT * FROM Articulo WHERE Sucursal='$sucursal' ORDER BY Articulo ASC");
         $sql->execute();
         $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
     ?>
@@ -15,7 +17,7 @@
         <div class="sparkline13-graph">
             <div class="datatable-dashv1-list custom-datatable-overright" align="right">
 
-                <a href="../Recursos/ExcInventario.php?Almacen=<?php echo $sucursal;?>" class="btn btn-default align:center" title="Exportar excel"><i
+                <a class="btn btn-default align:center external" href="../SQLServer/ExcVentas.php?Sucursal=<?php echo $sucursal;?>" title="Exportar excel"><i
                         class="glyphicon glyphicon-export icon-share"></i></a>
 
                 <table id="table" data-toggle="table" data-pagination="true" data-key-events="true" data-cookie="true"
@@ -38,25 +40,21 @@
                         <?php } ?>
                     </tbody>
                 </table> <br>
-                <button type="button" class="btn btn-custon-rounded-two btn-danger" data-toggle="modal"
-                    data-target="#CancelarInventarioaSuc">
+                <a class="btn btn-custon-rounded-two btn-danger external" href="../Interfaz/Ventas_Sucursal.php">
+                    <i class="fa fa-angle-left edu-icon edu-down-arrow" aria-hidden="true"></i>
+                    Regresar 
+                </a>
+                <!-- <button type="button" class="btn btn-custon-rounded-two btn-danger" data-toggle="modal"
+                    data-target="#CancelarVentaSuc">
                     <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                     Cancelar
-                </button>
+                </button> -->
             </div>
         </div>
     </div>
 
-<?php 
-}
-
-if (isset($_POST['Almacen'])) {
-    $Almacen=$_POST['Almacen'];
-    $sqla= $pdo->prepare("SELECT * FROM articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
-    $sqla->execute();
-    $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC);
-    ?>
-
+<?php } else { ?>
+    
     <div class="sparkline13-list">
         <div class="sparkline13-hd">
             <div class="main-sparkline13-hd">
@@ -64,11 +62,7 @@ if (isset($_POST['Almacen'])) {
             </div>
         </div>
         <div class="sparkline13-graph">
-            <div class="datatable-dashv1-list custom-datatable-overright" align="right">
-
-                <a href="../Recursos/ExcInventario.php?Almacen=<?php echo $Almacen;?>" class="btn btn-default align:center" title="Exportar excel"><i
-                        class="glyphicon glyphicon-export icon-share"></i></a>
-
+            <div class="datatable-dashv1-list custom-datatable-overright">
                 <table id="table" data-toggle="table" data-pagination="true" data-key-events="true" data-cookie="true"
                     data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
                     <thead>
@@ -80,30 +74,30 @@ if (isset($_POST['Almacen'])) {
                     </thead>
 
                     <tbody>
-                        <?php foreach ($resultadoalm as $datoalm) {?>
-                        <tr>
-                            <td><?php echo $datoalm['Articulo']; ?></td>
-                            <td><?php echo $datoalm['Descripcion1']; ?></td>
-                            <td><?php echo $datoalm['PrecioLista']; ?></td>
-                        </tr>
-                        <?php } ?>
                     </tbody>
                 </table> <br>
-                <button type="button" class="btn btn-custon-rounded-two btn-danger" data-toggle="modal"
-                    data-target="#CancelarInventarioaAlm">
-                    <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
-                    Cancelar
-                </button>
+                <a class="btn btn-custon-two btn-primary external" href="../Interfaz/Ventas_Sucursal.php">
+                    <i class="fa fa-angle-left edu-icon edu-down-arrow" aria-hidden="true"></i>
+                    Regresar 
+                </a>
             </div>
         </div>
     </div>
+<?php } ?>
 
-<?php
-}
-?>
-
-
-
-<!-- data table JS
+    <!-- data table JS
 	============================================ -->
-<script src="../js/tablas.js"></script>
+    <script src="../js/tablas.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("a.external").click(function() {
+            url = $(this).attr("href");
+            window.open(url,'_blank');
+            return false;
+        });
+        
+        $("a.external").off('click');
+    });
+</script>

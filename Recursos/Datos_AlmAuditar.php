@@ -16,7 +16,6 @@
 		{
 			$output["IdAuditar"] = $row["IdAuditar"];
 			$output["ClaveEmpresa"] = $row["ClaveEmpresa"];
-			$output["Sucursal"] = $row["Sucursal"];
 			$output["Almacen"] = $row["Almacen"];
 			$output["IdUsuario"] = $row["IdUsuario"];
 			$output["Fecha"] = $row["Fecha"];

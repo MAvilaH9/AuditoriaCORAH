@@ -2,8 +2,6 @@
     session_start();
     include "Conexion.php";
     $Usuario = $_SESSION['Usuario'];
-    $Sentencia=$pdo->prepare("TRUNCATE visualizado");
-    $Sentencia -> execute();
     $_SESSION = array();
 
     if (ini_get("sesion.use_cookies")) {
@@ -17,4 +15,5 @@
     session_destroy();
 
     header('location:../Interfaz/Login.php');
+    
 ?>

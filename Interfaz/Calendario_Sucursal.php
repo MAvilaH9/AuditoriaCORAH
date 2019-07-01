@@ -77,6 +77,7 @@
                 <div class="review-content-section">
                     <div id="dropzone1" class="pro-ad">
                         <form id="frmSucAuditar" class="dropzone dropzone-custom needsclick add-professors">
+
                             <div class="row">
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
                                 </div>
@@ -129,7 +130,7 @@
                                 <!-- Select Usuario -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                     <?php 
-                                        $sqlus= $pdo->prepare("SELECT IdUsuario, Nombres, ApellidoPaterno, ApellidoMaterno FROM usuario");
+                                        $sqlus= $pdo->prepare("SELECT IdUsuario, CONCAT(ApellidoPaterno, ' ', ApellidoMaterno, ' ', Nombres) AS Auditor FROM usuario");
                                         $sqlus->execute();
                                         $resultadous=$sqlus->fetchALL(PDO::FETCH_ASSOC);
                                     ?>
@@ -140,7 +141,7 @@
                                             <?php
                                             foreach ($resultadous as $datous) { ?>
                                             <option value="<?php echo $datous['IdUsuario']; ?>">
-                                                <?php echo $datous['IdUsuario']; ?>
+                                                <?php echo $datous['Auditor']?>
                                             </option>
                                             <?php } ?>
                                         </select>
@@ -186,12 +187,28 @@
 
 <script>
     function MostrarDatos() {
-        $('#tabla_sucAuditar').load('../Recursos/Tabla_SucAuditar.php');
+        $('#tabla_sucAuditar').load('../SQLServer/Tabla_SucAuditar.php');
     }
 </script>
 
 <!-- Combos dinamicos -->
 <script>
+
+    // Almacenes
+    $(document).ready(function () {
+        $("#Empresa").change(function () { 
+            // e.preventDefault();
+
+            $("#Empresa option:selected").each(function () {
+                ClaveEmpresa = $(this).val();
+                $.post("../SQLServer/Almacenes.php",{ ClaveEmpresa: ClaveEmpresa},
+                function(data){
+                    $("#Almacen").html(data);
+                });            
+            });
+        });
+    });
+
     // Sucursales
     $(document).ready(function () {
         $("#Empresa").change(function () { 
@@ -199,7 +216,7 @@
 
             $("#Empresa option:selected").each(function () {
                 ClaveEmpresa = $(this).val();
-                $.post("../Recursos/Sucursales.php",{ ClaveEmpresa: ClaveEmpresa},
+                $.post("../SQLServer/Sucursales.php",{ ClaveEmpresa: ClaveEmpresa},
                 function(data){
                     $("#Sucursal").html(data);
                 });            
@@ -213,7 +230,7 @@
 
             $("#Empresa option:selected").each(function () {
                 ClaveEmpresa = $(this).val();
-                $.post("../Recursos/Auditores.php",{ ClaveEmpresa: ClaveEmpresa},
+                $.post("../SQLServer/Auditores.php",{ ClaveEmpresa: ClaveEmpresa},
                 function(data) {
                     $("#Auditor").html(data);
                 });
@@ -222,10 +239,12 @@
 
         });
     });
+
 </script>
 
 <!-- ABC -->
 <script type="text/javascript" language="javascript">
+
     $(document).ready(function () {
 
         MostrarDatos();
@@ -237,13 +256,13 @@
             $('#operation').val("Add");
         });
 
-        // Agregar
+        // Agregar y actualizar
         $(document).on('submit', '#frmSucAuditar', function (event) {
             event.preventDefault();
             var datos = $('#frmSucAuditar').serialize();
             // alert(datos);
             $.ajax({
-                url: "../Recursos/SucAuditar.php",
+                url: "../SQLServer/Calendario.php",
                 method: 'POST',
                 data: new FormData(this),
                 contentType: false,
@@ -253,24 +272,18 @@
                     $('#frmSucAuditar')[0].reset();
                     if (data == 1) {
                         // alert(dato);
+                        $("#ModalSucAuditar").modal("hide");
                         MostrarDatos();
                         $("#AlertExito").fadeIn();
                         setTimeout(function () {
                             $("#AlertExito").fadeOut();
                         }, 2000);
-                        $("#ModalSucAuditar").modal("hide");
                     } else if (data == 2) {
-                        MostrarDatos();
                         $("#ModalSucAuditar").modal("hide");
+                        MostrarDatos();
                         $("#AlertError").fadeIn();
                         setTimeout(function () {
                             $("#AlertError").fadeOut();
-                        }, 2000);
-                    } else {
-                        $("#AlertUsuario").fadeIn();
-                        $("#ModalSucAuditar").modal("hide");
-                        setTimeout(function () {
-                            $("#AlertUsuario").fadeOut();
                         }, 2000);
                     }
                 }
@@ -280,21 +293,22 @@
         // Actualizar
         $(document).on("click", "#Editar", function () {
             var IdAuditar = $(this).data("id");
-            alert(IdAuditar);
+            // alert(IdAuditar);
             $.ajax({
-                url: "../Recursos/Datos_SucAuditar.php",
+                url: "../SQLServer/Datos_SucAuditar.php",
                 method: "POST",
                 data: {
                     IdAuditar: IdAuditar
                 },
                 dataType: "json",
                 success: function (data) {
-                    //alert(data);
+                    // alert(data);
                     $('#ModalSucAuditar').modal('show');
                     $('#IdAuditar').val(data.IdAuditar);
                     $('#Empresa').val(data.ClaveEmpresa);
-                    $('#Auditor').val(data.IdUsuario);
                     $('#Sucursal').val(data.Sucursal);
+                    $('#Almacen').val(data.Almacen);
+                    $('#Auditor').val(data.IdUsuario);
                     $('#Fecha').val(data.Fecha);
                     $('.modal-title').text("Actualizar datos");
                     $('#action').val("Edit");
@@ -322,7 +336,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "../Recursos/Eliminar_SucAuditar.php",
+                        url: "../SQLServer/Eliminar_SucAuditar.php",
                         data: {
                             IdAuditar: IdAuditar,
                         },
@@ -349,5 +363,6 @@
         });
 
     });
+
 </script>
 

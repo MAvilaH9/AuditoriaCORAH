@@ -121,7 +121,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                     <ul class="nav metismenu" id="menu1">
                         <li>
                             <a class="has-arrow" href="#">
-                                <span class="educate-icon educate-event icon-wrap"></span>
+                                <span class="educate-icon educate-data-table icon-wrap"></span>
+                                <!-- <span class="educate-icon educate-event icon-wrap"></span> -->
                                 <span class="mini-click-non">Auditar</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -150,9 +151,24 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                         <span class="mini-sub-pro external">Lista de Auditores</span>
                                     </a>
                                 </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#">
+                                <span class="educate-icon educate-event icon-wrap"></span>
+                                <span class="mini-click-non">Calendario</span>
+                            </a>
+                            <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" title="Suc. a auditar" href="../Interfaz/SucAuditar.php">
-                                        <span class="mini-sub-pro external">Calendario</span>
+                                    <a data-toggle="tooltip" title="Almacenes"
+                                        href="../Interfaz/Calendario_Almacen.php">
+                                        <span class="mini-sub-pro external">Almacén</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tooltip" title="Sucursales"
+                                        href="../Interfaz/Calendario_Sucursal.php">
+                                        <span class="mini-sub-pro external">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -350,7 +366,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                     <ul class="mobile-menu-nav">
                                         <br>
                                         <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">
+                                                Auditar
                                                 <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
@@ -374,16 +391,27 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     <a data-toggle="tooltip" tile="Auditores"
                                                         href="../Interfaz/Usuario.php">Lista de Auditores</a>
                                                 </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Calendario
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                            </a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" title="Suc. a auditar" href="../Interfaz/SucAuditar.php">
-                                                       Calendario
+                                                    <a data-toggle="tooltip" tile="Almacenes"
+                                                        href="../Interfaz/Calendario_Almacen.php">Almacen</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tooltip" title="Sucursales" 
+                                                        href="../Interfaz/Calendario_Sucursal.php">
+                                                       Sucursal
                                                     </a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a class="external" href="../Interfaz/Reportes.php" aria-expanded="false">
-                                                <span class="educate-icon educate-course icon-wrap sub-icon-mg" aria-hidden="true"></span> 
                                                 <span class="mini-click-non">Reportes</span>
                                             </a>
                                         </li>
