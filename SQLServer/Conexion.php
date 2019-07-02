@@ -20,10 +20,14 @@
 	$dbName = 'Auditoria';
 	$uid = '';
 	$pwd = '';
+
 	try{
+		
 		$pdo = new PDO("sqlsrv:server=$server; database = $dbName", $uid, $pwd);
 		$pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
 	}catch (PDOException $e) {
+
 		print "¡Error!: " . $e->getMessage() . "<br/>";
 		die($e -> getMessage());
 	}  

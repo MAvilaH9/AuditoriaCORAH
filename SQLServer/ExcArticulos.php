@@ -35,17 +35,25 @@
         $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Articulo')
             ->setCellValue('B1', 'Descripción')
-            ->setCellValue('C1', 'Precio Lista');
+            ->setCellValue('C1', 'Precio Lista')
+            ->setCellValue('D1', 'Stock')
+            ->setCellValue('E1', 'Cant. Piso')
+            ->setCellValue('F1', 'Cant. Piso')
+            ->setCellValue('G1', 'Diferencias');
         
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);	
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(50);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);	
 
         // Fuente de la primera fila en negrita
         $boldArray = array('font' => array('bold' => true,),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
         
         // Aplicar el formato
-        $rango='A1:C1';
+        $rango='A1:G1';
         $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray($boldArray);
 
         // Cambiar el nombre de hoja de cálculo
@@ -106,21 +114,30 @@
             ->setKeywords("office 2010")
             ->setCategory("Consultas");    
 
+
             // Titulos de celdas
-        $objPHPExcel->setActiveSheetIndex(0)
+            $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Articulo')
             ->setCellValue('B1', 'Descripción')
-            ->setCellValue('C1', 'Precio Lista');
+            ->setCellValue('C1', 'Precio Lista')
+            ->setCellValue('D1', 'Stock')
+            ->setCellValue('E1', 'Cant. Piso')
+            ->setCellValue('F1', 'Cant. Piso')
+            ->setCellValue('G1', 'Diferencias');
         
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(15);	
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(50);
-        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(15);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);	
 
         // Fuente de la primera fila en negrita
         $boldArray = array('font' => array('bold' => true,),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
         
         // Aplicar el formato
-        $rango='A1:C1';
+        $rango='A1:G1';
         $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray($boldArray);
 
         // Cambiar el nombre de hoja de cálculo

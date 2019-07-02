@@ -16,4 +16,13 @@
         readfile($ruta);
         exit;
     }
+
+    if (!empty($_REQUEST['id'])) {
+
+        $Archivo = $_REQUEST["id"];
+        $ruta = "../Excel/".$Archivo;
+        unlink($ruta);
+        echo 1;
+        exit;
+    }
 ?>

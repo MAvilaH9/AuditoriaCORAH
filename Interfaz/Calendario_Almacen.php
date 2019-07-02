@@ -38,13 +38,13 @@
                                 id="btn_agregar" data-target="#ModalAlmAuditar">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
                                     aria-hidden="true"></i></button>
                         </div>
-                        <!-- Estado -->
+                        <!-- EStado de navegaccion -->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
                                     <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Sucursales a auditar</span>
+                                <li><span class="bread-blod">Almacenes a auditar</span>
                                 </li>
                             </ul>
                         </div> <br>

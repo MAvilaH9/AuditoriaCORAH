@@ -9,15 +9,17 @@
 
     <div class="sparkline13-list">
         <div class="sparkline13-hd">
-            <div class="main-sparkline13-hd">
+            <div class="main-sparkline13-hd" style="text-align: center">
                 <h1>Lista <span class="table-project-n">de</span> Articulos</h1>
             </div>
         </div>
         <div class="sparkline13-graph">
             <div class="datatable-dashv1-list custom-datatable-overright" align="right">
 
-                <a class="btn btn-default align:center external" href="../SQLServer/ExcVentas.php?Almacen=<?php echo $Almacen;?>" title="Exportar excel"><i
-                        class="glyphicon glyphicon-export icon-share"></i></a>
+                <a class="btn btn-default align:center external" href="../SQLServer/ExcVentas.php?Almacen=<?php echo $Almacen;?>" title="Descargar excel">
+                    <!-- <i class="glyphicon glyphicon-export icon-share"></i> -->
+                    <i class="fa fa-cloud-download edu-check-icon"></i>
+                </a>
 
                 <table id="table" data-toggle="table" data-pagination="true" data-key-events="true" data-cookie="true"
                     data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
@@ -52,7 +54,8 @@
         </div>
     </div>
 
-<?php } else { ?>
+    <?php 
+    } else { ?>
     
     <div class="sparkline13-list">
         <div class="sparkline13-hd">
@@ -82,7 +85,8 @@
             </div>
         </div>
     </div>
-<?php } ?>
+    <?php 
+    } ?>
 
     <!-- data table JS
 	============================================ -->

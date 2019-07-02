@@ -35,10 +35,11 @@
                         <!-- Boton agragar -->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"
-                                id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
-                                    aria-hidden="true"></i></button>
+                                id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; 
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <!-- Estado -->
+                        
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
@@ -197,7 +198,14 @@
 
 <?php include "Templete/Footer.php"; ?>
 
+<script>
+    function MostrarDatos() {
+        $('#tabla_Usuario').load('../SQLServer/Tabla_Usuario.php');
+    }
+</script>
+
 <script type="text/javascript" language="javascript">
+
     $(document).ready(function () {
         MostrarDatos();
 
@@ -328,8 +336,3 @@
     });
 </script>
 
-<script>
-    function MostrarDatos() {
-        $('#tabla_Usuario').load('../SQLServer/Tabla_Usuario.php');
-    }
-</script>
