@@ -15,11 +15,11 @@
     $Resultado = $Sentencia->fetch();
 
     $Resultado['Usuario'];
-    $Resultado['Contrasenia'];
+    $Resultado['Contrasena'];
     $Resultado['IdPerfil'];
     $Resultado['ClaveEmpresa'];
 
-    if ($Contrasenia == $Resultado['Contrasenia'] && $Resultado['Usuario'] == $Usuario) {
+    if ($Contrasenia == $Resultado['Contrasena'] && $Resultado['Usuario'] == $Usuario) {
         $_SESSION['Usuario'] = $Resultado['Usuario'];
         $_SESSION['Perfil'] = $Resultado['IdPerfil'];
         $_SESSION['Empresa'] = $Resultado['ClaveEmpresa'];

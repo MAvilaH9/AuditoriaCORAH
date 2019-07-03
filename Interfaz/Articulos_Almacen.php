@@ -12,14 +12,13 @@ require "../SQLServer/Conexion.php";
                     <ul class="breadcome-menu">
                         <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a> <span class="bread-slash">/</span>
                         </li>
-                        <li><span class="bread-blod">Articulos Almacen</span>
+                        <li><span class="bread-blod">Articulos Sucursal</span>
                         </li>
                     </ul>
-                    <!-- Tìtulo -->
+                    <!--  Tìtulo -->
                     <ul id="myTabedu1" class="tab-review-design" style="text-align: center">
-                        <li class="active"><a>Articulos Almacen</a></li>
+                        <li class="active"><a>Articulos Sucursal</a></li>
                     </ul>
-
                     <!-- Formulario para la Consula  -->
                     <div id="myTabContent" class="tab-content custom-product-edit">
                         <div class="product-tab-list tab-pane fade active in" id="description">
@@ -27,27 +26,25 @@ require "../SQLServer/Conexion.php";
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad">
-                                            <form id="frmArticulosAlm"
-                                                class="dropzone dropzone-custom needsclick add-professors">
+                                            <form id="frmArticulosAlm" class="dropzone dropzone-custom needsclick add-professors">
                                                 <div class="row">
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                        <?php
-                                                            $Empresa=$_SESSION['Empresa'];
-                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM almacen WHERE ClaveEmpresa='$Empresa' ORDER BY Nombre ASC");
+                                                        <?php 
+                                                            // $Empresa=$_SESSION['Empresa'];                                                           
+                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Almacen ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
-                                                        <!-- Select Almacen -->
+                                                        <!-- Select Sucursal -->
                                                         <div class="form-group">
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label>Almacén</label>
+                                                                <label>Almacen</label>
                                                                 <select name="Almacen" id="Almacen"
                                                                     class="chosen-select" tabindex="-1">
-                                                                    <option value="none" selected="" disabled="">
-                                                                        Seleccione Almacen
-                                                                    </option>
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Almacen</option>
                                                                     <?php 
                                                                     foreach ($resultado as $dato) {
                                                                         echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
@@ -63,7 +60,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Text Categoria -->
                                                         <?php 
-                                                            $sqlcat= $pdo->prepare("SELECT IdCategoria, Categoria FROM categoria ORDER BY Categoria ASC");
+                                                            $sqlcat= $pdo->prepare("SELECT Categoria FROM ArtCat ORDER BY Categoria ASC");
                                                             $sqlcat->execute();
                                                             $resultadocat=$sqlcat->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -76,14 +73,14 @@ require "../SQLServer/Conexion.php";
                                                                         Seleccione Categoría</option>
                                                                     <?php 
                                                                     foreach ($resultadocat as $cat) {
-                                                                        echo '<option value="'.$cat['IdCategoria'].'">'.$cat['Categoria'].'</option>';
+                                                                        echo '<option value="'.$cat['Categoria'].'">'.$cat['Categoria'].'</option>';
                                                                     }?>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <!-- Select Familia -->
                                                         <?php 
-                                                            $sqlfam= $pdo->prepare("SELECT IdFamilia, Familia FROM familia ORDER BY Familia ASC");
+                                                            $sqlfam= $pdo->prepare("SELECT Familia FROM ArtFam ORDER BY Familia ASC");
                                                             $sqlfam->execute();
                                                             $resultadofam=$sqlfam->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -98,7 +95,7 @@ require "../SQLServer/Conexion.php";
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadofam as $fam) {
-                                                                        echo '<option value="'.$fam['IdFamilia'].'">'.$fam['Familia'].'</option>';
+                                                                        echo '<option value="'.$fam['Familia'].'">'.$fam['Familia'].'</option>';
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -106,7 +103,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Select Proveedor -->
                                                         <?php 
-                                                            $sqlpro= $pdo->prepare("SELECT IdProveedor, Nombre FROM proveedor ORDER BY Nombre ASC");
+                                                            $sqlpro= $pdo->prepare("SELECT Proveedor, Nombre FROM Prov ORDER BY Nombre ASC");
                                                             $sqlpro->execute();
                                                             $resultadopro=$sqlpro->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -116,12 +113,11 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Proveedor" id="Proveedor"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
-                                                                        Seleccione
-                                                                        Proveedor
+                                                                        Seleccione Proveedor
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadopro as $pro) {
-                                                                        echo '<option value="'.$pro['IdProveedor'].'">'.$pro['Nombre'].'</option>';
+                                                                        echo '<option value="'.$pro['Proveedor'].'">'.$pro['Nombre'].'</option>';
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -148,7 +144,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Select Rama -->
                                                         <?php 
-                                                            $sqlram= $pdo->prepare("SELECT IdRama, Nombre FROM rama ORDER BY Nombre ASC");
+                                                            $sqlram= $pdo->prepare("SELECT Rama, Descripcion FROM Rama ORDER BY Descripcion ASC");
                                                             $sqlram->execute();
                                                             $resultadoram=$sqlram->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -163,7 +159,7 @@ require "../SQLServer/Conexion.php";
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadoram as $ram) {
-                                                                        echo '<option value="'.$ram['IdRama'].'">'.$ram['Nombre'].'</option>';
+                                                                        echo '<option value="'.$ram['Rama'].'">'.$ram['Descripcion'].'</option>';
                                                                     }
 
                                                                     ?>
@@ -172,7 +168,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Select Grupo -->
                                                         <?php 
-                                                            $sqlgpo= $pdo->prepare("SELECT IdGrupo, Grupo FROM grupo ORDER BY Grupo ASC");
+                                                            $sqlgpo= $pdo->prepare("SELECT Grupo FROM ArtGrupo ORDER BY Grupo ASC");
                                                             $sqlgpo->execute();
                                                             $resultadogpo=$sqlgpo->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -182,11 +178,12 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Grupo" id="Grupo" class="chosen-select"
                                                                     tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
-                                                                        Seleccione Grupo
+                                                                        Seleccione
+                                                                        Grupo
                                                                     </option>
                                                                     <?php
                                                                     foreach ($resultadogpo as $gpo) {
-                                                                        echo '<option value="'.$gpo['IdGrupo'].'">'.$gpo['Grupo'].'</option>';
+                                                                        echo '<option value="'.$gpo['Grupo'].'">'.$gpo['Grupo'].'</option>';
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -194,7 +191,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Select Fabricante -->
                                                         <?php 
-                                                            $sqlfab= $pdo->prepare("SELECT IdFabricante, Fabricante FROM fabricante ORDER BY Fabricante ASC");
+                                                            $sqlfab= $pdo->prepare("SELECT Fabricante FROM Fabricante ORDER BY Fabricante ASC");
                                                             $sqlfab->execute();
                                                             $resultadofab=$sqlfab->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -204,11 +201,12 @@ require "../SQLServer/Conexion.php";
                                                                 <select name="Fabricante" id="Fabricante"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
-                                                                        Seleccione Fabricante
+                                                                        Seleccione
+                                                                        Fabricante
                                                                     </option>
                                                                     <?php
                                                                     foreach ($resultadofab as $fab) {
-                                                                        echo '<option value="'.$fab['IdFabricante'].'">'.$fab['Fabricante'].'</option>';
+                                                                        echo '<option value="'.$fab['Fabricante'].'">'.$fab['Fabricante'].'</option>';
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -237,7 +235,7 @@ require "../SQLServer/Conexion.php";
                                                                     <button type="button"
                                                                         class="btn btn-custon-rounded-two btn-danger"
                                                                         data-toggle="modal"
-                                                                        data-target="#CancelarArticulosAlm">
+                                                                        data-target="#CancelarArticulosSuc">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -272,9 +270,9 @@ require "../SQLServer/Conexion.php";
 
 
 
-<!-- Modal Cancelar Consulta Almacen -->
+<!-- Modal Cancelar Consulta Sucursal -->
 
-<div id="CancelarArticulosAlm" class="modal modal-edu-general FullColor-popup-DangerModal fade" role="dialog">
+<div id="CancelarArticulosSuc" class="modal modal-edu-general FullColor-popup-DangerModal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-close-area modal-close-df">
@@ -287,11 +285,13 @@ require "../SQLServer/Conexion.php";
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Index.php" class="external">Aceptar</a>
+                <a href="Index.php" class="external" >Aceptar</a>
             </div>
         </div>
     </div>
 </div>
+
+<?php include_once "Templete/Footer.php"; ?>
 
 <!-- Combos Dinamicos -->
 <script language="javascript">
@@ -326,8 +326,9 @@ require "../SQLServer/Conexion.php";
     // });
 </script>
 
-<!-- Envia los datos de formulario para la consulta -->
+<!-- Envia formulario para realizar la consulta -->
 <script type="text/javascript" language="javascript">
+
     $(document).ready(function () {
 
         $(document).on('submit', '#frmArticulosAlm', function (e) {
@@ -350,6 +351,7 @@ require "../SQLServer/Conexion.php";
             });
         });
     });
+    
 </script>
 
 <!-- Boton Aceptar del modal cancelar consulta-->
@@ -364,6 +366,6 @@ require "../SQLServer/Conexion.php";
         
         $("a.external").off('click');
     });
+
 </script>
 
-<?php include_once "Templete/Footer.php"; ?>

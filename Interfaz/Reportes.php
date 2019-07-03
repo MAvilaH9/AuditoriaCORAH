@@ -41,7 +41,7 @@
         // Eliminar
         $(document).on("click", "#Eliminar", function() {
             var id = $(this).data("id");
-            alert(id);
+            // alert(id);
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Será eliminado el archivo!",

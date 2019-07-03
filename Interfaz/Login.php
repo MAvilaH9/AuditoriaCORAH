@@ -82,8 +82,8 @@ session_start();
             <div class="content-error">
                 <div class="hpanel">
                     <div class="panel-body"> <br>
-					<!-- Formulario -->
-                        <form action="../SQLServer/Login.php" id="loginForm">
+					            <!-- Formulario -->
+                        <form action="../Recursos/Login.php" id="loginForm">
                             <div class="form-group">
                                 <label class="control-label" for="username">Usuario</label>
                                 <input type="text" placeholder="Ejemplo: MAvila"

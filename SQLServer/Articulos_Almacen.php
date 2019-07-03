@@ -2,8 +2,10 @@
     session_start();
     include "Conexion.php";
     if (isset($_POST['Almacen'])) {
+        
         $Almacen=$_POST['Almacen'];
-        $sqla= $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
+        $sqla= $pdo->prepare("SELECT a.Articulo, a.Descripcion1, a.PrecioLista FROM Art a INNER JOIN ArtAlm al ON 
+        a.Articulo=al.Articulo WHERE al.Almacen='$Almacen' ORDER BY Articulo ASC");
         $sqla->execute();
         $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 

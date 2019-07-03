@@ -94,7 +94,7 @@
         $fecha= date("d/m/Y");
         $Almacen=$_GET['Almacen'];
 
-        $sqlAlm = $pdo->prepare("SELECT Nombre FROM Almacen where Almacen='$Almacen'");
+        $sqlAlm = $pdo->prepare("SELECT Nombre FROM Alm where Almacen='$Almacen'");
         $sqlAlm -> execute(array($Almacen));
         $resultadoAlm = $sqlAlm->fetch();
         $NombAlm=$resultadoAlm['Nombre'];
@@ -144,7 +144,8 @@
         $objPHPExcel->getActiveSheet()->setTitle('Articulos');
 
         
-        $sqla = $pdo->prepare("SELECT * FROM Articulo WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
+        $sqla = $pdo->prepare("SELECT a.Articulo, a.Descripcion1, a.PrecioLista FROM Art a INNER JOIN ArtAlm al ON 
+        a.Articulo=al.Articulo WHERE al.Almacen='$Almacen' ORDER BY Articulo ASC");
         $sqla->execute();
 
         $i = 2;  

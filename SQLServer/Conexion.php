@@ -17,7 +17,7 @@
 // Conexion PDO
 
 	$server = 'MAVILAHU\SQLEXPRESS';
-	$dbName = 'Auditoria';
+	$dbName = 'Valsi4500v4';
 	$uid = '';
 	$pwd = '';
 
