@@ -91,6 +91,10 @@
     <link rel="stylesheet" href="../css/bootstrap-table.css">
     <link rel="stylesheet" href="../css/bootstrap-editable.css">
 
+    <!-- Preloader CSS
+	============================================ -->
+    <link rel="stylesheet" href="../css/preloader-style.css">
+
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="../css/style.css">
@@ -127,15 +131,15 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" title="Articulos Almacen"
+                                    <a data-toggle="tooltip" title="Articulos Almacen" class="external"
                                         href="../Interfaz/Articulos_Almacen.php">
-                                        <span class="mini-sub-pro external">Almacén</span>
+                                        <span class="mini-sub-pro">Almacén</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tooltip" title="Articulos Sucursal"
+                                    <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
                                         href="../Interfaz/Articulos_Sucursal.php">
-                                        <span class="mini-sub-pro external">Sucursal</span>
+                                        <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -143,12 +147,13 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                         <li id="removable">
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <span class="educate-icon educate-professor icon-wrap"></span>
-                                <span class="mini-click-non external">Auditores</span>
+                                <span class="mini-click-non">Auditores</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" title="Auditores" href="../Interfaz/Usuario.php">
-                                        <span class="mini-sub-pro external">Lista de Auditores</span>
+                                    <a data-toggle="tooltip" title="Auditores" class="external"
+                                        href="../Interfaz/Usuario.php">
+                                        <span class="mini-sub-pro">Lista de Auditores</span>
                                     </a>
                                 </li>
                             </ul>
@@ -160,15 +165,15 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" title="Almacenes"
+                                    <a data-toggle="tooltip" title="Almacenes" class="external"
                                         href="../Interfaz/Calendario_Almacen.php">
-                                        <span class="mini-sub-pro external">Almacén</span>
+                                        <span class="mini-sub-pro">Almacén</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tooltip" title="Sucursales"
+                                    <a data-toggle="tooltip" title="Sucursales" class="external"
                                         href="../Interfaz/Calendario_Sucursal.php">
-                                        <span class="mini-sub-pro external">Sucursal</span>
+                                        <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -205,13 +210,13 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" tile="Articulos Almacen"
+                                    <a data-toggle="tooltip" tile="Articulos Almacen" class="external"
                                         href="../Interfaz/Articulos_Almacen.php">
-                                        <span class="mini-sub-pro external">Almacén</span>
+                                        <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a data-toggle="tooltip" tile="Articulos Sucursal"
+                                    <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
                                         href="../Interfaz/Articulos_Sucursal.php">
-                                        <span class="mini-sub-pro external">Sucursal</span>
+                                        <span class="mini-sub-pro">Sucursal</span>
                                     </a>
                                 </li>
                             </ul>
@@ -372,11 +377,11 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Almacen"
+                                                    <a data-toggle="tooltip" tile="Articulos Almacen" class="external"
                                                         href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Sucursal"
+                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
                                                         href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
@@ -388,7 +393,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Auditores"
+                                                    <a data-toggle="tooltip" tile="Auditores" class="external"
                                                         href="../Interfaz/Usuario.php">Lista de Auditores</a>
                                                 </li>
                                             </ul>
@@ -399,11 +404,11 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Almacenes"
+                                                    <a data-toggle="tooltip" tile="Almacenes" class="external"
                                                         href="../Interfaz/Calendario_Almacen.php">Almacen</a>
                                                 </li>
                                                 <li>
-                                                    <a data-toggle="tooltip" title="Sucursales" 
+                                                    <a data-toggle="tooltip" title="Sucursales" class="external"
                                                         href="../Interfaz/Calendario_Sucursal.php">
                                                        Sucursal
                                                     </a>
@@ -433,16 +438,16 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                     <ul class="mobile-menu-nav">
                                         <br>
                                         <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditar
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#" class="external">Auditar
                                                 <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                                 <li>
                                                     <a data-toggle="tooltip" tile="Articulos Almacen"
-                                                        href="../Interfaz/Articulos_Almacen.php">Almacén</a>
+                                                        href="../Interfaz/Articulos_Almacen.php" class="external">Almacén</a>
                                                 </li>
                                                 <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Sucursal"
+                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
                                                         href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
@@ -459,7 +464,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             <br>
         </div>
 
-                <!-- Script de botons a -->
+    <!-- Script de botons a -->
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -470,7 +475,6 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             });
             
             $("a.external").off('click');
-
         });
     </script>
 

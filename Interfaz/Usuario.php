@@ -1,6 +1,6 @@
 <?php 
     include "Templete/Header.php"; 
-    require_once ("../SQLServer/Conexion.php");
+    require_once ("../SQLServer/Conexion.1.php");
 ?>
 
 <!-- Static Table Start -->
@@ -198,7 +198,7 @@
 
 <?php include "Templete/Footer.php"; ?>
 
-<script>
+<script type="text/javascript" language="javascript">
     function MostrarDatos() {
         $('#tabla_Usuario').load('../SQLServer/Tabla_Usuario.php');
     }

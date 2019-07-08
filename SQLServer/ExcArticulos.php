@@ -131,7 +131,7 @@
         $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);	
         $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(15);	
         $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);	
-        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);	
+        $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);	
 
         // Fuente de la primera fila en negrita
         $boldArray = array('font' => array('bold' => true,),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
@@ -144,8 +144,9 @@
         $objPHPExcel->getActiveSheet()->setTitle('Articulos');
 
         
-        $sqla = $pdo->prepare("SELECT a.Articulo, a.Descripcion1, a.PrecioLista FROM Art a INNER JOIN ArtAlm al ON 
-        a.Articulo=al.Articulo WHERE al.Almacen='$Almacen' ORDER BY Articulo ASC");
+        $sqla = $pdo->prepare("SELECT a.Articulo, a.Descripcion1, a.PrecioLista, ae.Inventario
+        FROM ArtExistenciaInv ae INNER JOIN Art a ON
+        a.Articulo=ae.Articulo WHERE ae.Almacen='$Almacen' ORDER BY Articulo ASC");
         $sqla->execute();
 
         $i = 2;  
@@ -154,7 +155,8 @@
             $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A'.$i, $fila['Articulo'])
                 ->setCellValue('B'.$i, $fila['Descripcion1'])
-                ->setCellValue('C'.$i, $fila['PrecioLista']);
+                ->setCellValue('C'.$i, $fila['PrecioLista'])
+                ->setCellValue('D'.$i, $fila['Inventario']);
             $i++;
         }
             

@@ -12,12 +12,12 @@ require "../SQLServer/Conexion.php";
                     <ul class="breadcome-menu">
                         <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a> <span class="bread-slash">/</span>
                         </li>
-                        <li><span class="bread-blod">Articulos Sucursal</span>
+                        <li><span class="bread-blod">Articulos Almacen</span>
                         </li>
                     </ul>
                     <!--  Tìtulo -->
                     <ul id="myTabedu1" class="tab-review-design" style="text-align: center">
-                        <li class="active"><a>Articulos Sucursal</a></li>
+                        <li class="active"><a>Articulos Almacen</a></li>
                     </ul>
                     <!-- Formulario para la Consula  -->
                     <div id="myTabContent" class="tab-content custom-product-edit">
@@ -33,16 +33,16 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <?php 
                                                             // $Empresa=$_SESSION['Empresa'];                                                           
-                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Almacen ASC");
+                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
-                                                        <!-- Select Sucursal -->
+                                                        <!-- Select Almacen -->
                                                         <div class="form-group">
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label>Almacen</label>
                                                                 <select name="Almacen" id="Almacen"
-                                                                    class="chosen-select" tabindex="-1">
+                                                                    class="chosen-select" tabindex="1">
                                                                     <option value="none" selected="" disabled="">Seleccione
                                                                         Almacen</option>
                                                                     <?php 
@@ -55,7 +55,7 @@ require "../SQLServer/Conexion.php";
                                                         <!-- Text Articulo -->
                                                         <div class="form-group">
                                                             <label class="login2">Del Artículo</label>
-                                                            <input name="Articuloi" id="Articuloi" type="text"
+                                                            <input name="Articuloi" id="Articuloi" type="text" tabindex="3"
                                                                 class="form-control" placeholder="Ingrese el artículo">
                                                         </div>
                                                         <!-- Text Categoria -->
@@ -68,7 +68,7 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Categoría</label>
                                                                 <select name="Categoria" id="Categoria"
-                                                                    class="chosen-select" tabindex="-1">
+                                                                    class="chosen-select" tabindex="5">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione Categoría</option>
                                                                     <?php 
@@ -88,7 +88,7 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Familia</label>
                                                                 <select name="Familia" id="Familia"
-                                                                    class="chosen-select" tabindex="-1">
+                                                                    class="chosen-select" tabindex="7">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione
                                                                         Familia
@@ -103,7 +103,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Select Proveedor -->
                                                         <?php 
-                                                            $sqlpro= $pdo->prepare("SELECT Proveedor, Nombre FROM Prov ORDER BY Nombre ASC");
+                                                            $sqlpro= $pdo->prepare("SELECT Nombre FROM Prov ORDER BY Nombre ASC");
                                                             $sqlpro->execute();
                                                             $resultadopro=$sqlpro->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -111,13 +111,13 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Proveedor</label>
                                                                 <select name="Proveedor" id="Proveedor"
-                                                                    class="chosen-select" tabindex="-1">
+                                                                    class="chosen-select" tabindex="9">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione Proveedor
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadopro as $pro) {
-                                                                        echo '<option value="'.$pro['Proveedor'].'">'.$pro['Nombre'].'</option>';
+                                                                        echo '<option value="'.$pro['Nombre'].'">'.$pro['Nombre'].'</option>';
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -130,7 +130,7 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Excluir Planeación</label>
                                                                 <select name="Excluir" id="Excluir"
-                                                                    class="chosen-select" tabindex="-1">
+                                                                    class="chosen-select" tabindex="2">
                                                                     <option value="0" Selected>Si</option>
                                                                     <option value="1">No</option>
                                                                 </select>
@@ -139,12 +139,12 @@ require "../SQLServer/Conexion.php";
                                                         <!-- Select Articulo -->
                                                         <div class="form-group">
                                                             <label class="login2">Al Artículo</label>
-                                                            <input name="Articulof" id="Articulof" type="text"
+                                                            <input name="Articulof" id="Articulof" type="text" tabindex="4"
                                                                 class="form-control" placeholder="Ingrese el artículo">
                                                         </div>
                                                         <!-- Select Rama -->
                                                         <?php 
-                                                            $sqlram= $pdo->prepare("SELECT Rama, Descripcion FROM Rama ORDER BY Descripcion ASC");
+                                                            $sqlram= $pdo->prepare("SELECT Cuenta FROM ArtRama ORDER BY Cuenta ASC");
                                                             $sqlram->execute();
                                                             $resultadoram=$sqlram->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -152,14 +152,14 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Rama</label>
                                                                 <select name="Rama" id="Rama" class="chosen-select"
-                                                                    tabindex="-1">
+                                                                    tabindex="6">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione
                                                                         Rama
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadoram as $ram) {
-                                                                        echo '<option value="'.$ram['Rama'].'">'.$ram['Descripcion'].'</option>';
+                                                                        echo '<option value="'.$ram['Cuenta'].'">'.$ram['Cuenta'].'</option>';
                                                                     }
 
                                                                     ?>
@@ -176,7 +176,7 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Grupo</label>
                                                                 <select name="Grupo" id="Grupo" class="chosen-select"
-                                                                    tabindex="-1">
+                                                                    tabindex="8">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione
                                                                         Grupo
@@ -199,7 +199,7 @@ require "../SQLServer/Conexion.php";
                                                             <div class="chosen-select-single mg-b-20">
                                                                 <label class="login2">Fabricante</label>
                                                                 <select name="Fabricante" id="Fabricante"
-                                                                    class="chosen-select" tabindex="-1">
+                                                                    class="chosen-select" tabindex="10">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione
                                                                         Fabricante
@@ -254,6 +254,24 @@ require "../SQLServer/Conexion.php";
                                                     </div>
                                                 </div>
                                             </form>
+                                            <!-- Barra de progreso -->
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <div id="Progreso" class="preloader-single shadow-inner res-mg-b-30" style="display:none">
+                                                        <div class="ts_preloading_box">
+                                                            <div id="ts-preloader-absolute14">
+                                                                <div class="tsperloader14" id="tsperloader14_one"></div>
+                                                                <div class="tsperloader14" id="tsperloader14_two"></div>
+                                                                <div class="tsperloader14" id="tsperloader14_three"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -267,7 +285,6 @@ require "../SQLServer/Conexion.php";
         </div>
     </div>
 </div>
-
 
 
 <!-- Modal Cancelar Consulta Sucursal -->
@@ -292,6 +309,8 @@ require "../SQLServer/Conexion.php";
 </div>
 
 <?php include_once "Templete/Footer.php"; ?>
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 <!-- Combos Dinamicos -->
 <script language="javascript">
@@ -341,13 +360,24 @@ require "../SQLServer/Conexion.php";
                 data: new FormData(this),
                 contentType: false,
                 processData: false,
+                xhr: function(){
+                    // obtener el objeto XmlHttpRequest nativo
+                    var xhr = $.ajaxSettings.xhr() ;
+                    // añadirle un controlador para el evento onprogress
+                    xhr.onprogress = function(evt){ 
+                        $("#Progreso").show();
+                        $("#frmArticulosAlm").hide();
+                    };
+                    // devolvemos el objeto xhr modificado
+                    return xhr ;
+                },
                 success: function (resp) {
                     // alert(resp);
                     $('#frmArticulosAlm')[0].reset();
                     $('#frmArticulosAlm').hide();
                     $('#Titulo').hide();
                     $('#Resultado').html(resp);
-                }
+                },
             });
         });
     });
