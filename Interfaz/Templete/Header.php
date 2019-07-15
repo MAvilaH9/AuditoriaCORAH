@@ -298,6 +298,11 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                         Subir Archivos
                                                     </a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a href="../Interfaz/Formatos.php" class="nav-link external">
+                                                        Formatos
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -360,7 +365,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
 
             <!-- Mobile Menu start -->
             <?php
-            if (!empty($_SESSION['Perfil'] == 1)) {?>
+            if (!empty($_SESSION['Perfil'] == 1 )) { ?>
             <!-- Session Administardor -->
             <div class="mobile-menu-area">
                 <div class="container">

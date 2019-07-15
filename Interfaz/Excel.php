@@ -13,7 +13,7 @@
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
                                     <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Reportes</span>
+                                <li><span class="bread-blod">Subir Reportes</span>
                                 </li>
                             </ul>
                         </div>

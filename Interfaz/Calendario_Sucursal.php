@@ -1,6 +1,6 @@
 <?php 
     include "Templete/Header.php"; 
-    require_once ("../SQLServer/Conexion.php");
+    require_once ("../SQLServer/Conexion.1.php");
 ?>
 
 <!-- Static Table Start -->

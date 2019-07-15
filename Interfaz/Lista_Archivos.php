@@ -16,7 +16,7 @@
                 <tr>
                     <td> <i class="fa fa-file-excel-o text-success"></i> &nbsp;<?php echo $archivo ?></td>
                     <td>
-                        <a title="Descargar" class="pd-setting-ed external" href="Descarga.php?Archivo=<?php echo $archivo; ?>">
+                        <a title="Descargar" class="pd-setting-ed external" href="Descarga_Reportes.php?Archivo=<?php echo $archivo; ?>">
                             <i class="fa fa-cloud-download edu-check-icon" aria-hidden="true"></i>
                         </a>
                     </td>

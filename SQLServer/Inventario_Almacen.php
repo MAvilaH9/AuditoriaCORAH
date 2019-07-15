@@ -1542,7 +1542,7 @@
             $Almacen=$_POST['Almacen'];
 
             $sqla= $pdo->prepare("SELECT a.Articulo, a.Descripcion1, a.PrecioLista, va.Disponible
-            FROM ArtDisponibleReservado va  INNER JOIN Art a ON a.Articulo=va.Articulo 
+            FROM ArtDisponibleReservado va INNER JOIN Art a ON a.Articulo=va.Articulo 
             inner join ArtCat cat on a.Categoria=cat.Categoria
             inner join ArtProv ap on a.Articulo=ap.Articulo
             inner join Prov p on ap.Proveedor=p.Proveedor

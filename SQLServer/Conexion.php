@@ -15,6 +15,8 @@
 // }
 
 // Conexion PDO
+	// session_start();
+	// $_SESSION['base']=$_POST['Empresa'];
 
 	$server = 'MAVILAHU\SQLEXPRESS';
 	$dbName = 'Valsi4500v4';
@@ -22,7 +24,6 @@
 	$pwd = '';
 
 	try{
-		
 		$pdo = new PDO("sqlsrv:server=$server; database = $dbName", $uid, $pwd);
 		$pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 

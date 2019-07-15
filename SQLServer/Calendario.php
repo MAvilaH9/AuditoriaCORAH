@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require "Conexion.php";
+    require "Conexion.1.php";
 
     if (isset($_POST['operation'])) {
 

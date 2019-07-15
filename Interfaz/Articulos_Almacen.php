@@ -310,7 +310,7 @@ require "../SQLServer/Conexion.php";
 
 <?php include_once "Templete/Footer.php"; ?>
 
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 <!-- Combos Dinamicos -->
 <script language="javascript">

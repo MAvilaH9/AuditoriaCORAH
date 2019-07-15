@@ -9,6 +9,13 @@
                     <div class="sparkline13-graph">
                         <div class="main-sparkline13-hd" style="text-align: center">
                             <h1>Archivos <span class="table-project-n">de</span> Reportes</h1>
+                            <ul class="breadcome-menu">
+                                <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
+                                    <span class="bread-slash">/</span>
+                                </li>
+                                <li><span class="bread-blod">Reportes</span>
+                                </li>
+                            </ul>
                         </div> <br>
 
                         <div id="Lista" class="datatable-dashv1-list custom-datatable-overright">
@@ -55,7 +62,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "Descarga.php",
+                        url: "Descarga_Reportes.php",
                         data: {
                             id: id,
                         },

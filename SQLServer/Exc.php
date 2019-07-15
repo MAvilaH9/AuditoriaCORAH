@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "Conexion.php";
+    require_once "Conexion.1.php";
     require_once "../ClasesExcel/PHPExcel/IOFactory.php";
     $usuario = $_SESSION['Usuario'];
 
@@ -82,6 +82,9 @@
                 $objPHPExcel->setActiveSheetIndex(0);
     
                 $numfilas = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+
+                // $rango;
+                // $rangoCell = $objPHPExcel->getActiveSheet()->rangeToArray($rango);
     
                 for ($i=2; $i <= $numfilas ; $i++) { 
 
@@ -93,8 +96,8 @@
                     $emp = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue(); $emp=strtoupper($emp);
                     $per = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue(); $per=strtoupper($per);
 
-                    $sql_agregar = "INSERT INTO usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) 
-                    VALUE ('$nombre','$apat','$amat','$us','$contra','$emp','$per')";
+                    $sql_agregar = "INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) 
+                    VALUES ('$nombre','$apat','$amat','$us','$contra','$emp','$per')";
                     $sentencia_agregar = $pdo->prepare($sql_agregar);
                     $sentencia_agregar->execute(array($sql_agregar));
 

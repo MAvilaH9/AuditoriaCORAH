@@ -1,9 +1,10 @@
 <?php
 session_start();
-
+// require_once "../SQLServer/Conexion.1.php";
 // if (isset($_SESSION['Usuario'])) {
 // }else{
 // }
+
 ?>
 
 <!doctype html>
@@ -85,23 +86,48 @@ session_start();
             <!-- Formulario -->
             <form action="../SQLServer/Login.php" method="Post" id="loginForm">
               <div class="form-group">
+                <!-- Select Empresa -->
+                <?php 
+                    // $sqle= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM Empresa ORDER BY Nombre");
+                    // $sqle->execute();
+                    // $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
+                  ?>
+                <div class="form-group">
+                  <label class="login2">Selecione Empresa</label>
+                  <select name="Empresa" id="Empresa" class="form-control" required>
+                    <option selected disabled>Seleccione...</option>
+                    <option value="Valsi4500v4">Valsi4500v4</option>
+                    <option value="Auditoria" >Auditoria</option>
+                    <?php
+                    // foreach ($resultadoe as $date) { ?>
+                    <!-- 
+                      <option value="<?php //echo $date['ClaveEmpresa']; ?>"><?php //echo $date['Nombre']; ?></option>
+                       -->
+                    <?php
+                    // }
+                    ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="control-label" for="username">Usuario</label>
                 <input type="text" placeholder="Ejemplo: MAvila" title="Por favor, ingrese su nombre de usuario"
-                  required="" value="" name="Usuario" id="Usuario" class="form-control">
-                <span class="help-block small">Tu nombre de usuario único para ingresar</span>
+                   value="" name="Usuario" id="Usuario" class="form-control">
+                   <input type="text" name="" id="Base">
+                <!-- <span class="help-block small">Tu nombre de usuario único para ingresar</span> -->
               </div>
               <div class="form-group">
                 <label class="control-label" for="password">Contraseña</label>
                 <div class="input-group custom-go-button">
                   <input type="password" name="Contrasenia" id="Contrasenia" class="form-control" placeholder="******"
-                    required="" value="" maxlength="40">
+                     value="" maxlength="40">
                   <span class="input-group-btn">
                     <button class="btn btn-primary " type="button" onclick="mostrarContrasena()"><span
                         class="glyphicon glyphicon-eye-close icon"></span>
                     </button>
                   </span>
                 </div>
-                <span class="help-block small">Ingresa tu contraseña de manera correcta</span>
+                <!-- <span class="help-block small">Ingresa tu contraseña de manera correcta</span> -->
               </div>
               <!-- Alert error -->
               <?php
@@ -137,6 +163,8 @@ session_start();
       }
     }
   </script>
+
+  
 
   <!-- jquery
 		============================================ -->
@@ -188,4 +216,21 @@ session_start();
   <!-- <script src="../js/tawk-chat.js"></script> -->
 </body>
 
+<script>
+  $(document).ready(function () {
+    $("#Empresa").change(function (e) { 
+      e.preventDefault();
+      var Empresa= $('#Empresa option:selected').html();
+      // alert(Empresa);  
+      $.ajax({
+        type: "Post",
+        data: {Empresa : Empresa},
+        dataType: "dataType",
+        success: function (response) {
+        }
+      });
+    });
+    return false;
+  });
+</script>
 </html>

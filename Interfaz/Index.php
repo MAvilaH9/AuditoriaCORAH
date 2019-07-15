@@ -1,13 +1,6 @@
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script>
-    $(document).ready(function () {
-        // $('#ModalInicio').modal('show');
-    });
-</script>
 
-<?php include_once "Templete/Header.php"; ?>
+<?php include_once "Templete/Header.php";
+echo $_SESSION['base'];?>
 <!-- Titulo -->
 <div class="breadcome-area">
     <div class="container-fluid">
@@ -30,6 +23,7 @@
 <div class="widgets-programs-area">
     <div class="container-fluid">
         <div class="row">
+
             <!-- Integridad -->
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                 <div class="hpanel widget-int-shape responsive-mg-b-30">

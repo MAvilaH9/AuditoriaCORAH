@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "Conexion.php";
+    require_once "Conexion.1.php";
     
     $sql= $pdo->prepare("SELECT a.IdAuditar, a.Fecha, e.Nombre as Empresa, al.Nombre as Almacen,
     CONCAT(u.ApellidoPaterno,' ', u.ApellidoMaterno,' ', u.Nombres) as Auditor

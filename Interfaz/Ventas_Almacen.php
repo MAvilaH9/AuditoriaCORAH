@@ -35,7 +35,8 @@ require "../SQLServer/Conexion.php";
                                                         <!-- Select Almacen -->
                                                         <?php 
                                                             // $Empresa = $_SESSION['Empresa'];
-                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Nombre ASC");
+                                                            $sql= $pdo->prepare("SELECT a.Almacen, a.Nombre from Alm a inner join AlmVenta av on
+                                                            a.Almacen=av.Almacen ORDER BY Nombre ASC");
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -98,7 +99,7 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                         <!-- Select Proveedor -->
                                                         <?php 
-                                                            $sqlpro= $pdo->prepare("SELECT Nombre FROM Prov ORDER BY Nombre ASC");
+                                                            $sqlpro= $pdo->prepare("SELECT Proveedor, Nombre FROM Prov ORDER BY Nombre ASC");
                                                             $sqlpro->execute();
                                                             $resultadopro=$sqlpro->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
@@ -111,7 +112,7 @@ require "../SQLServer/Conexion.php";
                                                                     </option>
                                                                     <?php 
                                                                     foreach ($resultadopro as $pro) {
-                                                                        echo '<option value="'.$pro['Nombre'].'">'.$pro['Nombre'].'</option>';
+                                                                        echo '<option value="'.$pro['Proveedor'].'">'.$pro['Nombre'].'</option>';
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -236,6 +237,24 @@ require "../SQLServer/Conexion.php";
                                                     </div>
                                                 </div>
                                             </form>
+                                            <!-- Barra de progreso -->
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <div id="Progreso" class="preloader-single shadow-inner res-mg-b-30" style="display:none">
+                                                        <div class="ts_preloading_box">
+                                                            <div id="ts-preloader-absolute14">
+                                                                <div class="tsperloader14" id="tsperloader14_one"></div>
+                                                                <div class="tsperloader14" id="tsperloader14_two"></div>
+                                                                <div class="tsperloader14" id="tsperloader14_three"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -272,6 +291,9 @@ require "../SQLServer/Conexion.php";
         </div>
     </div>
 </div>
+
+<?php include_once "Templete/Footer.php"; ?>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 <!-- Script Combos Dinamicos -->
 <script language="javascript">
@@ -323,6 +345,17 @@ require "../SQLServer/Conexion.php";
                 data: new FormData(this),
                 contentType: false,
                 processData: false,
+                xhr: function(){
+                    // obtener el objeto XmlHttpRequest nativo
+                    var xhr = $.ajaxSettings.xhr() ;
+                    // añadirle un controlador para el evento onprogress
+                    xhr.onprogress = function(evt){ 
+                        $("#Progreso").show();
+                        $("#frmVentasAlm").hide();
+                    };
+                    // devolvemos el objeto xhr modificado
+                    return xhr ;
+                },
                 success: function (resp) {
                     // alert(resp);
                     $('#frmVentasAlm')[0].reset();
@@ -350,4 +383,3 @@ require "../SQLServer/Conexion.php";
     });
 </script>
 
-<?php include_once "Templete/Footer.php"; ?>
