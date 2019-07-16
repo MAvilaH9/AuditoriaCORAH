@@ -18,7 +18,7 @@
                             </ul>
                         </div>
                         <?php
-                        if ($_SESSION['IdPerfil']==1 || $_SESSION['Perfil']==1) { ?>
+                        if ($_SESSION['Perfil']==1) { ?>
                         <!-- Boton agragar -->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"

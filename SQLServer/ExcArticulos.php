@@ -110,7 +110,7 @@
             ->setLastModifiedBy("Auditoria")
             ->setTitle("Office 2010 XLSX Documento de Reporte")
             ->setSubject("Office 2010 XLSX Documento de Reporte")
-             ->setDescription("Documento de listado de articulos de sucursal"."$NombAlm")
+            ->setDescription("Documento de listado de articulos de sucursal"."$NombAlm")
             ->setKeywords("office 2010")
             ->setCategory("Consultas");    
 

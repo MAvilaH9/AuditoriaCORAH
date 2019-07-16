@@ -1,6 +1,6 @@
 <?php session_start();
 
-    if ($_SESSION['IdPerfil']== 1 || $_SESSION['Perfil']==1) { ?>
+    if ($_SESSION['Perfil']==1) { ?>
     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true"
         data-cookie="true" data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
         <thead>

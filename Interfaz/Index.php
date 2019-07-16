@@ -1,6 +1,5 @@
 
-<?php include_once "Templete/Header.php";
-echo $_SESSION['base'];?>
+<?php include_once "Templete/Header.php";?>
 <!-- Titulo -->
 <div class="breadcome-area">
     <div class="container-fluid">

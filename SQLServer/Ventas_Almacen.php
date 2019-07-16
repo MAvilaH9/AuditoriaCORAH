@@ -2,6 +2,8 @@
     include "Conexion.php";
 
     if (!empty($_POST['Almacen'])) {
+        
+        $Fecha = date("d-m-Y");
 
         if (isset($_POST['Almacen']) && isset($_POST['Categoria']) && isset($_POST['Rama']) 
         && isset($_POST['Familia']) && isset($_POST['Grupo']) && isset($_POST['Proveedor']) && isset($_POST['Fabricante'])) {

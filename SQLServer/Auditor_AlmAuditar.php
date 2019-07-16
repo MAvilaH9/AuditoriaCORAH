@@ -1,12 +1,14 @@
 <?php
     session_start();
     require_once "Conexion.1.php";
+    $Usuario = $_SESSION['IdUsuario'];
+    $fecha = date('d/m/Y');
     
     $sql= $pdo->prepare("SELECT a.IdAuditar, a.Fecha, e.Nombre as Empresa, al.Nombre as Almacen,
     CONCAT(u.ApellidoPaterno,' ', u.ApellidoMaterno,' ', u.Nombres) as Auditor
     from Auditar a inner join Empresa e on a.ClaveEmpresa=e.ClaveEmpresa
     inner join Almacen al on a.Almacen=al.Almacen 
-    inner join Usuario u on a.IdUsuario=u.IdUsuario ORDER BY Fecha ASC");
+    inner join Usuario u on a.IdUsuario=u.IdUsuario Where a.IdUsuario='$Usuario' ANd Fecha>='$fecha' ORDER BY Fecha ASC");
     $sql->execute();
     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 ?>
@@ -18,7 +20,7 @@
                 <th>Almacen</th>
                 <th>Auditor</th>
                 <th>Fecha de Auditoria</th>
-                <th>Opciones</th>
+                <!-- <th>Opciones</th> -->
             </tr>
         </thead>
         <tbody>
@@ -29,7 +31,7 @@
                 <td><?php echo $dato['Almacen'];?></td>
                 <td><?php echo $dato['Auditor'];?></td>
                 <td><?php echo $dato['Fecha'];?></td>
-                <td>
+                <!-- <td>
                     <button  title="Editar" class="pd-setting-ed" id="Editar" name="editar" data-id="<?php echo $dato['IdAuditar'];?>"> 
                         <i class='fa fa-pencil-square-o' aria-hidden='true'></i>
                     </button>
@@ -37,7 +39,7 @@
                     <button id="Eliminar" data-id="<?php echo $dato['IdAuditar']; ?>" title="Eliminar"
                         class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
-                </td>
+                </td> -->
             </tr>
             <?php 
             } ?>

@@ -22,8 +22,9 @@
     if ($Contrasenia == $Resultado['Contrasena'] && $Resultado['Usuario'] == $Usuario) {
         $_SESSION['Usuario'] = $Resultado['Usuario'];
         // $_SESSION['Perfil'] = $Resultado['IdPerfil'];
-        $_SESSION['Perfil'] = 1;
+        $_SESSION['Perfil'] = 2;
         $_SESSION['Empresa'] = $Resultado['ClaveEmpresa'];
+        $_SESSION['IdUsuario']=7;
 
         header('location:../Interfaz/Index.php');
 

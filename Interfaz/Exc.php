@@ -123,7 +123,6 @@
                     </div>
                     <br>
                     <div id="tabla" class="datatable-dashv1-list custom-datatable-overright">
-
                     </div>
                 </div>
             </div>

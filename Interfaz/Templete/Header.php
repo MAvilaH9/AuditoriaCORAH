@@ -205,7 +205,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                         <br>
                         <li>
                             <a data-toggle="tooltip" title="Auditar" class="has-arrow" href="#" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap"></span>
+                            <span class="educate-icon educate-data-table icon-wrap"></span>
                                 <span class="mini-click-non">Auditar</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
@@ -220,6 +220,12 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a data-toggle="tooltip" title="Archivos de reportes" class="external" href="../Interfaz/Calendario.php" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap"></span>
+                                <span class="mini-click-non">Calendario</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -293,11 +299,16 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     </div>
                                                     </a>
                                                 </li>
+                                                <?php
+                                                if ($_SESSION['Perfil']==2) { ?>
                                                 <li class="nav-item">
-                                                    <a href="../Interfaz/Excel.php" class="nav-link external">
-                                                        Subir Archivos
+                                                    <a href="../Interfaz/Ajustes.php" class="nav-link external">
+                                                        Subir Ajuste
                                                     </a>
                                                 </li>
+                                                <?php
+                                                }
+                                                ?>
                                                 <li class="nav-item">
                                                     <a href="../Interfaz/Formatos.php" class="nav-link external">
                                                         Formatos
@@ -456,6 +467,13 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                         href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
                                                 </li>
                                             </ul>
+                                        </li>
+                                        <li>
+                                        <li>
+                                            <a class="external" href="../Interfaz/Calendario.php" aria-expanded="false">
+                                                <span class="mini-click-non">Celendario</span>
+                                            </a>
+                                        </li>
                                         </li>
                                     </ul>
                                 </nav>

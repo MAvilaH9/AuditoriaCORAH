@@ -150,7 +150,7 @@
                                 <!-- Fecha -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                     <div class="form-group data-custon-pick" id="data_2">
-                                    <label class="login2">Fecha a auditar</label>
+                                        <label class="login2">Fecha a auditar</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                             <input type="text" name="Fecha" id="Fecha" class="form-control" value="<?php echo date("d/m/Y"); ?>">
@@ -259,7 +259,7 @@
         $(document).on('submit', '#frmAlmAuditar', function (event) {
             event.preventDefault();
             var datos = $('#frmAlmAuditar').serialize();
-            alert(datos);
+            // alert(datos);
             $.ajax({
                 url: "../SQLServer/Calendario.php",
                 method: 'POST',
@@ -267,7 +267,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmAlmAuditar')[0].reset();
                     if (data == 1) {
                         $("#ModalAlmAuditar").modal("hide");

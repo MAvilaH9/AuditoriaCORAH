@@ -1,6 +1,6 @@
 <?php
     session_start();
-	include("Conexion.php");
+	include("Conexion.1.php");
 
 	if(isset($_POST["IdAuditar"]))
 	{
