@@ -101,15 +101,15 @@
                                 </div> <br>
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <button type="submit" name="action" id="action" value="Add"
-                                            class="btn btn-custon-rounded-two btn-success">
-                                            <i class="fa fa-save" aria-hidden="true"></i>
-                                            Guardar
-                                        </button>
                                         <button type="button" class="btn btn-custon-rounded-two btn-danger"
                                             data-dismiss="modal">
                                             <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                                             Cancelar
+                                        </button>
+                                        <button type="submit" name="action" id="action" value="Add"
+                                            class="btn btn-custon-rounded-two btn-success">
+                                            <i class="fa fa-save" aria-hidden="true"></i>
+                                            Guardar
                                         </button>
                                     </div>
                                 </div>

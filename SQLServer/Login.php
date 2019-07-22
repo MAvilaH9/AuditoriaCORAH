@@ -14,17 +14,23 @@
     $Sentencia->execute(array($Usuario));
     $Resultado = $Sentencia->fetch();
 
-    echo $Resultado['Usuario'];
+    $Resultado['Usuario'];
     $Resultado['Contrasena'];
     $Resultado['IdPerfil'];
     $Resultado['ClaveEmpresa'];
 
+    if ($Resultado['Acceso']=="_JEFEAUDIT") {
+        $Perfil=2;
+    } else {
+        $Perfil=1;
+    }
+
     if ($Contrasenia == $Resultado['Contrasena'] && $Resultado['Usuario'] == $Usuario) {
         $_SESSION['Usuario'] = $Resultado['Usuario'];
         // $_SESSION['Perfil'] = $Resultado['IdPerfil'];
-        $_SESSION['Perfil'] = 2;
+        $_SESSION['Perfil'] = $Perfil;
         $_SESSION['Empresa'] = $Resultado['ClaveEmpresa'];
-        $_SESSION['IdUsuario']=7;
+        $_SESSION['IdUsuario']=7;   
 
         header('location:../Interfaz/Index.php');
 

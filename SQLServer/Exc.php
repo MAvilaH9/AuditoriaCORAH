@@ -96,7 +96,7 @@
                     $emp = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue(); $emp=strtoupper($emp);
                     $per = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue(); $per=strtoupper($per);
 
-                    $sql_agregar = "INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) 
+                    $sql_agregar = "INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasena, ClaveEmpresa, IdPerfil) 
                     VALUES ('$nombre','$apat','$amat','$us','$contra','$emp','$per')";
                     $sentencia_agregar = $pdo->prepare($sql_agregar);
                     $sentencia_agregar->execute(array($sql_agregar));
@@ -142,3 +142,5 @@
         }
     }
 ?>
+
+

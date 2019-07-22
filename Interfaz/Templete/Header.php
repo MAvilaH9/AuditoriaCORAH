@@ -189,7 +189,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             </div>
         </nav>
     </div>
-    <?php } else if (!empty($_SESSION['Perfil'] == 2)) {?>
+    <?php } else if (!empty($_SESSION['Perfil'] == 2)) { ?>
     <!-- Session Auditor -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -222,7 +222,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             </ul>
                         </li>
                         <li>
-                            <a data-toggle="tooltip" title="Archivos de reportes" class="external" href="../Interfaz/Calendario.php" aria-expanded="false">
+                            <a data-toggle="tooltip" title="Calendario de Auditorias" class="external" href="../Interfaz/Calendario.php" aria-expanded="false">
                                 <span class="educate-icon educate-event icon-wrap"></span>
                                 <span class="mini-click-non">Calendario</span>
                             </a>

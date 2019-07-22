@@ -39,8 +39,8 @@ require "../SQLServer/Conexion.php";
                                                         ?>
                                                         <!-- Select Sucursal -->
                                                         <div class="form-group">
+                                                            <label class="login2">Sucursal</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label>Sucursal</label>
                                                                 <select name="Sucursal" id="Sucursal"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">Seleccione
@@ -65,8 +65,8 @@ require "../SQLServer/Conexion.php";
                                                             $resultadocat=$sqlcat->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
+                                                            <label class="login2">Categoría</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Categoría</label>
                                                                 <select name="Categoria" id="Categoria"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
@@ -85,8 +85,8 @@ require "../SQLServer/Conexion.php";
                                                             $resultadofam=$sqlfam->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
+                                                            <label class="login2">Familia</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Familia</label>
                                                                 <select name="Familia" id="Familia"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
@@ -108,8 +108,8 @@ require "../SQLServer/Conexion.php";
                                                             $resultadopro=$sqlpro->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
+                                                            <label class="login2">Proveedor</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Proveedor</label>
                                                                 <select name="Proveedor" id="Proveedor"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
@@ -127,8 +127,8 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <!-- Select Excluir -->
                                                         <div class="form-group">
+                                                            <label class="login2">Excluir Planeación</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Excluir Planeación</label>
                                                                 <select name="Excluir" id="Excluir"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="0" Selected>Si</option>
@@ -149,8 +149,8 @@ require "../SQLServer/Conexion.php";
                                                             $resultadoram=$sqlram->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
+                                                            <label class="login2">Rama</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Rama</label>
                                                                 <select name="Rama" id="Rama" class="chosen-select"
                                                                     tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
@@ -173,8 +173,8 @@ require "../SQLServer/Conexion.php";
                                                             $resultadogpo=$sqlgpo->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
+                                                            <label class="login2">Grupo</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Grupo</label>
                                                                 <select name="Grupo" id="Grupo" class="chosen-select"
                                                                     tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
@@ -196,8 +196,8 @@ require "../SQLServer/Conexion.php";
                                                             $resultadofab=$sqlfab->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
+                                                            <label class="login2">Fabricante</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Fabricante</label>
                                                                 <select name="Fabricante" id="Fabricante"
                                                                     class="chosen-select" tabindex="-1">
                                                                     <option value="none" selected="" disabled="">
@@ -226,12 +226,6 @@ require "../SQLServer/Conexion.php";
                                                                 <div class="button-style-two btn-mg-b-10">
                                                                     <br>
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <button type="submit" id="Consular"
-                                                                        class="btn btn-custon-rounded-two btn-success">
-                                                                        <i class="fa fa-check edu-checked-pro"
-                                                                            aria-hidden="true"></i>
-                                                                        Consultar
-                                                                    </button>
                                                                     <button type="button"
                                                                         class="btn btn-custon-rounded-two btn-danger"
                                                                         data-toggle="modal"
@@ -239,6 +233,12 @@ require "../SQLServer/Conexion.php";
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
+                                                                    </button>
+                                                                    <button type="submit" id="Consular"
+                                                                        class="btn btn-custon-rounded-two btn-success">
+                                                                        <i class="fa fa-check edu-checked-pro"
+                                                                            aria-hidden="true"></i>
+                                                                        Consultar
                                                                     </button>
                                                                     <!-- <button type="button"
                                                                         class="btn btn-custon-rounded-two btn-primary">

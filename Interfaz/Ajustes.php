@@ -17,7 +17,16 @@
                     </ul>
                     <!--  Tìtulo -->
                     <ul id="myTabedu1" class="tab-review-design" style="text-align: center">
-                        <li class="active"><a>Ajuste Inventario</a></li>
+                        <li class="active"><a>Ajuste Inventario</a></li> <br> <br> <b></b>
+
+                        <?php 
+                            // $RenglonID = 1;
+                            // for ($i=1; $i < 3; $i++) { 
+                            //     echo $RenglonID = $i." ";
+                            //     echo $renglon = 2048 * $i;
+                            //     echo "<br>";
+                            // }
+                       ?>
                     </ul>
                     <!-- Formulario para la Consula  -->
                     <div id="myTabContent" class="tab-content custom-product-edit">
@@ -26,8 +35,8 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="review-content-section">
                                         <div id="dropzone1" class="pro-ad">
-                                            <form id="frmAjusteInv"
-                                                class="dropzone dropzone-custom needsclick add-professors">
+                                            <form id="frmAjusteInv" action="../SQLServer/Ajustes.php" 
+                                                method="POST" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
@@ -38,13 +47,13 @@
                                                             $sql->execute();
                                                             $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
-                                                        <!-- Select Ajuste -->
+                                                        <!-- Select Movimiento -->
                                                         <div class="form-group">
+                                                            <label class="login2">Movimiento</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label class="login2">Movimiento</label>
                                                                 <select name="Movimiento" id="Movimiento"
-                                                                    class="chosen-select" tabindex="5">
-                                                                    <option value="none" selected="" disabled="">
+                                                                    class="chosen-select" tabindex="1">
+                                                                    <option value="Ajuste" selected="">
                                                                         Ajuste</option>
 
                                                                 </select>
@@ -52,13 +61,13 @@
                                                         </div>
                                                         <!-- Fecha Emision -->
                                                         <div class="form-group">
+                                                            <label class="login2">Fecha Emisión</label>
                                                             <div class="form-group data-custon-pick" id="data_2">
-                                                                <label class="login2">Fecha Emisión</label>
                                                                 <div class="input-group date">
                                                                     <span class="input-group-addon"><i
                                                                             class="fa fa-calendar"></i></span>
                                                                     <input type="text" name="FechaEmision" id="Fecha"
-                                                                        class="form-control"
+                                                                        class="form-control" tabindex="3"
                                                                         value="<?php echo date("d/m/Y"); ?>">
                                                                 </div>
                                                             </div>
@@ -67,17 +76,17 @@
                                                         <div class="form-group">
                                                             <label class="login2">Referencia</label>
                                                             <input name="Referencia" id="Referencia" type="text"
-                                                                tabindex="3" class="form-control"
-                                                                placeholder="Ingrese referencia">
+                                                                tabindex="5" class="form-control"
+                                                                placeholder="Ingrese referencia" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <!-- Select Almacen -->
                                                         <div class="form-group">
+                                                            <label class="login2">Almacen</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <label>Almacen</label>
                                                                 <select name="Almacen" id="Almacen"
-                                                                    class="chosen-select" tabindex="1">
+                                                                    class="chosen-select" tabindex="2">
                                                                     <option value="none" selected="" disabled="">
                                                                         Seleccione
                                                                         Almacen</option>
@@ -92,15 +101,15 @@
                                                         <div class="form-group">
                                                             <label class="login2">Concepto</label>
                                                             <input name="Concepto" id="Concepto" type="text"
-                                                                tabindex="3" class="form-control"
-                                                                placeholder="Ingrese el concepto">
+                                                                tabindex="4" class="form-control"
+                                                                placeholder="Ingrese el concepto" required>
                                                         </div>
                                                         <!-- Observaciones -->
                                                         <div class="form-group">
                                                             <label class="login2">Observaciones</label>
-                                                            <input name="Obervacion" id="Obervacion" type="text"
-                                                                tabindex="3" class="form-control"
-                                                                placeholder="Ingrese la observación">
+                                                            <input name="Observacion" id="Observacion" type="text"
+                                                                tabindex="6" class="form-control"
+                                                                placeholder="Ingrese la observación" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -122,12 +131,12 @@
                                                                     </label>
                                                                     <div class="file-button">
                                                                         Agregar
-                                                                        <input type="file" name="excel" required
+                                                                        <input type="file" name="excel" id="excel" required
                                                                             onchange="document.getElementById('prepend-big-btn').value = this.value;"
                                                                             accept=".xlsx">
                                                                     </div>
                                                                     <input type="text" id="prepend-big-btn"
-                                                                        placeholder="No se ha seleccionado ningun archivo">
+                                                                        placeholder="No se ha seleccionado ningun archivo" tabindex="7">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -144,29 +153,29 @@
                                                             <div class="button-ap-list responsive-btn">
                                                                 <div class="button-style-two btn-mg-b-10">
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <button type="submit" id="BotonAgregar"
-                                                                        class="btn btn-custon-rounded-two btn-success">
-                                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                                        Agregar
-                                                                    </button>
-                                                                    <button type="submit" id="BotonGuardar" hidden
-                                                                        class="btn btn-custon-rounded-two btn-success">
-                                                                        <i class="fa fa-save" aria-hidden="true"></i>
-                                                                        Guardar
-                                                                    </button>
                                                                     <a id="can"
                                                                         class="btn btn-custon-rounded-two btn-danger external"
-                                                                        href="../Interfaz/Index.php">
+                                                                        href="../Interfaz/Index.php" tabindex="9">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
                                                                     </a>
                                                                     <button type="button" id="regresar" hidden
                                                                         class="btn btn-custon-rounded-two btn-danger"
-                                                                        data-toggle="modal" data-target="#Cancelar">
+                                                                        data-toggle="modal" data-target="#Cancelar" tabindex="11">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
+                                                                    </button>
+                                                                    <button type="submit" id="BotonAgregar"
+                                                                        class="btn btn-custon-rounded-two btn-success" tabindex="8">
+                                                                        <i class="fa fa-plus" aria-hidden="true" ></i>
+                                                                        Agregar
+                                                                    </button>
+                                                                    <button type="submit" id="BotonGuardar" hidden
+                                                                        class="btn btn-custon-rounded-two btn-success" tabindex="10">
+                                                                        <i class="fa fa-save" aria-hidden="true"></i>
+                                                                        Guardar
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -183,23 +192,7 @@
                                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                                     <div id="AlertExito" class="alert alert-success" role="alert"
                                                         style="display:none">
-                                                        <strong>Exitoso!</strong> Archivo guardados con exito
-                                                    </div>
-                                                    <div id="AlertError" class="alert alert-danger alert-mg-b"
-                                                        style="display:none">
-                                                        <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <strong>Error!</strong> Archivo no guardado.
-                                                    </div>
-                                                    <div id="AlertArcExistente" class="alert alert-danger alert-mg-b"
-                                                        style="display:none">
-                                                        <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <strong>Advertencia!</strong> Archivo ya existe.
+                                                        <strong>Exitoso!</strong> Datos guardados con exito.
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
@@ -250,11 +243,12 @@
             <div class="modal-body">
                 <span class="educate-icon educate-danger modal-check-pro information-icon-pro"></span>
                 <h2>Cancelar!</h2>
-                <p>¿Está seguro que desea cancelar?, el archivo aun no se guarda</p>
+                <p>¿Está seguro que desea cancelar? el archivo aun no se guarda</p>
+                <input type="text" name="NombArch" id="NombArch">
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Ajustes.php" class="external">Aceptar</a>
+                <a href="Ajustes.php" class="external" >Aceptar</a>
             </div>
         </div>
     </div>
@@ -269,7 +263,7 @@
     $(document).on('submit', '#frmAjusteInv', function (event) {
         event.preventDefault();
         var datos = $('#frmAjusteInv').serialize();
-        alert(datos);
+        // alert(datos);
         $.ajax({
             url: "../SQLServer/Ajustes.php",
             method: 'POST',

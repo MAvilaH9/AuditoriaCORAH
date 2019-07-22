@@ -149,8 +149,8 @@
 
                                 <!-- Fecha -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                    <label class="login2">Fecha a auditar</label>
                                     <div class="form-group data-custon-pick" id="data_2">
-                                        <label class="login2">Fecha a auditar</label>
                                         <div class="input-group date">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                             <input type="text" name="Fecha" id="Fecha" class="form-control" value="<?php echo date("d/m/Y"); ?>">
@@ -161,8 +161,10 @@
                                 </div>
                             </div>
                             <br>
+                            <!-- Instrucciones -->
                             <input type="hidden" name="IdAuditar" id="IdAuditar" />
                             <input type="hidden" name="operation" id="operation" />
+                            <!-- Botones -->
                             <button type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
                                 <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                                 Cancelar

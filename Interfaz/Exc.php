@@ -19,7 +19,7 @@
                         </div>
                     </div> <br> <br>
                     <!-- Formulario -->
-                    <form id="frmExcel1" action="../Recursos/Exc.php" method="POST" enctype="multipart/form-data">
+                    <form id="frmExcel1" action="../Recursos/Exc.php" method="POST"  enctype="multipart/form-data">
                         <div class="form-group-inner">
                             <div class="row">
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">

@@ -2,13 +2,15 @@
     session_start();
     require_once "Conexion.php";
     require_once "../ClasesExcel/PHPExcel/IOFactory.php";
-    $usuario = $_SESSION['Usuario'];
+    $usuario = $_SESSION['Usuario'];            
+    $Almacen=$_POST['Almacen'];
+    date_default_timezone_set('America/Mexico_City');
+    $FechaActual = date("d-m-Y H:i:s:v",time());
+  
 
     if (isset($_POST['operacion'])) {
         if ($_POST['operacion'] == "Agregar") {
 
-            $fecha= date("d/m/Y");
-            $Almacen=$_POST['Almacen'];
             $sqlAlm = $pdo->prepare("SELECT Nombre FROM Alm where Almacen='$Almacen'");
             $sqlAlm -> execute(array($Almacen));
             $resultadoAlm = $sqlAlm->fetch();
@@ -17,6 +19,8 @@
             // print_r ($_FILES);
             $archivo= $usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
             $destino="../Excel/".$archivo;
+
+            $_SESSION['Archivo'] = $archivo;
 
             if (copy($_FILES['excel']['tmp_name'],$destino)) {
 
@@ -63,13 +67,32 @@
                     <?php
                     } ?>
                     </table>  
-
+                    <script>
+                        Swal.fire({
+                            title: 'Advertencia!',
+                            text: 'Valide la información antes de guardar',
+                            type: 'warning',
+                            confirmButtonText: 'Aceptar'
+                        })
+                    </script>
+                    
                     <?php
+                    // $data= array();
+                    // $data['Archivo']= $archivo;
+                    // echo json_encode($data);
                 }
-            } else {
-                echo "Error Al Cargar el Archivo";
+            } else { ?>
+                <script>
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Error al cargar archivo',
+                        type: 'error',
+                        confirmButtonText: 'Aceptar'
+                    })
+                    setTimeout('document.location.reload()',1000);
+                </script>
+            <?php
             } 
-
             ?>
 
             <!-- data table JS
@@ -80,11 +103,33 @@
         }
 
         if ($_POST['operacion'] == "Guardar") {
+            $sqlAlm = $pdo->prepare("SELECT Nombre FROM Alm where Almacen='$Almacen'");
+            $sqlAlm -> execute(array($Almacen));
+            $resultadoAlm = $sqlAlm->fetch();
+            $NombAlm=$resultadoAlm['Nombre'];
 
-            // print_r ($_FILES);
-            $archivo=$usuario."_".$_FILES['excel']['name'];
+            // print_r ($_FILES);            
+            $archivo=$usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
 
             if (file_exists("../Excel/".$archivo)) {
+
+                $Empresa="VAL";
+                $Moneda="Pesos";
+                $Estatus="CONCLUIDO";
+                $Movimiento=$_POST['Movimiento'];
+                $FechaEmision=$_POST['FechaEmision'];
+                $Concepto=$_POST['Concepto'];
+                $Referencia=$_POST['Referencia'];
+                $Observacion=$_POST['Observacion'];
+                $renglon=2048;
+    
+                $sqlAgregarMOv = "INSERT INTO Inv (Empresa, Mov, FechaEmision, UltimoCambio, Concepto, Moneda, Usuario, 
+                Referencia, Observaciones, Estatus, Almacen) 
+                VALUES ('$Empresa','$Movimiento','$FechaEmision','$FechaActual','$Concepto','$Moneda','$usuario','$Referencia',
+                '$Observacion','$Estatus','$Almacen')";
+                $sentencia = $pdo->prepare($sqlAgregarMOv);
+                $sentencia->execute(array($sqlAgregarMOv));
+                $IdInv = $pdo->lastInsertId();
 
                 $objPHPExcel = PHPExcel_IOFactory::load("../Excel/".$archivo);
 
@@ -95,7 +140,7 @@
                 // $rango;
                 // $rangoCell = $objPHPExcel->getActiveSheet()->rangeToArray($rango);
     
-                for ($i=2; $i <= $numfilas ; $i++) { 
+                for ($i=2; $i <= $numfilas; $i++) { 
                     
                     $Articulo = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
                     $Cantidad = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
@@ -105,35 +150,44 @@
                     $CostoU = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
                     $CostoT = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
 
-                    $sql_agregar = "INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) 
-                    VALUES ('$nombre','$apat','$amat','$us','$contra','$emp','$per')";
+
+                    $Renglon = (2048 * $i) - 2048;
+                    $RenglonID= $i -1 ;
+
+                    $sql_agregar = "INSERT INTO InvD (ID, Renglon, RenglonID, Cantidad, Almacen, Articulo, Costo, Unidad, 
+                    CantidadInventario) 
+                    VALUES ('$IdInv','$Renglon','$RenglonID','$Cantidad','$Almacen','$Articulo','$CostoU','$Unidad',
+                    '$Inventario')";
                     $sentencia_agregar = $pdo->prepare($sql_agregar);
                     $sentencia_agregar->execute(array($sql_agregar));
+                } 
 
-                }
 
-                if ($sentencia_agregar->execute(array($nombre, $apat, $amat, $us, $contra, $emp, $per))) { ?>
+                if ($sentencia == true && $sentencia_agregar == true) { ?>
+                    <!-- Alerta exito -->
                     <script>
                         Swal.fire({
-                            position: 'top-end',
-                            type: 'success',
                             title: 'Datos Guardados',
-                            showConfirmButton: false,
-                            timer: 1500
+                            text: 'Datos guardados con exito.',
+                            type: 'success',
+                            confirmButtonText: 'Aceptar'
+                        }).then((result) => {
+                            if (result.value) {
+                                setTimeout('document.location.reload()',1);
+                            }
                         })
-                        setTimeout('document.location.reload()',1000);
                     </script>
                 <?php   
                 } else { 
-                ?>
+                ?>  
+                <!-- Alerta error -->
                     <script>
                         Swal.fire({
                             title: 'Error!',
                             text: 'Error al guardar los datos',
                             type: 'error',
-                            confirmButtonText: 'Cool'
+                            confirmButtonText: 'Aceptar'
                         })
-                        setTimeout('document.location.reload()',1000);
                     </script>
                 <?php                 
                 }
@@ -144,7 +198,7 @@
                         title: 'Oops...',
                         text: 'Error en el proceso!',
                     })
-                    setTimeout('document.location.reload()',1000);
+                    setTimeout('document.location.reload()',100000);
                 </script>
             <?php
             }

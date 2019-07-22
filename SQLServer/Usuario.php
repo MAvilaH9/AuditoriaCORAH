@@ -32,7 +32,8 @@
                 // echo mysqli_query($Conexion, $sql);
 
 
-                $sql_agregar = 'INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) VALUES (?,?,?,?,?,?,?)';
+                $sql_agregar = 'INSERT INTO Usuario (Nombres, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasenia, ClaveEmpresa, IdPerfil) 
+                VALUES (?,?,?,?,?,?,?)';
                 $sentencia_agregar = $pdo->prepare($sql_agregar);
 
                 if ($sentencia_agregar->execute(array($Nombre, $ApellidoPat, $ApellidoMat, $Usuario, $Contraseña, $empresa, $Perfil))) {
@@ -55,7 +56,7 @@
             $Perfil = $_POST["Perfil"];
             $empresa = $_POST['Empresa'];
 
-            $sql_actualizar = "UPDATE Usuario SET  ApellidoPaterno='$ApellidoPat', 
+            $sql_actualizar = "UPDATE Usuario SET ApellidoPaterno='$ApellidoPat', 
             ApellidoMaterno='$ApellidoMat', Nombres='$Nombre', Usuario='$Usuario', Contrasenia='$Contra', ClaveEmpresa='$empresa', IdPerfil='$Perfil' 
             WHERE IdUsuario='$idusuario'";
             $sentencia = $pdo->prepare($sql_actualizar);
