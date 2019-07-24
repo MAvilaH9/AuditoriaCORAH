@@ -113,7 +113,6 @@ session_start();
                 <label class="control-label" for="username">Usuario</label>
                 <input type="text" placeholder="Ejemplo: MAvila" title="Por favor, ingrese su nombre de usuario"
                    value="" name="Usuario" id="Usuario" class="form-control">
-                   <input type="text" name="" id="Base">
                 <!-- <span class="help-block small">Tu nombre de usuario único para ingresar</span> -->
               </div>
               <div class="form-group">
@@ -221,12 +220,15 @@ session_start();
     $("#Empresa").change(function (e) { 
       e.preventDefault();
       var Empresa= $('#Empresa option:selected').html();
-      // alert(Empresa);  
+      $("#Base").val(Empresa);
+      // alert(Empresa); 
       $.ajax({
         type: "Post",
+        url: "../SQLServer/Conexion.1.php",
         data: {Empresa : Empresa},
         dataType: "dataType",
         success: function (response) {
+          // alert(response);
         }
       });
     });

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // Descraga
     if (!empty($_REQUEST['Archivo'])) {
         
@@ -28,11 +29,23 @@
         exit;
     }
 
-    if (!empty($_REQUEST['NombArch'])) {
-        $Archivo = $_REQUEST["NombArch"];
+    // Elimina archivo al cancelar proceso antes de guardar info en la bd
+    
+    if (!empty($_REQUEST['Cancelar'])) {
+        $Archivo = $_SESSION["Archivo"];
         $ruta = "../Excel/".$Archivo;
         unlink($ruta);
-        echo 1;
+        unset($_SESSION['Archivo']);
+        header("Location: Ajustes.php");
+        exit;
+    }
+
+    if (!empty($_REQUEST['Cancelar2'])) {
+        $Archivo = $_SESSION["Archivo"];
+        $ruta = "../Excel/".$Archivo;
+        unlink($ruta);
+        unset($_SESSION['Archivo']);
+        header("Location: Index.php");
         exit;
     }
 ?>

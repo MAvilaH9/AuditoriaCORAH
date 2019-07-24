@@ -1,6 +1,6 @@
 <?php  
     $Mensaje="";
-    session_start();
+    // session_start();
     require_once "Conexion.php";
 
     // Variables que recibe del formualario Login.
@@ -29,12 +29,12 @@
         $_SESSION['Usuario'] = $Resultado['Usuario'];
         // $_SESSION['Perfil'] = $Resultado['IdPerfil'];
         $_SESSION['Perfil'] = $Perfil;
-        $_SESSION['Empresa'] = $Resultado['ClaveEmpresa'];
+        $_SESSION['ClaveEmpresa'] = $Resultado['ClaveEmpresa'];
         $_SESSION['IdUsuario']=7;   
 
         header('location:../Interfaz/Index.php');
 
     }else {
-        header('location:../Interfaz/Login.php?Error=true');
+        header('location:../Interfaz/Login1.php?Error=true');
     }
 ?>

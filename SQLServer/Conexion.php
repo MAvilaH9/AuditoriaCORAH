@@ -15,11 +15,15 @@
 // }
 
 // Conexion PDO
-	// session_start();
-	// $_SESSION['base']=$_POST['Empresa'];
+	if(!isset($_SESSION)) 
+	{ 
+		session_start(); 
+	} 
 
+	
+	$Empresa=$_SESSION['Empresa'];
 	$server = 'MAVILAHU\SQLEXPRESS';
-	$dbName = 'Valsi4500v4';
+	$dbName = $Empresa;
 	$uid = '';
 	$pwd = '';
 

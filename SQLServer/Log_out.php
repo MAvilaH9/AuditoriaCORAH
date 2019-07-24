@@ -14,6 +14,6 @@
 
     session_destroy();
 
-    header('location:../Interfaz/Login.php');
+    header('location:../Interfaz/Login1.php');
     
 ?>

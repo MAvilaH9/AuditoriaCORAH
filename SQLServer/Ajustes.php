@@ -20,7 +20,7 @@
             $archivo= $usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
             $destino="../Excel/".$archivo;
 
-            $_SESSION['Archivo'] = $archivo;
+
 
             if (copy($_FILES['excel']['tmp_name'],$destino)) {
 
@@ -77,6 +77,7 @@
                     </script>
                     
                     <?php
+                    $_SESSION['Archivo'] = $archivo;
                     // $data= array();
                     // $data['Archivo']= $archivo;
                     // echo json_encode($data);

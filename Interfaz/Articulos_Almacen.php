@@ -136,7 +136,7 @@ require "../SQLServer/Conexion.php";
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <!-- Select Articulo -->
+                                                        <!-- Text Articulo -->
                                                         <div class="form-group">
                                                             <label class="login2">Al Artículo</label>
                                                             <input name="Articulof" id="Articulof" type="text" tabindex="4"

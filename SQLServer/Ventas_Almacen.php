@@ -1449,7 +1449,7 @@
         <?php
         } elseif (isset($_POST['Almacen'])) {
             $Almacen=$_POST['Almacen'];
-            $sqla= $pdo->prepare("SELECT * FROM Corah_VentaUtilX WHERE Almacen='$Almacen' ORDER BY Articulo ASC");
+            $sqla= $pdo->prepare("SELECT * FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND FechaEmision='01-12-2018' ORDER BY Articulo ASC");
             $sqla->execute();
             $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
     

@@ -155,7 +155,7 @@
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                     <a id="can"
                                                                         class="btn btn-custon-rounded-two btn-danger external"
-                                                                        href="../Interfaz/Index.php" tabindex="9">
+                                                                        href="Descarga_Reportes.php?Cancelar2=Cancelar2" tabindex="9">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -244,11 +244,10 @@
                 <span class="educate-icon educate-danger modal-check-pro information-icon-pro"></span>
                 <h2>Cancelar!</h2>
                 <p>¿Está seguro que desea cancelar? el archivo aun no se guarda</p>
-                <input type="text" name="NombArch" id="NombArch">
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Ajustes.php" class="external" >Aceptar</a>
+                <a href="Descarga_Reportes.php?Cancelar=Cancelar" class="external" >Aceptar</a>
             </div>
         </div>
     </div>
