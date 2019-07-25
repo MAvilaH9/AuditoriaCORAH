@@ -189,7 +189,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             </div>
         </nav>
     </div>
-    <?php } else if (!empty($_SESSION['Perfil'] == 2)) { ?>
+    <?php 
+} else if (!empty($_SESSION['Perfil'] == 2)) { ?>
     <!-- Session Auditor -->
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
@@ -204,17 +205,17 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                     <ul class="metismenu" id="menu1">
                         <br>
                         <li>
-                            <a data-toggle="tooltip" title="Auditar" class="has-arrow" href="#" aria-expanded="false">
-                            <span class="educate-icon educate-data-table icon-wrap"></span>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <span class="educate-icon educate-data-table icon-wrap"></span>
                                 <span class="mini-click-non">Auditar</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li>
-                                    <a data-toggle="tooltip" tile="Articulos Almacen" class="external"
+                                    <a data-toggle="tooltip" title="Articulos Almacen" class="external"
                                         href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
+                                    <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
                                         href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
@@ -232,7 +233,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             </div>
         </nav>
     </div>
-    <?php }?>
+    <?php 
+}?>
 
     <!-- End Left menu area -->
 
