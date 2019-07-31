@@ -31,25 +31,23 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <!-- Select Sucursal -->
                                                         <?php 
-                                                            // $Empresa=$_SESSION['Empresa'];                                                           
-                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Nombre ASC");
-                                                            $sql->execute();
-                                                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                                                            // $Empresa = $_SESSION['Empresa'];
+                                                            $sqlsuc= $pdo->prepare("SELECT Sucursal, Nombre from Sucursal ORDER BY Nombre ASC");
+                                                            $sqlsuc->execute();
+                                                            $resultadosuc=$sqlsuc->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
-                                                        <!-- Select Almacen -->
                                                         <div class="form-group">
-                                                            <label class="login2">Almacen</label>
+                                                            <label class="login2">Sucursal</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Almacen" id="Almacen"
-                                                                    class="chosen-select" tabindex="1">
-                                                                    <option value="none" selected="" disabled="">Seleccione
-                                                                        Almacen</option>
+                                                                <select name="Sucursal" id="Sucursal" class="form-control" tabindex="1">
+                                                                <option value="none" selected="" disabled="">Seleccione
+                                                                        Sucursal</option>
                                                                     <?php 
-                                                                    foreach ($resultado as $dato) {
-                                                                        echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
-                                                                    }?>
-                                                                </select>
+                                                                    foreach ($resultadosuc as $datosuc) {
+                                                                        echo '<option value="'.$datosuc['Sucursal'].'">'.$datosuc['Nombre'].'</option>';
+                                                                    }?>                                                                </select>
                                                             </div>
                                                         </div>
                                                         <!-- Text Articulo -->
@@ -125,14 +123,24 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                        <!-- Select Excluir -->
+                                                        <?php 
+                                                            // $Empresa=$_SESSION['Empresa'];                                                           
+                                                            $sql= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Nombre ASC");
+                                                            $sql->execute();
+                                                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
+                                                        <!-- Select Almacen -->
                                                         <div class="form-group">
-                                                            <label class="login2">Excluir Planeación</label>
+                                                            <label class="login2">Almacen</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Excluir" id="Excluir"
-                                                                    class="chosen-select" tabindex="2">
-                                                                    <option value="0" Selected>Si</option>
-                                                                    <option value="1">No</option>
+                                                                <select name="Almacen" id="Almacen" required
+                                                                    class="form-control" tabindex="2">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Almacen</option>
+                                                                    <?php 
+                                                                    foreach ($resultado as $dato) {
+                                                                        echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
+                                                                    }?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -226,7 +234,7 @@ require "../SQLServer/Conexion.php";
                                                                 <div class="button-style-two btn-mg-b-10">
                                                                     <br>
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <button type="button"
+                                                                    <button type="button" tabindex="14"
                                                                         class="btn btn-custon-rounded-two btn-danger"
                                                                         data-toggle="modal"
                                                                         data-target="#CancelarArticulosSuc">
@@ -234,7 +242,7 @@ require "../SQLServer/Conexion.php";
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
                                                                     </button>
-                                                                    <button type="submit" id="Consular"
+                                                                    <button type="submit" id="Consular" tabindex="13"
                                                                         class="btn btn-custon-rounded-two btn-success">
                                                                         <i class="fa fa-check edu-checked-pro"
                                                                             aria-hidden="true"></i>
@@ -314,35 +322,21 @@ require "../SQLServer/Conexion.php";
 
 <!-- Combos Dinamicos -->
 <script language="javascript">
-    // // Municipio
-    // $(document).ready(function () {
-    //     $("#Almacen").change(function () { 
-    //         // e.preventDefault();
+    // Municipio
+    $(document).ready(function () {
+        $("#Sucursal").change(function () { 
+            // e.preventDefault();
 
-    //         $("#Almacen option:selected").each(function () {
-    //             id_estado = $(this).val();
-    //             $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
-    //             function(data){
-    //                 $("#Categoria").html(data);
-    //             });            
-    //         });
-    //     });
-    // });
+            $("#Sucursal option:selected").each(function () {
+                Sucursal = $(this).val();
+                $.post("../SQLServer/Almacenes.php",{ Sucursal: Sucursal},
+                function(data){
+                    $("#Almacen").html(data);
+                });            
+            });
+        });
+    });
 
-    // $(document).ready(function () {
-    //     $("#Categoria").change(function () {
-
-    //         $("#Categoria option:selected").each(function () {
-    //             id_municipio = $(this).val();
-    //             $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
-    //             function(data) {
-    //                 $("#Rama").html(data);
-    //             });
-
-    //         });
-
-    //     });
-    // });
 </script>
 
 <!-- Envia formulario para realizar la consulta -->

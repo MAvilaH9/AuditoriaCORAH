@@ -32,33 +32,42 @@ require "../SQLServer/Conexion.php";
                                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                        <!-- Select Almacen -->
+                                                        <!-- Select Sucursal -->
                                                         <?php 
                                                             // $Empresa = $_SESSION['Empresa'];
-                                                            $sql= $pdo->prepare("SELECT a.Almacen, a.Nombre from Alm a inner join AlmVenta av on
-                                                            a.Almacen=av.Almacen ORDER BY Nombre ASC");
-                                                            $sql->execute();
-                                                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                                                            $sqlsuc= $pdo->prepare("SELECT Sucursal, Nombre from Sucursal ORDER BY Nombre ASC");
+                                                            $sqlsuc->execute();
+                                                            $resultadosuc=$sqlsuc->fetchALL(PDO::FETCH_ASSOC);
                                                         ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Almacén</label>
+                                                            <label class="login2">Sucursal</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Almacen" id="Almacen" class="chosen-select" tabindex="-1">
+                                                                <select name="Sucursal" id="Sucursal" class="form-control" tabindex="1">
                                                                     <option value="none" selected="" disabled="">Seleccione
-                                                                        Almacen</option>
+                                                                        Sucursal</option>
                                                                     <?php 
-                                                                    foreach ($resultado as $dato) {
-                                                                        echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
+                                                                    foreach ($resultadosuc as $datosuc) {
+                                                                        echo '<option value="'.$datosuc['Sucursal'].'">'.$datosuc['Nombre'].'</option>';
                                                                     }?>
                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Text Fecha Inicio -->
+                                                        <div class="form-group">
+                                                            <label class="login2">Fecha Inicio</label>
+                                                            <div class="form-group data-custon-pick" id="data_2">
+                                                                <div class="input-group date" >
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input type="text" name="FechaInicio" id="FechaInicio" class="form-control" value="<?php echo date("d/m/Y"); ?>" tabindex="3">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <!-- Text Articulo -->
                                                         <div class="form-group">
                                                             <label class="login2">Del Artículo</label>
-                                                            <input name="Articuloi" id="Articuloi" type="text" class="form-control" placeholder="Ingrese el artículo">
+                                                            <input name="Articuloi" id="Articuloi" type="text" class="form-control" placeholder="Ingrese el artículo" tabindex="5">
                                                         </div>
-                                                        <!-- Text Categoria -->
+                                                        <!-- Select Categoria -->
                                                         <?php 
                                                             $sqlcat= $pdo->prepare("SELECT Categoria FROM ArtCat ORDER BY Categoria ASC");
                                                             $sqlcat->execute();
@@ -67,7 +76,7 @@ require "../SQLServer/Conexion.php";
                                                         <div class="form-group">
                                                             <label class="login2">Categoría</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Categoria" id="Categoria" class="chosen-select" tabindex="-1">
+                                                                <select name="Categoria" id="Categoria" class="chosen-select" tabindex="7">
                                                                     <option value="none" selected="" disabled="">Seleccione Categoría</option>
                                                                     <?php 
                                                                     foreach ($resultadocat as $cat) {
@@ -85,7 +94,7 @@ require "../SQLServer/Conexion.php";
                                                         <div class="form-group">
                                                             <label class="login2">Familia</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Familia" id="Familia" class="chosen-select" tabindex="-1">
+                                                                <select name="Familia" id="Familia" class="chosen-select" tabindex="9">
                                                                     <option value="none" selected="" disabled="">Seleccione
                                                                         Familia
                                                                     </option>
@@ -106,7 +115,7 @@ require "../SQLServer/Conexion.php";
                                                         <div class="form-group">
                                                             <label class="login2">Proveedor</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Proveedor" id="Proveedor" class="chosen-select" tabindex="-1">
+                                                                <select name="Proveedor" id="Proveedor" class="chosen-select" tabindex="11">
                                                                     <option value="none" selected="" disabled="">Seleccione
                                                                         Proveedor
                                                                     </option>
@@ -120,20 +129,41 @@ require "../SQLServer/Conexion.php";
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                        <!-- Select Excluir -->
+                                                        <!-- Select Almacen -->
+                                                        <?php 
+                                                            // $Empresa = $_SESSION['Empresa'];
+                                                            $sql= $pdo->prepare("SELECT a.Almacen, a.Nombre from Alm a inner join AlmVenta av on
+                                                            a.Almacen=av.Almacen ORDER BY Nombre ASC");
+                                                            $sql->execute();
+                                                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                                                        ?>
                                                         <div class="form-group">
-                                                            <label class="login2">Excluir Planeación</label>
+                                                            <label class="login2">Almacén</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Excluir" id="Excluir" class="chosen-select" tabindex="-1">
-                                                                    <option value="0" Selected>Si</option>
-                                                                    <option value="1">No</option>
+                                                                <select name="Almacen" id="Almacen" class="form-control" tabindex="2">
+                                                                    <option value="none" selected="" disabled="">Seleccione
+                                                                        Almacen</option>
+                                                                    <?php 
+                                                                    foreach ($resultado as $dato) {
+                                                                        echo '<option value="'.$dato['Almacen'].'">'.$dato['Nombre'].'</option>';
+                                                                    }?>
                                                                 </select>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Text Fecha Final -->
+                                                        <div class="form-group">
+                                                            <label class="login2">Fecha Final</label>
+                                                            <div class="form-group data-custon-pick" id="data_2">
+                                                                <div class="input-group date">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                    <input type="text" name="FechaFinal" id="FechaFinal" class="form-control" value="<?php echo date("d/m/Y"); ?>" tabindex="4">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <!-- Select Articulo -->
                                                         <div class="form-group">
                                                             <label class="login2">Al Artículo</label>
-                                                            <input name="Articulof" id="Articulof" type="text" class="form-control" placeholder="Ingrese el artículo">
+                                                            <input name="Articulof" id="Articulof" type="text" class="form-control" placeholder="Ingrese el artículo" tabindex="6">
                                                         </div>
                                                         <!-- Select Rama -->
                                                         <?php 
@@ -144,7 +174,7 @@ require "../SQLServer/Conexion.php";
                                                         <div class="form-group">
                                                             <label class="login2">Rama</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Rama" id="Rama" class="chosen-select" tabindex="-1">
+                                                                <select name="Rama" id="Rama" class="chosen-select" tabindex="8">
                                                                     <option value="none" selected="" disabled="">Seleccione
                                                                         Rama
                                                                     </option>
@@ -166,7 +196,7 @@ require "../SQLServer/Conexion.php";
                                                         <div class="form-group">
                                                             <label class="login2">Grupo</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Grupo" id="Grupo" class="chosen-select" tabindex="-1">
+                                                                <select name="Grupo" id="Grupo" class="chosen-select" tabindex="10">
                                                                     <option value="none" selected="" disabled="">Seleccione
                                                                         Grupo
                                                                     </option>
@@ -187,7 +217,7 @@ require "../SQLServer/Conexion.php";
                                                         <div class="form-group">
                                                             <label class="login2">Fabricante</label>
                                                             <div class="chosen-select-single mg-b-20">
-                                                                <select name="Fabricante" id="Fabricante" class="chosen-select" tabindex="-1">
+                                                                <select name="Fabricante" id="Fabricante" class="chosen-select" tabindex="12">
                                                                     <option value="none" selected="" disabled="">Seleccione
                                                                         Fabricante
                                                                     </option>
@@ -214,13 +244,13 @@ require "../SQLServer/Conexion.php";
                                                                     <br>
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                     <button type="button"
-                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarVentaAlm">
+                                                                        class="btn btn-custon-rounded-two btn-danger" data-toggle="modal" data-target="#CancelarVentaAlm" tabindex="14">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
                                                                     </button>
-                                                                    <button type="submit" id="Consular" class="btn btn-custon-rounded-two btn-success">
-                                                                        <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i>
+                                                                    <button type="submit" id="Consular" class="btn btn-custon-rounded-two btn-success" tabindex="13">
+                                                                        <i class="fa fa-check edu-checked-pro" aria-hidden="true"></i> 
                                                                         Consultar                                                                    
                                                                     </button>
                                                                     <!-- <button type="button"
@@ -296,37 +326,25 @@ require "../SQLServer/Conexion.php";
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 <!-- Script Combos Dinamicos -->
-<script language="javascript">
+<!-- Combos dinamicos -->
+<script>
 
-    // // Municipio
-    // $(document).ready(function () {
-    //     $("#Almacen").change(function () { 
-    //         // e.preventDefault();
+    // Almacenes
+    $(document).ready(function () {
+        $("#Sucursal").change(function () { 
+            // e.preventDefault();
 
-    //         $("#Almacen option:selected").each(function () {
-    //             id_estado = $(this).val();
-    //             $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
-    //             function(data){
-    //                 $("#Categoria").html(data);
-    //             });            
-    //         });
-    //     });
-    // });
-
-    // $(document).ready(function () {
-    //     $("#Categoria").change(function () {
-            
-    //         $("#Categoria option:selected").each(function () {
-    //             id_municipio = $(this).val();
-    //             $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
-    //             function(data) {
-    //                 $("#Rama").html(data);
-    //             });
-                
-    //         });
-            
-    //     });
-    // });
+            $("#Sucursal option:selected").each(function () {
+                Sucursal = $(this).val();
+                // alert(Sucursal);
+                $.post("../SQLServer/Almacenes.php",{ Sucursal: Sucursal},
+                function(data){
+                    // alert(data);
+                    $("#Almacen").html(data);
+                });            
+            });
+        });
+    });
 
 </script>
 

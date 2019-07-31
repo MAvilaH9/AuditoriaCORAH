@@ -1,5 +1,5 @@
 <?php 
-    require "Conexion.1.php";
+    require "Conexion.php";
 
     $Empresa=$_POST['ClaveEmpresa'];
     $perfil = 2;

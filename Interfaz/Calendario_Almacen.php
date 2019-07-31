@@ -1,6 +1,6 @@
 <?php 
     include "Templete/Header.php"; 
-    require_once ("../SQLServer/Conexion.1.php");
+    require_once ("../SQLServer/Conexion.php");
 ?>
 
 <!-- Static Table Start -->
@@ -261,7 +261,7 @@
         $(document).on('submit', '#frmAlmAuditar', function (event) {
             event.preventDefault();
             var datos = $('#frmAlmAuditar').serialize();
-            // alert(datos);
+            alert(datos);
             $.ajax({
                 url: "../SQLServer/Calendario.php",
                 method: 'POST',
@@ -269,7 +269,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    // alert(data);
+                    alert(data);
                     $('#frmAlmAuditar')[0].reset();
                     if (data == 1) {
                         $("#ModalAlmAuditar").modal("hide");

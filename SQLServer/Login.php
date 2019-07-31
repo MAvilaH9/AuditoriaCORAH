@@ -22,7 +22,7 @@
     if ($Resultado['Acceso']=="_JEFEAUDIT") {
         $Perfil=2;
     } else {
-        $Perfil=1;
+        $Perfil=2;
     }
 
     if ($Contrasenia == $Resultado['Contrasena'] && $Resultado['Usuario'] == $Usuario) {

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "Conexion.1.php";
+    require_once "Conexion.php";
     $Usuario = $_SESSION['IdUsuario'];
     $fecha = date('d/m/Y');
     
