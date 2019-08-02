@@ -322,7 +322,7 @@ require "../SQLServer/Conexion.php";
 
 <!-- Combos Dinamicos -->
 <script language="javascript">
-    // Municipio
+    // Almacenes
     $(document).ready(function () {
         $("#Sucursal").change(function () { 
             // e.preventDefault();

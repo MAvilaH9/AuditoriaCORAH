@@ -1,11 +1,12 @@
 <?php
     session_start();
+    $Empresa=$_SESSION['Empresa'];
     // Descraga
     if (!empty($_REQUEST['Archivo'])) {
         
         $Archivo = $_REQUEST["Archivo"];
 
-        $ruta = "../Excel/".$Archivo;
+        $ruta = '../Reportes/'.$Empresa.'/'.$Archivo;
     
         // Define headers
         header("Cache-Control: public");
@@ -23,7 +24,7 @@
     if (!empty($_REQUEST['id'])) {
 
         $Archivo = $_REQUEST["id"];
-        $ruta = "../Excel/".$Archivo;
+        $ruta = '../Reportes/'.$Empresa.'/'.$Archivo;
         unlink($ruta);
         echo 1;
         exit;
@@ -33,7 +34,7 @@
     
     if (!empty($_REQUEST['Cancelar'])) {
         $Archivo = $_SESSION["Archivo"];
-        $ruta = "../Excel/".$Archivo;
+        $ruta = '../Reportes/'.$Empresa.'/'.$Archivo;
         unlink($ruta);
         unset($_SESSION['Archivo']);
         header("Location: Ajustes.php");
@@ -42,7 +43,7 @@
 
     if (!empty($_REQUEST['Cancelar2'])) {
         $Archivo = $_SESSION["Archivo"];
-        $ruta = "../Excel/".$Archivo;
+        $ruta = '../Reportes/'.$Empresa.'/'.$Archivo;
         unlink($ruta);
         unset($_SESSION['Archivo']);
         header("Location: Index.php");

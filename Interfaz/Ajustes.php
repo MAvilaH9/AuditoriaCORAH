@@ -18,15 +18,6 @@
                     <!--  Tìtulo -->
                     <ul id="myTabedu1" class="tab-review-design" style="text-align: center">
                         <li class="active"><a>Ajuste Inventario</a></li> <br> <br> <b></b>
-
-                        <?php 
-                            // $RenglonID = 1;
-                            // for ($i=1; $i < 3; $i++) { 
-                            //     echo $RenglonID = $i." ";
-                            //     echo $renglon = 2048 * $i;
-                            //     echo "<br>";
-                            // }
-                       ?>
                     </ul>
                     <!-- Formulario para la Consula  -->
                     <div id="myTabContent" class="tab-content custom-product-edit">
@@ -262,7 +253,7 @@
     $(document).on('submit', '#frmAjusteInv', function (event) {
         event.preventDefault();
         var datos = $('#frmAjusteInv').serialize();
-        // alert(datos);
+        alert(datos);
         $.ajax({
             url: "../SQLServer/Ajustes.php",
             method: 'POST',
@@ -280,7 +271,7 @@
                 return xhr;
             },
             success: function (data) {
-                // alert(data);
+                alert(data);
                 $("#Resultado").html(data);
                 $("#BotonAgregar").hide();
                 $("#BotonGuardar").show();

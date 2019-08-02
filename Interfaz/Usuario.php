@@ -78,7 +78,7 @@
                 <div class="review-content-section">
                     <div id="dropzone1" class="pro-ad">
                         <form id="frmUsuario" class="dropzone dropzone-custom needsclick add-professors">
-                            <div class="row">
+                            <div id="DatosAgregar" class="row">
                                 <!-- Apellido Paterno -->
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
@@ -105,6 +105,21 @@
                                             placeholder="Nombre (s)" required />
                                     </div>
                                 </div>
+                            </div>
+                            <!-- Muestra el nombre a editar -->
+                            <div id="DatosEditar" class="row" style="display:none">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                </div>
+                                <!-- Nombre Editar -->
+                                <div class="col-lg-8 col-md-8col-sm-8 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="login2">Nombre</label>
+                                        <input name="NombreEdit" id="NombreEditar" type="text" class="form-control"
+                                            placeholder="Nombre (s)" />
+                                    </div>
+                                </div>     
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                </div>                   
                             </div>
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -133,41 +148,23 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 </div>
-                                <!-- Select Perfil -->
-                                <?php 
-                                    // $sql= $pdo->prepare("SELECT IdPerfil, Perfil FROM perfil ORDER BY IdPerfil");
-                                    // $sql->execute();
-                                    // $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
-                                ?>
+                                <!-- Perfil -->
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <label class="login2">Perfil</label>
                                         <select name="Perfil" id="Perfil" class="form-control">
-                                            <?php
-                                            foreach ($resultado as $dato) { ?>
-                                            <option value="<?php echo $dato['IdPerfil']; ?>" selected>
-                                                <?php echo $dato['Perfil']; ?></option>
-                                            <?php } ?>
+                                            <option value="AUDITOR" selected>AUDITOR</option>
+                                            <option value="_JEFEAUDIT">JEFE DE AUDITORIA</option>
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- Select Empresa -->
-                                <?php 
-                                    // $sql= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
-                                    // $sql->execute();
-                                    // $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
-                                ?>
+                                <!-- Departamento -->
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <label class="login2">Empresa</label>
-                                        <select name="Empresa" id="Empresa" class="form-control">
-                                            <?php
-                                            foreach ($resultado as $dato) { ?>
-                                            <option value="<?php echo $dato['ClaveEmpresa']; ?>">
-                                                <?php echo $dato['Nombre']; ?>
-                                            </option>
-                                            <?php } ?>
+                                        <label class="login2">Departamento</label>
+                                        <select name="Departamento" id="Departamento" class="form-control">
+                                            <option value="Auditoria" selected>AUDITORIA</option>
+                                            <option value="Oficina">OFICINA</option>
                                         </select>
                                     </div>
                                 </div>
@@ -221,7 +218,7 @@
         $(document).on('submit', '#frmUsuario', function (event) {
             event.preventDefault();
             var datos = $('#frmUsuario').serialize();
-            // alert(datos);
+            alert(datos);
             $.ajax({
                 url: "../SQLServer/Usuario.php",
                 method: 'POST',
@@ -229,7 +226,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    // alert(data);
+                    alert(data);
                     $('#frmUsuario')[0].reset();
                     if (data == 1) {
                         // alert(dato);
@@ -271,20 +268,23 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    //alert(data);
+                    // alert(data);
                     $('#ModalUsuario').modal('show');
-                    $('#ApellidoPat').val(data.ApellidoPaterno);
-                    $('#ApellidoMat').val(data.ApellidoMaterno);
-                    $('#Nombre').val(data.Nombres);
+                    $('#DatosAgregar').hide();
+                    $('#DatosEditar').show();
+                    $('#NombreEditar').val(data.Nombre);
                     $('#usuario').val(data.Usuario);
-                    $('#Contrasenia').val(data.Contrasenia);
-                    $('#Empresa').val(data.ClaveEmpresa);
-                    $('#Perfil').val(data.IdPerfil);
+                    $('#Contrasenia').val(data.Contrasena);
+                    $('#Departamento').val(data.Departamento);
+                    $('#Perfil').val(data.Acceso);
                     $('.modal-title').text("Actualizar datos");
                     $('#IdUsuario').val(idUsuario);
                     $('#action').val("Edit");
                     $('#action').text("Actualizar");
                     $('#operation').val("Edit");
+                    $( "#ApellidoPat" ).removeAttr( "required" );
+                    $( "#ApellidoMat" ).removeAttr( "required" );
+                    $( "#Nombre" ).removeAttr( "required" );
                     // var cla = data.ClaveEmpresa;
                 }
             })

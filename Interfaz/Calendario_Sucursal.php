@@ -1,6 +1,6 @@
 <?php 
     include "Templete/Header.php"; 
-    require_once ("../SQLServer/Conexion.1.php");
+    require_once ("../SQLServer/Conexion.php");
 ?>
 
 <!-- Static Table Start -->
@@ -81,30 +81,10 @@
                             <div class="row">
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
                                 </div>
-                                <!-- Select Empresa -->
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <?php 
-                                        $sqle= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
-                                        $sqle->execute();
-                                        $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
-                                    ?>
-                                    <div class="form-group">
-                                        <label class="login2">Empresa</label>
-                                        <select name="Empresa" id="Empresa" class="form-control">
-                                            <option selected disabled>Seleccione...</option>
-                                            <?php
-                                            foreach ($resultadoe as $datoe) { ?>
-                                            <option value="<?php echo $datoe['ClaveEmpresa']; ?>">
-                                                <?php echo $datoe['Nombre']; ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
                                 <!-- Select Sucursal -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                     <?php 
-                                        $sqls= $pdo->prepare("SELECT Sucursal, Nombre FROM sucursal ORDER BY Nombre");
+                                        $sqls= $pdo->prepare("SELECT Sucursal, Nombre FROM Sucursal ORDER BY Nombre");
                                         $sqls->execute();
                                         $resultados=$sqls->fetchALL(PDO::FETCH_ASSOC);
                                     ?>
@@ -121,6 +101,26 @@
                                         </select>
                                     </div>
                                 </div>
+                                <!-- Select Almacen -->
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                    <?php 
+                                        $sqlalm= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Nombre ASC");
+                                        $sqlalm->execute();
+                                        $resultadoalm=$sqlalm->fetchALL(PDO::FETCH_ASSOC);
+                                    ?>
+                                    <div class="form-group">
+                                        <label class="login2">Almacen</label>
+                                        <select name="Almacen" id="Almacen" class="form-control">
+                                            <option selected disabled>Seleccione...</option>
+                                            <?php
+                                            foreach ($resultadoalm as $datosalm) { ?>
+                                            <option value="<?php echo $datosalm['Almacen']; ?>">
+                                                <?php echo $datosalm['Nombre']; ?>
+                                            </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
                                 </div>
                             </div>
@@ -130,18 +130,19 @@
                                 <!-- Select Usuario -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                     <?php 
-                                        $sqlus= $pdo->prepare("SELECT IdUsuario, CONCAT(ApellidoPaterno, ' ', ApellidoMaterno, ' ', Nombres) AS Auditor FROM usuario");
+                                        $sqlus= $pdo->prepare("SELECT Usuario, Nombre FROM Usuario
+                                        WHERE GrupoTrabajo='Auditoria'AND Departamento='Auditoria' AND Estatus='ALTA'");
                                         $sqlus->execute();
                                         $resultadous=$sqlus->fetchALL(PDO::FETCH_ASSOC);
                                     ?>
                                     <div class="form-group">
                                         <label class="login2">Auditor</label>
                                         <select name="Auditor" id="Auditor" class="form-control">
-                                            <option selected disabled>Seleccione...</option>
+                                            <option selected disabled >Seleccione...</option>
                                             <?php
                                             foreach ($resultadous as $datous) { ?>
-                                            <option value="<?php echo $datous['IdUsuario']; ?>">
-                                                <?php echo $datous['Auditor']?>
+                                            <option value="<?php echo $datous['Usuario']; ?>">
+                                                <?php echo $datous['Nombre']?>
                                             </option>
                                             <?php } ?>
                                         </select>
@@ -198,47 +199,16 @@
 
     // Almacenes
     $(document).ready(function () {
-        $("#Empresa").change(function () { 
+        $("#Sucursal").change(function () { 
             // e.preventDefault();
 
-            $("#Empresa option:selected").each(function () {
-                ClaveEmpresa = $(this).val();
-                $.post("../SQLServer/Almacenes.php",{ ClaveEmpresa: ClaveEmpresa},
+            $("#Sucursal option:selected").each(function () {
+                Sucursal = $(this).val();
+                $.post("../SQLServer/Almacenes.php",{ Sucursal: Sucursal},
                 function(data){
                     $("#Almacen").html(data);
                 });            
             });
-        });
-    });
-
-    // Sucursales
-    $(document).ready(function () {
-        $("#Empresa").change(function () { 
-            // e.preventDefault();
-
-            $("#Empresa option:selected").each(function () {
-                ClaveEmpresa = $(this).val();
-                $.post("../SQLServer/Sucursales.php",{ ClaveEmpresa: ClaveEmpresa},
-                function(data){
-                    $("#Sucursal").html(data);
-                });            
-            });
-        });
-    });
-
-    // Auditores
-    $(document).ready(function () {
-        $("#Empresa").change(function () {
-
-            $("#Empresa option:selected").each(function () {
-                ClaveEmpresa = $(this).val();
-                $.post("../SQLServer/Auditores.php",{ ClaveEmpresa: ClaveEmpresa},
-                function(data) {
-                    $("#Auditor").html(data);
-                });
-
-            });
-
         });
     });
 
@@ -262,7 +232,7 @@
         $(document).on('submit', '#frmSucAuditar', function (event) {
             event.preventDefault();
             var datos = $('#frmSucAuditar').serialize();
-            // alert(datos);
+            alert(datos);
             $.ajax({
                 url: "../SQLServer/Calendario.php",
                 method: 'POST',
@@ -270,7 +240,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    // alert(data);
+                    alert(data);
                     $('#frmSucAuditar')[0].reset();
                     if (data == 1) {
                         // alert(dato);
@@ -304,13 +274,12 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    // alert(data);
+                    alert(data);
                     $('#ModalSucAuditar').modal('show');
-                    $('#IdAuditar').val(data.IdAuditar);
-                    $('#Empresa').val(data.ClaveEmpresa);
+                    $('#IdAuditar').val(data.IdCalendarioAuditar);
                     $('#Sucursal').val(data.Sucursal);
                     $('#Almacen').val(data.Almacen);
-                    $('#Auditor').val(data.IdUsuario);
+                    $('#Auditor').val(data.Auditor);
                     $('#Fecha').val(data.Fecha);
                     $('.modal-title').text("Actualizar datos");
                     $('#action').val("Edit");
@@ -324,7 +293,7 @@
         // Eliminar
         $(document).on("click", "#Eliminar", function () {
             var IdAuditar = $(this).data("id");
-            //  alert(IdAuditar);
+             alert(IdAuditar);
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Será eliminado de la base de datos!",

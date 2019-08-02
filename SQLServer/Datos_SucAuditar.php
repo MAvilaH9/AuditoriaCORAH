@@ -7,18 +7,17 @@
 		$Id=$_POST['IdAuditar'];
 		$output = array();
 		$statement = $pdo->prepare(
-			"SELECT * FROM Auditar 
-			WHERE IdAuditar = $Id"
+			"SELECT * from CalendarioAuditar
+			WHERE IdCalendarioAuditar = '$Id'"
 		);
 		$statement->execute();
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			$output["IdAuditar"] = $row["IdAuditar"];
-			$output["ClaveEmpresa"] = $row["ClaveEmpresa"];
+			$output["IdCalendarioAuditar"] = $row["IdCalendarioAuditar"];
 			$output["Sucursal"] = $row["Sucursal"];
 			$output["Almacen"] = $row["Almacen"];
-			$output["IdUsuario"] = $row["IdUsuario"];
+			$output["Auditor"] = $row["Usuario"];
 			$output["Fecha"] = $row["Fecha"];
 		}
 		echo json_encode($output);

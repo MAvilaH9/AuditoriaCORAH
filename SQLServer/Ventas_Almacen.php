@@ -26,8 +26,7 @@
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND ArtRama='$Rama'
                 AND Familia='$Familia' AND Grupo='$Grupo' AND Proveedor='$Proveedor' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof' 
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -55,7 +54,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -103,8 +102,7 @@
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND ArtRama='$Rama'
                 AND Familia='$Familia' AND Grupo='$Grupo' AND Proveedor='$Proveedor' 
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof' 
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -133,7 +131,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -178,8 +176,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND ArtRama='$Rama'
                 AND Familia='$Familia' AND Grupo='$Grupo' AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -206,7 +203,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -250,8 +247,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND ArtRama='$Rama'
                 AND Familia='$Familia' AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -278,7 +274,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -320,8 +316,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND ArtRama='$Rama'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -348,7 +343,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -390,8 +385,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND Familia='$Familia'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -418,7 +412,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -460,8 +454,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND Grupo='$Grupo'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -488,7 +481,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -530,8 +523,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND Proveedor='$Proveedor'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -558,7 +550,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -600,8 +592,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -628,7 +619,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -670,8 +661,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtRama='$Rama' AND Familia='$Familia'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -698,7 +688,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -740,8 +730,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtRama='$Rama' AND Grupo='$Grupo'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -768,7 +757,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -810,8 +799,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtRama='$Rama' AND Proveedor='$Proveedor'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -838,7 +826,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -880,8 +868,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtRama='$Rama' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -908,7 +895,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -950,8 +937,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Familia='$Familia' AND Grupo='$Grupo'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -978,7 +964,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1020,8 +1006,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Familia='$Familia' AND Proveedor='$Proveedor'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -1048,7 +1033,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1090,8 +1075,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Familia='$Familia' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -1118,7 +1102,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1160,8 +1144,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Grupo='$Grupo' AND Proveedor='$Proveedor'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -1188,7 +1171,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1230,8 +1213,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Grupo='$Grupo' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
 
@@ -1258,7 +1240,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1300,8 +1282,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Proveedor='$Proveedor' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1329,7 +1310,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1370,8 +1351,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtCategoria='$Categoria'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX, FechaEmision ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1399,7 +1379,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1440,8 +1420,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND ArtRama='$Rama'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1469,7 +1448,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1510,8 +1489,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Familia='$Familia'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1539,7 +1517,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1580,8 +1558,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Grupo='$Grupo'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1609,7 +1586,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1650,8 +1627,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Proveedor='$Proveedor'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1679,7 +1655,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1720,8 +1696,7 @@
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
                 FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Fabricante='$Fabricante'
                 AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1749,7 +1724,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1785,9 +1760,8 @@
                 $FechaFinal=$_POST['FechaFinal'];
 
                 $sqla= $pdo->prepare("SELECT Articulo, Descripcion1, CONVERT(numeric(10,0), CantidadX) CantidadX 
-                FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal'
-                AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
-                GROUP BY Articulo, Descripcion1, CantidadX ORDER BY Articulo ASC");
+                FROM Corah_VentaUtilX WHERE Almacen='$Almacen' AND Articulo BETWEEN '$Articuloi' AND '$Articulof'
+                AND FechaEmision BETWEEN '$FechaInicio' AND '$FechaFinal' ORDER BY Articulo ASC");
                 $sqla->execute();
                 $resultadoalm=$sqla->fetchALL(PDO::FETCH_ASSOC); ?>
             
@@ -1814,7 +1788,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1890,7 +1864,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -1962,7 +1936,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2031,7 +2005,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2098,7 +2072,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2163,7 +2137,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2227,7 +2201,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2291,7 +2265,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2355,7 +2329,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2419,7 +2393,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2483,7 +2457,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2547,7 +2521,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2611,7 +2585,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2675,7 +2649,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2740,7 +2714,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2804,7 +2778,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2868,7 +2842,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2932,7 +2906,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -2996,7 +2970,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3060,7 +3034,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3124,7 +3098,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3188,7 +3162,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3252,7 +3226,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3317,7 +3291,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3381,7 +3355,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3446,7 +3420,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             
@@ -3509,7 +3483,7 @@
                                     <tr>
                                         <th>Articulo</th>
                                         <th>Descripción</th>
-                                        <th>Cantidad Vendida</th>
+                                        <th>Cantidad Venta</th>
                                     </tr>
                                 </thead>
             

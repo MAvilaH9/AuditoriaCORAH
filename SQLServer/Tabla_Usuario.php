@@ -1,7 +1,8 @@
 <?php
     session_start();
     require_once "Conexion.php";
-    $sql= $pdo->prepare("SELECT Nombre, Departamento, Usuario, Contrasena FROM Usuario WHERE Departamento ='Auditoria' ORDER BY Nombre ASC");
+    $sql= $pdo->prepare("SELECT Nombre, Departamento, Usuario, Contrasena FROM Usuario 
+    WHERE GrupoTrabajo ='Auditoria' AND Estatus='ALTA' ORDER BY Nombre ASC");
     $sql->execute();
     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 ?>

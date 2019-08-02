@@ -8,19 +8,19 @@
 		$output = array();
 		$sql=$pdo->prepare(
 			"SELECT * FROM Usuario 
-			WHERE IdUsuario = '$id'"
+			WHERE Usuario = '$id'"
 		);
 		$sql->execute();
 		$result = $sql->fetchAll(PDO::FETCH_ASSOC);
 		foreach($result as $row)
 		{
-			$output["ApellidoPaterno"] = $row["ApellidoPaterno"];
-			$output["ApellidoMaterno"] = $row["ApellidoMaterno"];
-			$output["Nombres"] = $row["Nombres"];
+			// $output["ApellidoPaterno"] = $row["ApellidoPaterno"];
+			// $output["ApellidoMaterno"] = $row["ApellidoMaterno"];
+			$output["Nombre"] = $row["Nombre"];
 			$output["Usuario"] = $row["Usuario"];
-			$output["Contrasenia"] = $row["Contrasenia"];
-			$output["ClaveEmpresa"] = $row["ClaveEmpresa"];
-			$output["IdPerfil"] = $row["IdPerfil"];
+			$output["Contrasena"] = $row["Contrasena"];
+			$output["Departamento"] = $row["Departamento"];
+			$output["Acceso"] = $row["Acceso"];
 		}
 		echo json_encode($output);
 	}

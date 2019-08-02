@@ -82,41 +82,30 @@
                                 </div>
                                 <!-- Select Empresa -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <?php 
-                                        $sqle= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM empresa ORDER BY Nombre");
-                                        $sqle->execute();
-                                        $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
-                                    ?>
                                     <div class="form-group">
                                         <label class="login2">Empresa</label>
                                         <select name="Empresa" id="Empresa" class="form-control">
                                             <option selected disabled>Seleccione...</option>
-                                            <?php
-                                            foreach ($resultadoe as $datoe) { ?>
-                                            <option value="<?php echo $datoe['ClaveEmpresa']; ?>">
-                                                <?php echo $datoe['Nombre']; ?>
-                                            </option>
-                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <!-- Select Almacen -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                     <?php 
-                                        $sqle= $pdo->prepare("SELECT Almacen, Nombre as NomAlmacen FROM Almacen ORDER BY Nombre");
-                                        $sqle->execute();
-                                        $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
+                                        // $sqle= $pdo->prepare("SELECT Almacen, Nombre as NomAlmacen FROM Almacen ORDER BY Nombre");
+                                        // $sqle->execute();
+                                        // $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
                                     ?>
                                     <div class="form-group">
                                         <label class="login2">Almacen</label>
                                         <select name="Almacen" id="Almacen" class="form-control">
                                             <option selected disabled>Seleccione...</option>
                                             <?php
-                                            foreach ($resultadoe as $datoe) { ?>
-                                            <option value="<?php echo $datoe['Almacen']; ?>">
-                                                <?php echo $datoe['NomAlmacen']; ?>
+                                            // foreach ($resultadoe as $datoe) { ?>
+                                            <option value="<?php //echo $datoe['Almacen']; ?>">
+                                                <!-- <?php //echo $datoe['NomAlmacen']; ?> -->
                                             </option>
-                                            <?php } ?>
+                                            <?php // } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -129,7 +118,8 @@
                                 <!-- Select Usuario -->
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                     <?php 
-                                        $sqlus= $pdo->prepare("SELECT IdUsuario, CONCAT(ApellidoPaterno, ' ', ApellidoMaterno, ' ', Nombres) AS Auditor FROM usuario");
+                                        $sqlus= $pdo->prepare("SELECT Usuario, Nombre FROM Usuario
+                                        WHERE GrupoTrabajo='Auditoria'AND Departamento='Auditoria' AND Estatus='ALTA'");
                                         $sqlus->execute();
                                         $resultadous=$sqlus->fetchALL(PDO::FETCH_ASSOC);
                                     ?>
@@ -139,8 +129,8 @@
                                             <option selected disabled >Seleccione...</option>
                                             <?php
                                             foreach ($resultadous as $datous) { ?>
-                                            <option value="<?php echo $datous['IdUsuario']; ?>">
-                                                <?php echo $datous['Auditor']?>
+                                            <option value="<?php echo $datous['Usuario']; ?>">
+                                                <?php echo $datous['Nombre']?>
                                             </option>
                                             <?php } ?>
                                         </select>
@@ -188,7 +178,7 @@
 
 <script>
     function MostrarDatos() {
-        $('#tabla_AlmAuditar').load('../SQLServer/tabla_AlmAuditar.php');
+        // $('#tabla_AlmAuditar').load('../SQLServer/tabla_AlmAuditar.php');
     }
 </script>
 

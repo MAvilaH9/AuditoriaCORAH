@@ -9,7 +9,7 @@
     $Contrasenia= $_REQUEST['Contrasenia'];
 
     // Consulta para la validación del usuario
-    $Sql = 'SELECT * FROM Usuario WHERE Usuario=?';
+    $Sql = "SELECT * FROM Usuario WHERE Usuario=? AND Estatus='ALTA'";
     $Sentencia = $pdo->prepare($Sql);
     $Sentencia->execute(array($Usuario));
     $Resultado = $Sentencia->fetch();
@@ -20,7 +20,7 @@
     $Resultado['ClaveEmpresa'];
 
     if ($Resultado['Acceso']=="_JEFEAUDIT") {
-        $Perfil=2;
+        $Perfil=1;
     } else {
         $Perfil=2;
     }
@@ -29,8 +29,8 @@
         $_SESSION['Usuario'] = $Resultado['Usuario'];
         // $_SESSION['Perfil'] = $Resultado['IdPerfil'];
         $_SESSION['Perfil'] = $Perfil;
-        $_SESSION['ClaveEmpresa'] = $Resultado['ClaveEmpresa'];
-        $_SESSION['IdUsuario']=7;   
+        // $_SESSION['ClaveEmpresa'] = $Resultado['ClaveEmpresa'];
+        // $_SESSION['IdUsuario']=7;   
 
         header('location:../Interfaz/Index.php');
 

@@ -1,4 +1,7 @@
-
+<?php
+    session_start();
+    $Empresa=$_SESSION['Empresa'];
+?>    
     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true"
         data-cookie="true" data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
         <thead>
@@ -10,7 +13,7 @@
         </thead>
         <tbody>
             <?php
-            $directorio = opendir("../Excel/"); //ruta actual
+            $directorio = opendir('../Reportes/'.$Empresa); //ruta actual
             while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
                 if ($archivo != "." && $archivo !="..") { ?>
                 <tr>

@@ -6,6 +6,7 @@
     $Almacen=$_POST['Almacen'];
     date_default_timezone_set('America/Mexico_City');
     $FechaActual = date("d-m-Y H:i:s:v",time());
+    $ArcEmpresa=$_SESSION['Empresa'];
   
 
     if (isset($_POST['operacion'])) {
@@ -18,89 +19,200 @@
 
             // print_r ($_FILES);
             $archivo= $usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
-            $destino="../Excel/".$archivo;
-
-
-
-            if (copy($_FILES['excel']['tmp_name'],$destino)) {
-
-                if (file_exists("../Excel/".$archivo)) {
-                    
-                    $objPHPExcel = PHPExcel_IOFactory::load("../Excel/".$archivo);
-        
-                    $objPHPExcel->setActiveSheetIndex(0);
+            $Guardado=$_FILES['excel']['tmp_name'];
+            $destino='../Reportes/'.$ArcEmpresa.'/'.$archivo;
             
-                    $numfilas = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow(); ?>
+            if (!file_exists($destino)) {
+                if (!file_exists('../Reportes/'.$ArcEmpresa)) {
+                    mkdir('../Reportes/'.$ArcEmpresa,0777,true);
+                    if (file_exists('../Reportes/'.$ArcEmpresa)) {
+                        if (move_uploaded_file($Guardado,'../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+    
+                            if (file_exists('../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+                                
+                                $objPHPExcel = PHPExcel_IOFactory::load('../Reportes/'.$ArcEmpresa.'/'.$archivo);
                     
-                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true" data-cookie="true"
-                        data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
-                        <tr>
-                            <th>Articulo</th>
-                            <th>Cantidad</th>
-                            <th>Unidad</th>
-                            <th>Inventario</th>
-                            <th>Paquete</th>
-                            <th>Costo unitario</th>
-                            <th>Costo Total</th>
-                        </tr>
-                    <?php
+                                $objPHPExcel->setActiveSheetIndex(0);
+                        
+                                $numfilas = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow(); ?>
+                                
+                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true" data-cookie="true"
+                                    data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
+                                    <tr>
+                                        <th>Articulo</th>
+                                        <th>Cantidad</th>
+                                        <th>Unidad</th>
+                                        <th>Inventario</th>
+                                        <th>Paquete</th>
+                                        <th>Costo unitario</th>
+                                        <th>Costo Total</th>
+                                    </tr>
+                                <?php
+                        
+                                for ($i=2; $i <= $numfilas ; $i++) { 
             
-                    for ($i=2; $i <= $numfilas ; $i++) { 
-
-                        $Articulo = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
-                        $Cantidad = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
-                        $Unidad = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
-                        $Inventario = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
-                        $Paquete = $objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
-                        $CostoU = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
-                        $CostoT = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
+                                    $Articulo = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
+                                    $Cantidad = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
+                                    $Unidad = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
+                                    $Inventario = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
+                                    $Paquete = $objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
+                                    $CostoU = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
+                                    $CostoT = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $Articulo; ?></td>
+                                        <td><?php echo $Cantidad; ?></td>
+                                        <td><?php echo $Unidad; ?></td>
+                                        <td><?php echo $Inventario ;?></td>
+                                        <td><?php echo $Paquete; ?></td>
+                                        <td><?php echo $CostoU; ?></td>
+                                        <td><?php echo $CostoT; ?></td>
+                                    </tr>
+                                <?php
+                                } ?>
+                                </table>  
+                                <script>
+                                    Swal.fire({
+                                        title: 'Advertencia!',
+                                        text: 'Valide la información antes de guardar',
+                                        type: 'warning',
+                                        confirmButtonText: 'Aceptar'
+                                    })
+                                </script>
+                                
+                                <?php
+                                $_SESSION['Archivo'] = $archivo;
+                                // $data= array();
+                                // $data['Archivo']= $archivo;
+                                // echo json_encode($data);
+                            }
+                        } else { ?>
+                            <script>
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Error al cargar archivo',
+                                    type: 'error',
+                                    confirmButtonText: 'Aceptar'
+                                })
+                                setTimeout('document.location.reload()',1000);
+                            </script>
+                        <?php
+                        } 
                         ?>
-                        <tr>
-                            <td><?php echo $Articulo; ?></td>
-                            <td><?php echo $Cantidad; ?></td>
-                            <td><?php echo $Unidad; ?></td>
-                            <td><?php echo $Inventario ;?></td>
-                            <td><?php echo $Paquete; ?></td>
-                            <td><?php echo $CostoU; ?></td>
-                            <td><?php echo $CostoT; ?></td>
-                        </tr>
+            
+                        <!-- data table JS
+                        ============================================ -->
+                        <script src="../js/tablas.js"></script>
+                        
                     <?php
-                    } ?>
-                    </table>  
-                    <script>
+                    } else { ?>
+                        <script>
                         Swal.fire({
-                            title: 'Advertencia!',
-                            text: 'Valide la información antes de guardar',
-                            type: 'warning',
+                            title: 'Error!',
+                            text: 'Error al cargar archivo',
+                            type: 'error',
                             confirmButtonText: 'Aceptar'
                         })
+                        setTimeout('document.location.reload()',1000);
                     </script>
+                    <?php 
+                    }
+                } else{
+
+                    if (move_uploaded_file($Guardado,'../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+    
+                        if (file_exists('../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+                            
+                            $objPHPExcel = PHPExcel_IOFactory::load('../Reportes/'.$ArcEmpresa.'/'.$archivo);
+                
+                            $objPHPExcel->setActiveSheetIndex(0);
                     
+                            $numfilas = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow(); ?>
+                            
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true" data-cookie="true"
+                                data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
+                                <tr>
+                                    <th>Articulo</th>
+                                    <th>Cantidad</th>
+                                    <th>Unidad</th>
+                                    <th>Inventario</th>
+                                    <th>Paquete</th>
+                                    <th>Costo unitario</th>
+                                    <th>Costo Total</th>
+                                </tr>
+                            <?php
+                    
+                            for ($i=2; $i <= $numfilas ; $i++) { 
+        
+                                $Articulo = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
+                                $Cantidad = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
+                                $Unidad = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
+                                $Inventario = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
+                                $Paquete = $objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
+                                $CostoU = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
+                                $CostoT = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
+                                ?>
+                                <tr>
+                                    <td><?php echo $Articulo; ?></td>
+                                    <td><?php echo $Cantidad; ?></td>
+                                    <td><?php echo $Unidad; ?></td>
+                                    <td><?php echo $Inventario ;?></td>
+                                    <td><?php echo $Paquete; ?></td>
+                                    <td><?php echo $CostoU; ?></td>
+                                    <td><?php echo $CostoT; ?></td>
+                                </tr>
+                            <?php
+                            } ?>
+                            </table>  
+                            <script>
+                                Swal.fire({
+                                    title: 'Advertencia!',
+                                    text: 'Valide la información antes de guardar',
+                                    type: 'warning',
+                                    confirmButtonText: 'Aceptar'
+                                })
+                            </script>
+                            
+                            <?php
+                            $_SESSION['Archivo'] = $archivo;
+                            // $data= array();
+                            // $data['Archivo']= $archivo;
+                            // echo json_encode($data);
+                        }
+                    } else { ?>
+                        <script>
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Error al cargar archivo',
+                                type: 'error',
+                                confirmButtonText: 'Aceptar'
+                            })
+                            setTimeout('document.location.reload()',1000);
+                        </script>
                     <?php
-                    $_SESSION['Archivo'] = $archivo;
-                    // $data= array();
-                    // $data['Archivo']= $archivo;
-                    // echo json_encode($data);
+                    } 
+                    ?>
+        
+                    <!-- data table JS
+                    ============================================ -->
+                    <script src="../js/tablas.js"></script>
+                    
+                <?php
                 }
+                
             } else { ?>
                 <script>
-                    Swal.fire({
-                        title: 'Error!',
+                     Swal.fire({
+                         title: 'Error!',
                         text: 'Error al cargar archivo',
                         type: 'error',
                         confirmButtonText: 'Aceptar'
                     })
                     setTimeout('document.location.reload()',1000);
                 </script>
-            <?php
-            } 
-            ?>
+            <?php 
+            }
 
-            <!-- data table JS
-            ============================================ -->
-            <script src="../js/tablas.js"></script>
-            
-        <?php
         }
 
         if ($_POST['operacion'] == "Guardar") {
@@ -112,7 +224,7 @@
             // print_r ($_FILES);            
             $archivo=$usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
 
-            if (file_exists("../Excel/".$archivo)) {
+            if (file_exists('../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
 
                 $Empresa="VAL";
                 $Moneda="Pesos";
@@ -132,7 +244,7 @@
                 $sentencia->execute(array($sqlAgregarMOv));
                 $IdInv = $pdo->lastInsertId();
 
-                $objPHPExcel = PHPExcel_IOFactory::load("../Excel/".$archivo);
+                $objPHPExcel = PHPExcel_IOFactory::load('../Reportes/'.$ArcEmpresa.'/'.$archivo);
 
                 $objPHPExcel->setActiveSheetIndex(0);
     
