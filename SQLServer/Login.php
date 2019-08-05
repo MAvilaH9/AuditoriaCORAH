@@ -35,6 +35,6 @@
         header('location:../Interfaz/Index.php');
 
     }else {
-        header('location:../Interfaz/Login1.php?Error=true');
+        header('location:../Interfaz/Login.php?Error=true');
     }
 ?>

@@ -232,7 +232,7 @@
         $(document).on('submit', '#frmSucAuditar', function (event) {
             event.preventDefault();
             var datos = $('#frmSucAuditar').serialize();
-            alert(datos);
+            // alert(datos);
             $.ajax({
                 url: "../SQLServer/Calendario.php",
                 method: 'POST',
@@ -240,7 +240,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmSucAuditar')[0].reset();
                     if (data == 1) {
                         // alert(dato);
@@ -274,7 +274,7 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#ModalSucAuditar').modal('show');
                     $('#IdAuditar').val(data.IdCalendarioAuditar);
                     $('#Sucursal').val(data.Sucursal);
@@ -293,7 +293,7 @@
         // Eliminar
         $(document).on("click", "#Eliminar", function () {
             var IdAuditar = $(this).data("id");
-             alert(IdAuditar);
+            // alert(IdAuditar);
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Será eliminado de la base de datos!",

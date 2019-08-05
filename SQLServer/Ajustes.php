@@ -20,17 +20,17 @@
             // print_r ($_FILES);
             $archivo= $usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
             $Guardado=$_FILES['excel']['tmp_name'];
-            $destino='../Reportes/'.$ArcEmpresa.'/'.$archivo;
+            $destino='../Ajustes/'.$ArcEmpresa.'/'.$archivo;
             
             if (!file_exists($destino)) {
-                if (!file_exists('../Reportes/'.$ArcEmpresa)) {
-                    mkdir('../Reportes/'.$ArcEmpresa,0777,true);
-                    if (file_exists('../Reportes/'.$ArcEmpresa)) {
-                        if (move_uploaded_file($Guardado,'../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+                if (!file_exists('../Ajustes/'.$ArcEmpresa)) {
+                    mkdir('../Ajustes/'.$ArcEmpresa,0777,true);
+                    if (file_exists('../Ajustes/'.$ArcEmpresa)) {
+                        if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
     
-                            if (file_exists('../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+                            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
                                 
-                                $objPHPExcel = PHPExcel_IOFactory::load('../Reportes/'.$ArcEmpresa.'/'.$archivo);
+                                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$archivo);
                     
                                 $objPHPExcel->setActiveSheetIndex(0);
                         
@@ -119,11 +119,11 @@
                     }
                 } else{
 
-                    if (move_uploaded_file($Guardado,'../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+                    if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
     
-                        if (file_exists('../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+                        if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
                             
-                            $objPHPExcel = PHPExcel_IOFactory::load('../Reportes/'.$ArcEmpresa.'/'.$archivo);
+                            $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$archivo);
                 
                             $objPHPExcel->setActiveSheetIndex(0);
                     
@@ -224,7 +224,7 @@
             // print_r ($_FILES);            
             $archivo=$usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
 
-            if (file_exists('../Reportes/'.$ArcEmpresa.'/'.$archivo)) {
+            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
 
                 $Empresa="VAL";
                 $Moneda="Pesos";
@@ -244,7 +244,7 @@
                 $sentencia->execute(array($sqlAgregarMOv));
                 $IdInv = $pdo->lastInsertId();
 
-                $objPHPExcel = PHPExcel_IOFactory::load('../Reportes/'.$ArcEmpresa.'/'.$archivo);
+                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$archivo);
 
                 $objPHPExcel->setActiveSheetIndex(0);
     

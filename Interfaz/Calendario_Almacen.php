@@ -61,7 +61,7 @@
 <!-- Static Table End -->
 
 
-<!-- Modal Auditor -->
+<!-- Modal Agregar -->
 
 <div id="ModalAlmAuditar" class="modal modal-edu-general default-popup-PrimaryModal fade modal fade bd-example-modal-lg"
     role="dialog">
@@ -178,7 +178,7 @@
 
 <script>
     function MostrarDatos() {
-        // $('#tabla_AlmAuditar').load('../SQLServer/tabla_AlmAuditar.php');
+        $('#tabla_AlmAuditar').load('../SQLServer/tabla_AlmAuditar.php');
     }
 </script>
 
@@ -251,7 +251,7 @@
         $(document).on('submit', '#frmAlmAuditar', function (event) {
             event.preventDefault();
             var datos = $('#frmAlmAuditar').serialize();
-            alert(datos);
+            // alert(datos);
             $.ajax({
                 url: "../SQLServer/Calendario.php",
                 method: 'POST',
@@ -259,7 +259,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmAlmAuditar')[0].reset();
                     if (data == 1) {
                         $("#ModalAlmAuditar").modal("hide");

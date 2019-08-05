@@ -7,7 +7,7 @@
     FROM CalendarioAuditar ca INNER JOIN Sucursal s ON ca.Sucursal=s.Sucursal
     INNER JOIN Alm a ON a.Almacen=ca.Almacen 
     INNER JOIN Usuario u ON u.Usuario=ca.Usuario
-    ORDER BY Fecha ASC");
+    ORDER BY DATEPART(m,Fecha), DATEPART(d,Fecha) ASC");
     $sql->execute();
     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 ?>

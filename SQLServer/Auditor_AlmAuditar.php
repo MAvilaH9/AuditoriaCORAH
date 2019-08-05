@@ -2,14 +2,15 @@
     session_start();
     require_once "Conexion.php";
     $Usuario = $_SESSION['Usuario'];
-    $fecha = date('d/m/Y');
+    // $fecha = date('d/m/Y');
     
     $sql= $pdo->prepare("SELECT s.Nombre as Sucursal, a.Nombre as Almacen,
     u.Nombre as Auditor, ca.Fecha FROM CalendarioAuditar ca
     INNER JOIN Sucursal s ON s.Sucursal=ca.Sucursal
     INNER JOIN Alm a ON a.Almacen=ca.Almacen 
     INNER JOIN Usuario u ON u.Usuario=ca.Usuario
-    WHERE ca.Usuario='$Usuario' AND Fecha>='$fecha' ORDER BY Fecha ASC");
+    WHERE ca.Usuario='$Usuario' AND Fecha>=GETDATE() 
+    ORDER BY DATEPART(m,Fecha), DATEPART(d,Fecha) ASC");
     $sql->execute();
     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 ?>

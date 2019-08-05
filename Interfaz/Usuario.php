@@ -218,7 +218,7 @@
         $(document).on('submit', '#frmUsuario', function (event) {
             event.preventDefault();
             var datos = $('#frmUsuario').serialize();
-            alert(datos);
+            // alert(datos);
             $.ajax({
                 url: "../SQLServer/Usuario.php",
                 method: 'POST',
@@ -226,7 +226,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmUsuario')[0].reset();
                     if (data == 1) {
                         // alert(dato);

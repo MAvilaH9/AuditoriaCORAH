@@ -10,7 +10,7 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd" style="text-align: center">
-                            <h1>Lista <span class="table-project-n">de</span> Almacenes a auditar</h1>
+                            <h1>Lista <span class="table-project-n">de</span> Sucursales a auditar</h1>
                         </div>
                     </div>
 
@@ -24,7 +24,7 @@
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
                                     <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Almacenes a auditar</span>
+                                <li><span class="bread-blod">Sucursales a auditar</span>
                                 </li>
                             </ul>
                         </div> <br>

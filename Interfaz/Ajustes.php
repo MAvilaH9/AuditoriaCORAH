@@ -238,7 +238,7 @@
             </div>
             <div class="modal-footer danger-md">
                 <a data-dismiss="modal" href="#">Cancelar</a>
-                <a href="Descarga_Reportes.php?Cancelar=Cancelar" class="external" >Aceptar</a>
+                <a href="Descarga_Ajustes.php?Cancelar=Cancelar" class="external" >Aceptar</a>
             </div>
         </div>
     </div>
@@ -253,7 +253,7 @@
     $(document).on('submit', '#frmAjusteInv', function (event) {
         event.preventDefault();
         var datos = $('#frmAjusteInv').serialize();
-        alert(datos);
+        // alert(datos);
         $.ajax({
             url: "../SQLServer/Ajustes.php",
             method: 'POST',
@@ -271,7 +271,7 @@
                 return xhr;
             },
             success: function (data) {
-                alert(data);
+                // alert(data);
                 $("#Resultado").html(data);
                 $("#BotonAgregar").hide();
                 $("#BotonGuardar").show();

@@ -136,12 +136,12 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
                                         href="../Interfaz/Articulos_Sucursal.php">
                                         <span class="mini-sub-pro">Sucursal</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <li id="removable">
@@ -164,12 +164,12 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                 <span class="mini-click-non">Calendario</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li>
+                                <!-- <li>
                                     <a data-toggle="tooltip" title="Almacenes" class="external"
                                         href="../Interfaz/Calendario_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a data-toggle="tooltip" title="Sucursales" class="external"
                                         href="../Interfaz/Calendario_Sucursal.php">
@@ -179,11 +179,18 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             </ul>
                         </li>
                         <li>
-                            <a data-toggle="tooltip" title="Archivos de reportes" class="external" href="../Interfaz/Reportes.php" aria-expanded="false">
+                            <a data-toggle="tooltip" title="Archivos de ajustes" class="external" href="../Interfaz/Archivos_Ajuste.php" aria-expanded="false">
+                                <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Ajustes</span>
+                            </a>
+                        </li>                        
+                        <li>
+                            <a data-toggle="tooltip" title="Archivos de reportes" class="external" href="../Interfaz/Archivos_Reportes.php" aria-expanded="false">
                                 <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
                                 <span class="mini-click-non">Reportes</span>
                             </a>
                         </li>
+
                     </ul>
                 </nav>
             </div>
@@ -215,9 +222,9 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                         href="../Interfaz/Articulos_Almacen.php">
                                         <span class="mini-sub-pro">Almacén</span>
                                     </a>
-                                    <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
+                                    <!-- <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
                                         href="../Interfaz/Articulos_Sucursal.php">
-                                        <span class="mini-sub-pro">Sucursal</span>
+                                        <span class="mini-sub-pro">Sucursal</span> -->
                                     </a>
                                 </li>
                             </ul>
@@ -226,6 +233,12 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                             <a data-toggle="tooltip" title="Calendario de Auditorias" class="external" href="../Interfaz/Calendario.php" aria-expanded="false">
                                 <span class="educate-icon educate-event icon-wrap"></span>
                                 <span class="mini-click-non">Calendario</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tooltip" title="Calendario de Auditorias" class="external" href="../Interfaz/Formatos.php" aria-expanded="false">
+                                <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Formatos</span>
                             </a>
                         </li>
                     </ul>
@@ -282,8 +295,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
                                                         <a href="../Interfaz/Inventario_Almacen.php"
                                                             class="dropdown-item external">Almacen</a>
-                                                        <a href="../Interfaz/Inventario_Sucursal.php"
-                                                            class="dropdown-item external">Sucursal</a>
+                                                        <!-- <a href="../Interfaz/Inventario_Sucursal.php"
+                                                            class="dropdown-item external">Sucursal</a> -->
                                                     </div>
                                                     </a>
                                                 </li>
@@ -296,8 +309,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     <div role="menu" class="dropdown-menu animated zoomIn">
                                                         <a href="../Interfaz/Ventas_Almacen.php"
                                                             class="dropdown-item external">Almacen</a>
-                                                        <a href="../Interfaz/Ventas_Sucursal.php"
-                                                            class="dropdown-item external">Sucursal</a>
+                                                        <!-- <a href="../Interfaz/Ventas_Sucursal.php"
+                                                            class="dropdown-item external">Sucursal</a> -->
                                                     </div>
                                                     </a>
                                                 </li>
@@ -308,14 +321,22 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                         Subir Ajuste
                                                     </a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a href="../Interfaz/Reportes.php" class="nav-link external">
+                                                        Subir Reporte
+                                                    </a>
+                                                </li>
                                                 <?php
-                                                }
-                                                ?>
+                                                } else { ?>
                                                 <li class="nav-item">
                                                     <a href="../Interfaz/Formatos.php" class="nav-link external">
                                                         Formatos
                                                     </a>
                                                 </li>
+
+                                                <?php
+                                                }
+                                                ?>
                                             </ul>
                                         </div>
                                     </div>
