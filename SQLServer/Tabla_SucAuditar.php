@@ -14,11 +14,11 @@
 
     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true" data-cookie="true" data-cookie-id-table="saveId"  data-click-to-select="true" data-toolbar="#toolbar">
         <thead>
-            <tr>
+            <tr>                
+                <th>Fecha de Auditoría</th>
                 <th>Sucursal</th>
                 <th>Almacen</th>
                 <th>Auditor</th>
-                <th>Fecha de Auditoria</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -26,10 +26,10 @@
             <?php
             foreach ($resultado as $dato) {?>
             <tr>
+                <td><?php echo $dato['Fecha'];?></td>
                 <td><?php echo $dato['Sucursal'];?></td>
                 <td><?php echo $dato['Almacen'];?></td>
                 <td><?php echo $dato['Auditor'];?></td>
-                <td><?php echo $dato['Fecha'];?></td>
                 <td>
                     <button  title="Editar" class="pd-setting-ed" id="Editar" name="editar" data-id="<?php echo $dato['IdCalendarioAuditar'];?>"> 
                         <i class='fa fa-pencil-square-o' aria-hidden='true'></i>
