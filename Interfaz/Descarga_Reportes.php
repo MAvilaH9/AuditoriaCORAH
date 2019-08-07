@@ -4,9 +4,10 @@
     // Descraga
     if (!empty($_REQUEST['Archivo'])) {
         
+        $año=$_GET['Año'];
         $Archivo = $_REQUEST["Archivo"];
 
-        $ruta = '../Reportes/'.$Empresa.'/'.$Archivo;
+        $ruta = '../Reportes/'.$Empresa.'/'.$año.'/'.$Archivo;
     
         // Define headers
         header("Cache-Control: public");

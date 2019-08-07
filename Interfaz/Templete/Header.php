@@ -4,6 +4,9 @@
         header('location:Login.php');
     } else {
     }
+
+    $Empresa=$_SESSION['Empresa'];
+    $NomEmprea=$_SESSION['NomEmpresa'];
 ?>
 
 <!doctype html>
@@ -123,74 +126,150 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="nav metismenu" id="menu1">
-                        <li>
-                            <a class="has-arrow" href="#">
-                                <span class="educate-icon educate-data-table icon-wrap"></span>
-                                <!-- <span class="educate-icon educate-event icon-wrap"></span> -->
-                                <span class="mini-click-non">Auditar</span>
-                            </a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li>
-                                    <a data-toggle="tooltip" title="Articulos Almacen" class="external"
-                                        href="../Interfaz/Articulos_Almacen.php">
-                                        <span class="mini-sub-pro">Almacén</span>
-                                    </a>
-                                </li>
-                                <!-- <li>
-                                    <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
-                                        href="../Interfaz/Articulos_Sucursal.php">
-                                        <span class="mini-sub-pro">Sucursal</span>
-                                    </a>
-                                </li> -->
-                            </ul>
-                        </li>
-                        <li id="removable">
-                            <a class="has-arrow" href="#" aria-expanded="false">
-                                <span class="educate-icon educate-professor icon-wrap"></span>
-                                <span class="mini-click-non">Auditores</span>
-                            </a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li>
-                                    <a data-toggle="tooltip" title="Auditores" class="external"
-                                        href="../Interfaz/Usuario.php">
-                                        <span class="mini-sub-pro">Lista de Auditores</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="#">
-                                <span class="educate-icon educate-event icon-wrap"></span>
-                                <span class="mini-click-non">Calendario</span>
-                            </a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <!-- <li>
-                                    <a data-toggle="tooltip" title="Almacenes" class="external"
-                                        href="../Interfaz/Calendario_Almacen.php">
-                                        <span class="mini-sub-pro">Almacén</span>
-                                    </a>
-                                </li> -->
-                                <li>
-                                    <a data-toggle="tooltip" title="Sucursales" class="external"
-                                        href="../Interfaz/Calendario_Sucursal.php">
-                                        <span class="mini-sub-pro">Sucursal</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a data-toggle="tooltip" title="Archivos de ajustes" class="external" href="../Interfaz/Archivos_Ajuste.php" aria-expanded="false">
-                                <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Ajustes</span>
-                            </a>
-                        </li>                        
-                        <li>
-                            <a data-toggle="tooltip" title="Archivos de reportes" class="external" href="../Interfaz/Archivos_Reportes.php" aria-expanded="false">
-                                <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Reportes</span>
-                            </a>
-                        </li>
+                        <?php
+                        if ($NomEmprea != "AUDITORIA") { ?>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="educate-icon educate-data-table icon-wrap"></span>
+                                    <!-- <span class="educate-icon educate-event icon-wrap"></span> -->
+                                    <span class="mini-click-non">Auditar</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <a data-toggle="tooltip" title="Articulos Almacen" class="external"
+                                            href="../Interfaz/Articulos_Almacen.php">
+                                            <span class="mini-sub-pro">Almacén</span>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a data-toggle="tooltip" title="Articulos Sucursal" class="external"
+                                            href="../Interfaz/Articulos_Sucursal.php">
+                                            <span class="mini-sub-pro">Sucursal</span>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </li>
+                            <li id="removable">
+                                <a class="has-arrow" href="#" aria-expanded="false">
+                                    <span class="educate-icon educate-professor icon-wrap"></span>
+                                    <span class="mini-click-non">Auditores</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <a data-toggle="tooltip" title="Auditores" class="external"
+                                            href="../Interfaz/Usuario.php">
+                                            <span class="mini-sub-pro">Lista de Auditores</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="educate-icon educate-event icon-wrap"></span>
+                                    <span class="mini-click-non">Calendario</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <!-- <li>
+                                        <a data-toggle="tooltip" title="Almacenes" class="external"
+                                            href="../Interfaz/Calendario_Almacen.php">
+                                            <span class="mini-sub-pro">Almacén</span>
+                                        </a>
+                                    </li> -->
+                                    <li>
+                                        <a data-toggle="tooltip" title="Sucursales" class="external"
+                                            href="../Interfaz/Calendario_Sucursal.php">
+                                            <span class="mini-sub-pro">Sucursal</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Ajustes</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                <?php
 
+                                    $Empresa=$_SESSION['Empresa'];
+                                    $directorio = opendir("../Ajustes/".$Empresa); //ruta actual
+                                    while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+                                    {
+                                        if ($archivo != "." && $archivo !="..") { ?>
+                                            <li>
+                                                <a data-toggle="tooltip" title="Año" class="external"
+                                                    href="../Interfaz/Archivos_Ajustes.php?Año=<?php echo $archivo;?>">
+                                                    <span class="mini-sub-pro"><?php echo $archivo; ?></span>
+                                                </a>
+                                            </li>
+                                        <?php        
+                                        }
+                                    }
+                                ?>
+                                </ul>
+                            </li>                        
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Reportes</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                <?php
+
+                                    $Empresa=$_SESSION['Empresa'];
+                                    $directorio = opendir("../Reportes/".$Empresa); //ruta actual
+                                    while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+                                    {
+                                        if ($archivo != "." && $archivo !="..") { ?>
+                                            <li>
+                                                <a data-toggle="tooltip" title="Año" class="external"
+                                                    href="../Interfaz/Archivos_Reportes.php?Año=<?php echo $archivo;?>">
+                                                    <span class="mini-sub-pro"><?php echo $archivo; ?></span>
+                                                </a>
+                                            </li>
+                                        <?php        
+                                        }
+                                    }
+                                ?>
+                                </ul>
+                            </li> 
+                            <!-- <li>
+                                <a data-toggle="tooltip" title="Calendario de Auditorias" class="external" href="../Interfaz/Formatos.php" aria-expanded="false">
+                                    <span class="educate-icon educate-course icon-wrap" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Formatos</span>
+                                </a>
+                            </li> -->
+                        <?php 
+                        } else{ ?>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="educate-icon educate-settings icon-wrap" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Configuración</span>
+                                </a>
+                                <ul class="submenu-angle" aria-expanded="false">
+                                    <li>
+                                        <a data-toggle="tooltip" title="Empresas" class="external"
+                                            href="../Interfaz/Empresas.php">
+                                            <span class="mini-sub-pro">Empresas</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tooltip" title="Usuarios" class="external"
+                                            href="../Interfaz/Usuario_BD.php">
+                                            <span class="mini-sub-pro">Base de Datos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tooltip" title="Usuarios" class="external"
+                                            href="../Interfaz/Usuarios.php">
+                                            <span class="mini-sub-pro">Usuarios</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>   
+                        <?php 
+                        }
+                        ?>
                     </ul>
                 </nav>
             </div>
@@ -281,6 +360,8 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                         <div class="header-top-menu tabl-d-n">
                                             <ul class="nav navbar-nav mai-top-nav">
+                                            <?php 
+                                            if ($_SESSION['NomEmpresa']!="AUDITORIA") { ?>
                                                 <li class="nav-item">
                                                     <a href="../Interfaz/Index.php" class="nav-link external">
                                                         Inicio
@@ -314,18 +395,18 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     </div>
                                                     </a>
                                                 </li>
-                                                <?php
+                                            <?php
                                                 if ($_SESSION['Perfil']==2) { ?>
-                                                <li class="nav-item">
-                                                    <a href="../Interfaz/Ajustes.php" class="nav-link external">
-                                                        Subir Ajuste
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="../Interfaz/Reportes.php" class="nav-link external">
-                                                        Subir Reporte
-                                                    </a>
-                                                </li>
+                                                    <li class="nav-item">
+                                                        <a href="../Interfaz/Ajustes.php" class="nav-link external">
+                                                            Subir Ajuste
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="../Interfaz/Reportes.php" class="nav-link external">
+                                                            Subir Reporte
+                                                        </a>
+                                                    </li>
                                                 <?php
                                                 } else { ?>
                                                 <li class="nav-item">
@@ -333,10 +414,10 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                         Formatos
                                                     </a>
                                                 </li>
-
                                                 <?php
                                                 }
-                                                ?>
+                                            }
+                                            ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -419,10 +500,10 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     <a data-toggle="tooltip" tile="Articulos Almacen" class="external"
                                                         href="../Interfaz/Articulos_Almacen.php">Almacén</a>
                                                 </li>
-                                                <li>
+                                                <!-- <li>
                                                     <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
                                                         href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
-                                                </li>
+                                                </li> -->
                                             </ul>
 
                                         </li>
@@ -446,18 +527,84 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     <a data-toggle="tooltip" tile="Almacenes" class="external"
                                                         href="../Interfaz/Calendario_Almacen.php">Almacen</a>
                                                 </li>
-                                                <li>
+                                                <!-- <li>
                                                     <a data-toggle="tooltip" title="Sucursales" class="external"
                                                         href="../Interfaz/Calendario_Sucursal.php">
                                                        Sucursal
                                                     </a>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </li>
                                         <li>
-                                            <a class="external" href="../Interfaz/Reportes.php" aria-expanded="false">
-                                                <span class="mini-click-non">Reportes</span>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">
+                                                Ajustes
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
                                             </a>
+                                            
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                            <?php
+
+                                                $Empresa=$_SESSION['Empresa'];
+                                                $directorio = opendir("../Reportes/".$Empresa); //ruta actual
+                                                while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+                                                {
+                                                    if ($archivo != "." && $archivo !="..") { ?>
+                                                        <li>
+                                                            <a data-toggle="tooltip" tile="Año" class="external"
+                                                                href="../Interfaz/Archivos_Ajustes.php?Año=<?php echo $archivo;?>">
+                                                                <span class="mini-sub-pro"><?php echo $archivo; ?></span>
+                                                            </a>
+                                                        </li>
+                                                    <?php        
+                                                    }
+                                                }
+                                            ?>
+                                            </ul>
+
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">
+                                                Reportes
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                            </a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                            <?php
+
+                                            $Empresa=$_SESSION['Empresa'];
+                                            $directorio = opendir("../Reportes/".$Empresa); //ruta actual
+                                            while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+                                            {
+                                                if ($archivo != "." && $archivo !="..") { ?>
+                                                    <li>
+                                                        <a data-toggle="tooltip" tile="Año" class="external"
+                                                            href="../Interfaz/Archivos_Reportes.php?Año=<?php echo $archivo;?>">
+                                                            <span class="mini-sub-pro"><?php echo $archivo; ?></span>
+                                                        </a>
+                                                    </li>
+                                                <?php        
+                                                }
+                                            }
+                                            ?>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Configuaración
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                            </a>
+                                            <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <li>
+                                                    <a data-toggle="tooltip" tile="Empresas" class="external"
+                                                        href="../Interfaz/Empresas.php">Empresas</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tooltip" tile="Usuario" class="external"
+                                                        href="../Interfaz/Empresas.php">Usuario</a>
+                                                </li>
+                                                <li>
+                                                    <a data-toggle="tooltip" tile="Usuario base de datos" class="external"
+                                                        href="../Interfaz/Empresas.php">Usuario base de datos</a>
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </nav>
@@ -485,10 +632,10 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     <a data-toggle="tooltip" tile="Articulos Almacen"
                                                         href="../Interfaz/Articulos_Almacen.php" class="external">Almacén</a>
                                                 </li>
-                                                <li>
+                                                <!-- <li>
                                                     <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
                                                         href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </li>
                                         <li>

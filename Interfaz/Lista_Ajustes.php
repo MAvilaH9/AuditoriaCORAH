@@ -1,6 +1,7 @@
 <?php
     session_start();
     $Empresa=$_SESSION['Empresa'];
+    $Año=$_GET['Año'];
 ?>    
     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true"
         data-cookie="true" data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">
@@ -13,7 +14,7 @@
         </thead>
         <tbody>
             <?php
-            $directorio = opendir('../Ajustes/'.$Empresa); //ruta actual
+            $directorio = opendir('../Ajustes/'.$Empresa.'/'.$Año); //ruta actual
             while ($archivo = readdir($directorio)){ //obtenemos un archivo y luego otro sucesivamente
                 if ($archivo != "." && $archivo !="..") { ?>
                 <tr>
@@ -34,6 +35,10 @@
             ?>
         </tbody>
     </table> <br>
+
+<?php 
+    header('Location:Archivos_Ajuste.php');
+?>
 
 <!-- data table JS
 	============================================ -->

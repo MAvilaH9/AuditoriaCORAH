@@ -7,9 +7,11 @@
     date_default_timezone_set('America/Mexico_City');
     $FechaActual = date("d-m-Y H:i:s:v",time());
     $ArcEmpresa=$_SESSION['Empresa'];
+    $Año=date("Y");
   
 
     if (isset($_POST['operacion'])) {
+        
         if ($_POST['operacion'] == "Agregar") {
 
             $sqlAlm = $pdo->prepare("SELECT Nombre FROM Alm where Almacen='$Almacen'");
@@ -20,17 +22,17 @@
             // print_r ($_FILES);
             $archivo= $usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
             $Guardado=$_FILES['excel']['tmp_name'];
-            $destino='../Ajustes/'.$ArcEmpresa.'/'.$archivo;
+            $destino='../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo;
             
             if (!file_exists($destino)) {
-                if (!file_exists('../Ajustes/'.$ArcEmpresa)) {
-                    mkdir('../Ajustes/'.$ArcEmpresa,0777,true);
-                    if (file_exists('../Ajustes/'.$ArcEmpresa)) {
-                        if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
+                if (!file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año)) {
+                    mkdir('../Ajustes/'.$ArcEmpresa.'/'.$Año,0777,true);
+                    if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año)) {
+                        if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
     
-                            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
+                            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
                                 
-                                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$archivo);
+                                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo);
                     
                                 $objPHPExcel->setActiveSheetIndex(0);
                         
@@ -119,11 +121,11 @@
                     }
                 } else{
 
-                    if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
+                    if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
     
-                        if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
+                        if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
                             
-                            $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$archivo);
+                            $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo);
                 
                             $objPHPExcel->setActiveSheetIndex(0);
                     
@@ -224,7 +226,7 @@
             // print_r ($_FILES);            
             $archivo=$usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
 
-            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$archivo)) {
+            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
 
                 $Empresa="VAL";
                 $Moneda="Pesos";
@@ -244,7 +246,7 @@
                 $sentencia->execute(array($sqlAgregarMOv));
                 $IdInv = $pdo->lastInsertId();
 
-                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$archivo);
+                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo);
 
                 $objPHPExcel->setActiveSheetIndex(0);
     

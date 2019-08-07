@@ -6,8 +6,8 @@
     if (!empty($_REQUEST['Archivo'])) {
         
         $Archivo = $_REQUEST["Archivo"];
-
-        $ruta = '../Ajustes/'.$Empresa.'/'.$Archivo;
+        $año=$_GET['Año'];
+        $ruta = '../Ajustes/'.$Empresa.'/'.$año.'/'.$Archivo;
     
         // Define headers
         header("Cache-Control: public");
@@ -33,9 +33,10 @@
 
     // Elimina archivo al cancelar proceso antes de guardar info en la bd
     
+    $año=date("Y");
     if (!empty($_REQUEST['Cancelar'])) {
         $Archivo = $_SESSION["Archivo"];
-        $ruta = '../Ajustes/'.$Empresa.'/'.$Archivo;
+        $ruta = '../Ajustes/'.$Empresa.'/'.$año.'/'.$Archivo;
         unlink($ruta);
         unset($_SESSION['Archivo']);
         header("Location: Ajustes.php");
@@ -44,7 +45,7 @@
 
     if (!empty($_REQUEST['Cancelar2'])) {
         $Archivo = $_SESSION["Archivo"];
-        $ruta = '../Ajustes/'.$Empresa.'/'.$Archivo;
+        $ruta = '../Ajustes/'.$Empresa.'/'.$año.'/'.$Archivo;
         unlink($ruta);
         unset($_SESSION['Archivo']);
         header("Location: Index.php");

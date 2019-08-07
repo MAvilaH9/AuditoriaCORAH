@@ -11,7 +11,7 @@
                 <div class="sparkline13-list">
                     <div class="sparkline13-hd">
                         <div class="main-sparkline13-hd" style="text-align: center">
-                            <h1>Lista <span class="table-project-n">de</span> Sucursales a auditar</h1>
+                            <h1>Lista <span class="table-project-n">de</span> Usuarios</h1>
                         </div>
                     </div>
                     <!-- Alertas  -->
@@ -35,22 +35,23 @@
                         <!-- Boton agragar -->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <button type="button" class="btn btn-custon-rounded-two btn-primary" data-toggle="modal"
-                                id="btn_agregar" data-target="#ModalSucAuditar">Agregar &nbsp;&nbsp; <i class="fa fa-plus"
-                                    aria-hidden="true"></i></button>
+                                id="btn_agregar" data-target="#ModalUsuario">Agregar &nbsp;&nbsp; 
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <!-- Estado -->
+                        
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <ul class="breadcome-menu">
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
                                     <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Sucursales a auditar</span>
+                                <li><span class="bread-blod">Usuarios</span>
                                 </li>
                             </ul>
                         </div> <br>
 
                         <!-- Muesta la lista -->
-                        <div id="tabla_sucAuditar" class="datatable-dashv1-list custom-datatable-overright">
+                        <div id="tabla_Usuario" class="datatable-dashv1-list custom-datatable-overright">
                         </div>
                     </div>
                 </div>
@@ -63,12 +64,12 @@
 
 <!-- Modal Auditor -->
 
-<div id="ModalSucAuditar" class="modal modal-edu-general default-popup-PrimaryModal fade modal fade bd-example-modal-lg"
+<div id="ModalUsuario" class="modal modal-edu-general default-popup-PrimaryModal fade modal fade bd-example-modal-lg"
     role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header header-color-modal bg-color-1">
-                <h4 class="modal-title">Registrar sucursal a auditar</h4>
+                <h4 class="modal-title">Registrar nuevo usuario</h4>
                 <!-- <div class="modal-close-area modal-close-df">
                     <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                 </div> -->
@@ -76,97 +77,62 @@
             <div class="modal-body">
                 <div class="review-content-section">
                     <div id="dropzone1" class="pro-ad">
-                        <form id="frmSucAuditar" class="dropzone dropzone-custom needsclick add-professors">
-
+                        <form id="frmUsuario" class="dropzone dropzone-custom needsclick add-professors">
                             <div class="row">
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                                </div>
-                                <!-- Select Sucursal -->
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <?php 
-                                        $sqls= $pdo->prepare("SELECT Sucursal, Nombre FROM Sucursal ORDER BY Nombre");
-                                        $sqls->execute();
-                                        $resultados=$sqls->fetchALL(PDO::FETCH_ASSOC);
-                                    ?>
+                                <!-- Apellido Paterno -->
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <label class="login2">Sucursal</label>
-                                        <select name="Sucursal" id="Sucursal" class="form-control">
-                                            <option selected disabled>Seleccione...</option>
-                                            <?php
-                                            foreach ($resultados as $datos) { ?>
-                                            <option value="<?php echo $datos['Sucursal']; ?>">
-                                                <?php echo $datos['Nombre']; ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
+                                        <label class="login2">Apellido Paterno</label>
+                                        <input name="ApellidoPat" id="ApellidoPat" type="text" class="form-control"
+                                            placeholder="Apellido Paterno" required />
                                     </div>
                                 </div>
-                                <!-- Select Almacen -->
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <?php 
-                                        $sqlalm= $pdo->prepare("SELECT Almacen, Nombre FROM Alm ORDER BY Nombre ASC");
-                                        $sqlalm->execute();
-                                        $resultadoalm=$sqlalm->fetchALL(PDO::FETCH_ASSOC);
-                                    ?>
+
+                                <!-- Apellido Materno -->
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <label class="login2">Almacen</label>
-                                        <select name="Almacen" id="Almacen" class="form-control">
-                                            <option selected disabled>Seleccione...</option>
-                                            <?php
-                                            foreach ($resultadoalm as $datosalm) { ?>
-                                            <option value="<?php echo $datosalm['Almacen']; ?>">
-                                                <?php echo $datosalm['Nombre']; ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
+                                        <label class="login2">Apellido Materno</label>
+                                        <input name="ApellidoMat" id="ApellidoMat" type="text" class="form-control"
+                                            placeholder="Apellido Materno" required />
                                     </div>
                                 </div>
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+
+                                <!-- Nombres -->
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="login2">Nombre (s)</label>
+                                        <input name="Nombre" id="Nombre" type="text" class="form-control"
+                                            placeholder="Nombre (s)" required />
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 </div>
-                                <!-- Select Usuario -->
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <?php 
-                                        $sqlus= $pdo->prepare("SELECT Usuario, Nombre FROM Usuario
-                                        WHERE GrupoTrabajo='Auditoria'AND Departamento='Auditoria' AND Estatus='ALTA'");
-                                        $sqlus->execute();
-                                        $resultadous=$sqlus->fetchALL(PDO::FETCH_ASSOC);
-                                    ?>
+                                <!-- Usuario -->
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <label class="login2">Auditor</label>
-                                        <select name="Auditor" id="Auditor" class="form-control">
-                                            <option selected disabled >Seleccione...</option>
-                                            <?php
-                                            foreach ($resultadous as $datous) { ?>
-                                            <option value="<?php echo $datous['Usuario']; ?>">
-                                                <?php echo $datous['Nombre']?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
+                                        <label class="login2">Usuario</label>
+                                        <input name="Usuario" id="usuario" type="text" class="form-control"
+                                            placeholder="Usuario" required />
                                     </div>
                                 </div>
 
-                                <!-- Fecha -->
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <label class="login2">Fecha a auditar</label>
-                                    <div class="form-group data-custon-pick" id="data_2">
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="text" name="Fecha" id="Fecha" class="form-control" value="<?php echo date("d/m/Y"); ?>">
-                                        </div>
+                                <!-- Contraseña -->
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="login2">Contraseña</label>
+                                        <input name="Contrasenia" id="Contrasenia" type="text" class="form-control"
+                                            placeholder="Contraseña" required />
                                     </div>
                                 </div>
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 </div>
+
                             </div>
                             <br>
-                            <!-- Instruccion -->
-                            <input type="hidden" name="IdAuditar" id="IdAuditar" />
+                            <input type="hidden" name="IdUsuario" id="IdUsuario" />
                             <input type="hidden" name="operation" id="operation" />
-                            <!-- Botones -->
                             <button type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
                                 <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                                 Cancelar
@@ -174,7 +140,7 @@
                             <!-- <a data-dismiss="modal" href="#">Cancel</a> -->
                             <button type="submit" name="action" id="action" value="Add"
                                 class="btn btn-custon-rounded-two btn-success">
-                                <i class="fa fa-save edu-checked-pro" aria-hidden="true"></i>
+                                <i class="fa fa-save edu-checked-pro icono" aria-hidden="true"></i>
                                 Guardar
                             </button>
                         </form>
@@ -188,113 +154,99 @@
 
 <?php include "Templete/Footer.php"; ?>
 
-<script>
+<script type="text/javascript" language="javascript">
     function MostrarDatos() {
-        $('#tabla_sucAuditar').load('../SQLServer/Tabla_SucAuditar.php');
+        $('#tabla_Usuario').load('../SQLServer/Tabla_Usuarios.php');
     }
 </script>
 
-<!-- Combos dinamicos -->
-<script>
-
-    // Almacenes
-    $(document).ready(function () {
-        $("#Sucursal").change(function () { 
-            // e.preventDefault();
-
-            $("#Sucursal option:selected").each(function () {
-                Sucursal = $(this).val();
-                alert(Sucursal);
-                $.post("../SQLServer/Almacenes.php",{ Sucursal: Sucursal},
-                function(data){
-                    $("#Almacen").html(data);
-                });            
-            });
-        });
-    });
-
-</script>
-
-<!-- ABC -->
 <script type="text/javascript" language="javascript">
 
     $(document).ready(function () {
-
         MostrarDatos();
+
         // Modal Agregar
         $('#btn_agregar').click(function () {
-            $('#frmSucAuditar')[0].reset();
-            $('.modal-title').text("Sucursal a auditar");
+            $('#frmUsuario')[0].reset();
+            $('.modal-title').text("Agregar Nuevo Auditor");
             $('#action').val("Add");
             $('#operation').val("Add");
         });
 
-        // Agregar y actualizar
-        $(document).on('submit', '#frmSucAuditar', function (event) {
+        // Agregar
+        $(document).on('submit', '#frmUsuario', function (event) {
             event.preventDefault();
-            var datos = $('#frmSucAuditar').serialize();
-            // alert(datos);
+            var datos = $('#frmUsuario').serialize();
+            alert(datos);
             $.ajax({
-                url: "../SQLServer/Calendario.php",
+                url: "../SQLServer/Usuarios.php",
                 method: 'POST',
                 data: new FormData(this),
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    // alert(data);
-                    $('#frmSucAuditar')[0].reset();
+                    alert(data);
+                    $('#frmUsuario')[0].reset();
                     if (data == 1) {
                         // alert(dato);
-                        $("#ModalSucAuditar").modal("hide");
                         MostrarDatos();
                         $("#AlertExito").fadeIn();
                         setTimeout(function () {
                             $("#AlertExito").fadeOut();
                         }, 2000);
+                        $("#ModalUsuario").modal("hide");
                     } else if (data == 2) {
-                        $("#ModalSucAuditar").modal("hide");
                         MostrarDatos();
+                        $("#ModalUsuario").modal("hide");
                         $("#AlertError").fadeIn();
                         setTimeout(function () {
                             $("#AlertError").fadeOut();
                         }, 2000);
+                    } else {
+                        $("#AlertUsuario").fadeIn();
+                        $("#ModalUsuario").modal("hide");
+                        setTimeout(function () {
+                            $("#AlertUsuario").fadeOut();
+                        }, 2000);
                     }
                 }
             });
+
+
         });
 
         // Actualizar
         $(document).on("click", "#Editar", function () {
-            var IdAuditar = $(this).data("id");
-            // alert(IdAuditar);
+            var IdUsuario = $(this).data("id");
+            alert(IdUsuario);
             $.ajax({
-                url: "../SQLServer/Datos_SucAuditar.php",
+                url: "../SQLServer/Datos_Usuarios.php",
                 method: "POST",
                 data: {
-                    IdAuditar: IdAuditar
+                    IdUsuario: IdUsuario
                 },
                 dataType: "json",
                 success: function (data) {
                     // alert(data);
-                    $('#ModalSucAuditar').modal('show');
-                    $('#IdAuditar').val(data.IdCalendarioAuditar);
-                    $('#Sucursal').val(data.Sucursal);
-                    $('#Almacen').val(data.Almacen);
-                    $('#Auditor').val(data.Auditor);
-                    $('#Fecha').val(data.Fecha);
+                    $('#ModalUsuario').modal('show');
+                    $('#Nombre').val(data.Nombre);
+                    $('#ApellidoPat').val(data.ApellidoPaterno);
+                    $('#ApellidoMat').val(data.ApellidoMaterno);
+                    $('#usuario').val(data.Usuario);
+                    $('#Contrasenia').val(data.Contrasena);
                     $('.modal-title').text("Actualizar datos");
+                    $('#IdUsuario').val(IdUsuario);
                     $('#action').val("Edit");
                     $('#action').text("Actualizar");
                     $('#operation').val("Edit");
-                    // var cla = data.ClaveEmpresa;
                 }
             })
         });
 
         // Eliminar
         $(document).on("click", "#Eliminar", function () {
-            var IdAuditar = $(this).data("id");
-            // alert(IdAuditar);
+            var id = $(this).data("id");
+            //  alert(id);
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Será eliminado de la base de datos!",
@@ -308,9 +260,9 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "../SQLServer/Eliminar_SucAuditar.php",
+                        url: "../SQLServer/Eliminar_Usuarios.php",
                         data: {
-                            IdAuditar: IdAuditar,
+                            id: id,
                         },
                         success: function (resp) {
                             if (resp == 1) {
@@ -335,6 +287,5 @@
         });
 
     });
-
 </script>
 

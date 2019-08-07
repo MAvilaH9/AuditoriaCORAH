@@ -4,7 +4,7 @@ session_start();
 // if (isset($_SESSION['Usuario'])) {
 // }else{
 // }
-
+require_once ("../SQLServer/Conexion_Auditoria.php");
 ?>
 
 <!doctype html>
@@ -88,23 +88,19 @@ session_start();
               <div class="form-group">
                 <!-- Select Empresa -->
                 <?php 
-                    // $sqle= $pdo->prepare("SELECT ClaveEmpresa, Nombre FROM Empresa ORDER BY Nombre");
-                    // $sqle->execute();
-                    // $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
+                    $sqle= $pdo->prepare("SELECT * FROM Empresa ORDER BY NombreEmpresa");
+                    $sqle->execute();
+                    $resultadoe=$sqle->fetchALL(PDO::FETCH_ASSOC);
                   ?>
                 <div class="form-group">
                   <label class="login2">Selecione Empresa</label>
                   <select name="Empresa" id="Empresa" class="form-control" required>
                     <option selected disabled>Seleccione...</option>
-                    <option value="Valsi4500v4">Valsi4500v4</option>
-                    <option value="Auditoria" >Auditoria</option>
                     <?php
-                    // foreach ($resultadoe as $date) { ?>
-                    <!-- 
-                      <option value="<?php //echo $date['ClaveEmpresa']; ?>"><?php //echo $date['Nombre']; ?></option>
-                       -->
+                    foreach ($resultadoe as $date) { ?>
+                      <option value="<?php echo $date['NombreBaseDatos']; ?>"><?php echo $date['NombreEmpresa']; ?></option>
                     <?php
-                    // }
+                    }
                     ?>
                   </select>
                 </div>
@@ -220,7 +216,6 @@ session_start();
     $("#Empresa").change(function (e) { 
       e.preventDefault();
       var Empresa= $('#Empresa option:selected').html();
-      $("#Base").val(Empresa);
       // alert(Empresa); 
       $.ajax({
         type: "Post",
@@ -228,7 +223,7 @@ session_start();
         data: {Empresa : Empresa},
         dataType: "dataType",
         success: function (response) {
-          // alert(response);
+          alert(response);
         }
       });
     });

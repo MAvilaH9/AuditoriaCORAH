@@ -16,25 +16,34 @@
 
     $Resultado['Usuario'];
     $Resultado['Contrasena'];
-    $Resultado['IdPerfil'];
+    $Resultado['Perfil'];
     $Resultado['ClaveEmpresa'];
 
-    if ($Resultado['Acceso']=="_JEFEAUDIT") {
+    if ($Resultado['Acceso']=="_JEFEAUDIT" || $Resultado['Perfil']=="_JEFEAUDIT") {
         $Perfil=1;
     } else {
         $Perfil=2;
     }
 
-    if ($Contrasenia == $Resultado['Contrasena'] && $Resultado['Usuario'] == $Usuario) {
+    if (password_verify($Contrasenia,$Resultado['Contrasena']) && $Usuario==$Resultado['Usuario']) {
+
         $_SESSION['Usuario'] = $Resultado['Usuario'];
-        // $_SESSION['Perfil'] = $Resultado['IdPerfil'];
         $_SESSION['Perfil'] = $Perfil;
-        // $_SESSION['ClaveEmpresa'] = $Resultado['ClaveEmpresa'];
-        // $_SESSION['IdUsuario']=7;   
 
         header('location:../Interfaz/Index.php');
 
     }else {
         header('location:../Interfaz/Login.php?Error=true');
     }
+
+    // if ($Contrasenia==$Resultado['Contrasena'] && $Usuario==$Resultado['Usuario']) {
+
+    //     $_SESSION['Usuario'] = $Resultado['Usuario'];
+    //     $_SESSION['Perfil'] = $Perfil;
+
+    //     header('location:../Interfaz/Index.php');
+
+    // }else {
+    //     header('location:../Interfaz/Login.php?Error=true');
+    // }
 ?>
