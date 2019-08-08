@@ -25,18 +25,7 @@
         $Perfil=2;
     }
 
-    if (password_verify($Contrasenia,$Resultado['Contrasena']) && $Usuario==$Resultado['Usuario']) {
-
-        $_SESSION['Usuario'] = $Resultado['Usuario'];
-        $_SESSION['Perfil'] = $Perfil;
-
-        header('location:../Interfaz/Index.php');
-
-    }else {
-        header('location:../Interfaz/Login.php?Error=true');
-    }
-
-    // if ($Contrasenia==$Resultado['Contrasena'] && $Usuario==$Resultado['Usuario']) {
+    // if (password_verify($Contrasenia,$Resultado['Contrasena']) && $Usuario==$Resultado['Usuario']) {
 
     //     $_SESSION['Usuario'] = $Resultado['Usuario'];
     //     $_SESSION['Perfil'] = $Perfil;
@@ -46,4 +35,15 @@
     // }else {
     //     header('location:../Interfaz/Login.php?Error=true');
     // }
+
+    if ($Contrasenia==$Resultado['Contrasena'] && $Usuario==$Resultado['Usuario']) {
+
+        $_SESSION['Usuario'] = $Resultado['Usuario'];
+        $_SESSION['Perfil'] = $Perfil;
+
+        header('location:../Interfaz/Index.php');
+
+    }else {
+        header('location:../Interfaz/Login.php?Error=true');
+    }
 ?>

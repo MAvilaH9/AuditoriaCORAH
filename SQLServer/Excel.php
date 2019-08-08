@@ -1,7 +1,7 @@
 <?php 
     session_start();
     $usuario = $_SESSION['Usuario'];
-    $Empresa=$_SESSION['Empresa'];
+    $Empresa=$_SESSION['NombreEmpresa'];
     $año=date('Y');
 
     // print_r($_FILES);

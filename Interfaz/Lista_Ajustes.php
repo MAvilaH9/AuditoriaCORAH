@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $Empresa=$_SESSION['Empresa'];
+    $Empresa=$_SESSION['NombreEmpresa'];
     $Año=$_GET['Año'];
 ?>    
     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true"

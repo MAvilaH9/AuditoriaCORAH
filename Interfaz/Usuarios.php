@@ -133,8 +133,8 @@
                             <br>
                             <input type="hidden" name="IdUsuario" id="IdUsuario" />
                             <input type="hidden" name="operation" id="operation" />
-                            <button type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
-                                <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
+                            <button id="Cancelar" type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
+                                <span class="fa fa-times edu-danger-error" aria-hidden="true"></span>
                                 Cancelar
                             </button>
                             <!-- <a data-dismiss="modal" href="#">Cancel</a> -->
@@ -173,11 +173,16 @@
             $('#operation').val("Add");
         });
 
+        // Boton Cancelar
+        $('#Cancelar').click(function () {
+            location.reload();
+        });
+
         // Agregar
         $(document).on('submit', '#frmUsuario', function (event) {
             event.preventDefault();
             var datos = $('#frmUsuario').serialize();
-            alert(datos);
+            // alert(datos);
             $.ajax({
                 url: "../SQLServer/Usuarios.php",
                 method: 'POST',
@@ -185,7 +190,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmUsuario')[0].reset();
                     if (data == 1) {
                         // alert(dato);

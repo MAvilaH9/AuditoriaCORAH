@@ -1,6 +1,6 @@
 <?php 
     include "Templete/Header.php"; 
-    $Empresa=$_SESSION['Empresa'];
+    $Empresa=$_SESSION['NombreEmpresa'];
     $Año=$_GET['Año'];
 ?>
 
@@ -17,7 +17,7 @@
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
                                     <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Ajustes</span>
+                                <li><span class="bread-blod">Archivos de Ajustes</span>
                                 </li>
                             </ul>
                         </div> <br>
@@ -29,7 +29,7 @@
                                 <tr>
                                     <th>Archivo</th>
                                     <th>Descargar</th>
-                                    <!-- <th>Eliminar</th> -->
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,15 +40,15 @@
                                     <tr>
                                         <td> <i class="fa fa-file-excel-o text-success"></i> &nbsp;<?php echo $archivo ?></td>
                                         <td>
-                                            <a title="Descargar" class="pd-setting-ed external" href="Descarga_Ajustes.php?Archivo=<?php echo $archivo; ?>&Año=<?php echo $año; ?>">
+                                            <a title="Descargar" class="pd-setting-ed external" href="Descarga_Ajustes.php?Archivo=<?php echo $archivo; ?>&Año=<?php echo $Año; ?>">
                                                 <i class="fa fa-cloud-download edu-check-icon" aria-hidden="true"></i>
                                             </a>
                                         </td>
-                                        <!-- <td>
-                                            <button id="Eliminar" data-id="<?php echo $archivo; ?>" title="Eliminar" class="pd-setting-ed"><i
+                                        <td>
+                                            <button id="Eliminar" data-id="<?php echo $archivo; ?>" data-anio="<?php echo $Año; ?>" title="Eliminar" class="pd-setting-ed"><i
                                                     class="fa fa-trash-o" aria-hidden="true"></i>
                                             </button>
-                                        </td> -->
+                                        </td>
                                     </tr>
                                     <?php }
                                 }
@@ -70,20 +70,15 @@
 
 <?php include "Templete/Footer.php"; ?>
 
-<script>
-    function MostrarArchivos() {
-        // $('#Lista').load('Lista_Ajustes.php');
-    }
-</script>
 
 <script type="text/javascript" language="javascript">
 
     $(document).ready(function() {
 
-        MostrarArchivos();
         // Eliminar
         $(document).on("click", "#Eliminar", function() {
             var id = $(this).data("id");
+            var anio = $(this).data("anio");
             // alert(id);
             Swal.fire({
                 title: '¿Estás seguro?',
@@ -100,16 +95,17 @@
                         type: "POST",
                         url: "Descarga_Ajustes.php",
                         data: {
+                            anio: anio,
                             id: id,
                         },
                         success: function(resp) {
                             if (resp == 1) {
-                                MostrarArchivos();
                                 Swal.fire(
                                     'Eliminado!',
                                     'El archivo ha sido eliminado.',
                                     'success'
                                 )
+                                setTimeout("location.reload()", 2000);
                             } else {
                                 MostrarArchivos();
                                 Swal.fire({

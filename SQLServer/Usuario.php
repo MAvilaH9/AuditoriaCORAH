@@ -18,7 +18,7 @@
             $Departamento=$_POST['Departamento'];
             $GpoTrabajo="Auditoria";
             $Auditor= $Nombre." ".$ApellidoPat." ".$ApellidoMat;
-            $Contraseña = password_hash($Contraseña, PASSWORD_DEFAULT);
+            // $Contraseña = password_hash($Contraseña, PASSWORD_DEFAULT);
 
 
             $sql_agregar = 'INSERT INTO Usuario (Nombre, Usuario, GrupoTrabajo, Departamento, Contrasena, Estatus, Alta, Acceso) 
@@ -41,7 +41,7 @@
             $Contra= $_POST["Contrasenia"]; $Contra= trim($Contra);
             $Perfil = $_POST["Perfil"];
             $Departamento = $_POST['Departamento'];
-            $Contra = password_hash($Contra, PASSWORD_DEFAULT);
+            // $Contra = password_hash($Contra, PASSWORD_DEFAULT);
 
             $sql_actualizar = "UPDATE Usuario SET Nombre='$Nombre', Usuario='$Usuario', Contrasena='$Contra', 
             Departamento='$Departamento', UltimoCambio='$FechaActual', Acceso='$Perfil' 

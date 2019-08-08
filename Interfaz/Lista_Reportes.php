@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $Empresa=$_SESSION['Empresa'];
+    $Empresa=$_SESSION['NombreEmpresa'];
 ?>    
     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-key-events="true"
         data-cookie="true" data-cookie-id-table="saveId" data-click-to-select="true" data-toolbar="#toolbar">

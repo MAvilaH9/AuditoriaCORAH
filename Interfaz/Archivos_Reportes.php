@@ -1,6 +1,7 @@
 <?php 
     include "Templete/Header.php"; 
     $año=$_GET['Año'];
+    $Empresa=$_SESSION['NombreEmpresa'];
 ?>
 
 <!-- Static Table Start -->
@@ -16,7 +17,7 @@
                                 <li><a href="Index.php" data-toggle="tooltip" title="Regresar al inicio">Inicio</a>
                                     <span class="bread-slash">/</span>
                                 </li>
-                                <li><span class="bread-blod">Reportes</span>
+                                <li><span class="bread-blod">Archivos de Reportes</span>
                                 </li>
                             </ul>
                         </div> <br>
@@ -28,7 +29,7 @@
                                     <tr>
                                         <th>Archivo</th>
                                         <th>Descargar</th>
-                                        <!-- <th>Eliminar</th> -->
+                                        <th>Eliminar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,11 +44,11 @@
                                                     <i class="fa fa-cloud-download edu-check-icon" aria-hidden="true"></i>
                                                 </a>
                                             </td>
-                                            <!-- <td>
-                                                <button id="Eliminar" data-id="<?php echo $archivo; ?>" title="Eliminar" class="pd-setting-ed"><i
+                                            <td>
+                                                <button id="Eliminar" data-id="<?php echo $archivo; ?>" data-anio="<?php echo $año; ?>" title="Eliminar" class="pd-setting-ed"><i
                                                         class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </button>
-                                            </td> -->
+                                            </td>
                                         </tr>
                                         <?php 
                                         }
@@ -70,21 +71,16 @@
 
 <?php include "Templete/Footer.php"; ?>
 
-<script>
-    function MostrarArchivos() {
-        // $('#Lista').load('Lista_Reportes.php');
-    }
-</script>
 
 <script type="text/javascript" language="javascript">
 
     $(document).ready(function() {
 
-        MostrarArchivos();
         // Eliminar
         $(document).on("click", "#Eliminar", function() {
             var id = $(this).data("id");
-            // alert(id);
+            var anio = $(this).data("anio");
+
             Swal.fire({
                 title: '¿Estás seguro?',
                 text: "Será eliminado el archivo!",
@@ -100,18 +96,19 @@
                         type: "POST",
                         url: "Descarga_Reportes.php",
                         data: {
+                            anio: anio,
                             id: id,
                         },
                         success: function(resp) {
                             if (resp == 1) {
-                                MostrarArchivos();
+                            
                                 Swal.fire(
                                     'Eliminado!',
                                     'El archivo ha sido eliminado.',
-                                    'success'
+                                    'success',
                                 )
+                                setTimeout("location.reload()", 2000);
                             } else {
-                                MostrarArchivos();
                                 Swal.fire({
                                     type: 'error',
                                     title: 'Error',

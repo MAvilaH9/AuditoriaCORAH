@@ -100,7 +100,7 @@
                             <br> <br>
                             <input type="hidden" name="IdUsuarioBD" id="IdUsuarioBD" />
                             <input type="hidden" name="operation" id="operation" />
-                            <button type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
+                            <button id="Cancelar" type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
                                 <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                                 Cancelar
                             </button>
@@ -132,6 +132,7 @@
     $(document).ready(function () {
         MostrarDatos();
 
+
         // Modal Agregar
         $('#btn_agregar').click(function () {
             $('#frmUsuarioBD')[0].reset();
@@ -140,11 +141,16 @@
             $('#operation').val("Add");
         });
 
+        // Boton Cancelar
+        $('#Cancelar').click(function () {
+            location.reload();
+        });
+
         // Agregar
         $(document).on('submit', '#frmUsuarioBD', function (event) {
             event.preventDefault();
             var datos = $('#frmUsuarioBD').serialize();
-            alert(datos);
+            // alert(datos);
             $.ajax({
                 url: "../SQLServer/Usuario_BD.php",
                 method: 'POST',
@@ -152,7 +158,7 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    alert(data);
+                    // alert(data);
                     $('#frmUsuarioBD')[0].reset();
                     if (data == 1) {
                         // alert(dato);

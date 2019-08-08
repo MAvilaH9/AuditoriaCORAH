@@ -5,8 +5,7 @@
     } else {
     }
 
-    $Empresa=$_SESSION['Empresa'];
-    $NomEmprea=$_SESSION['NomEmpresa'];
+    $Empresa=$_SESSION['NombreEmpresa'];
 ?>
 
 <!doctype html>
@@ -127,7 +126,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="nav metismenu" id="menu1">
                         <?php
-                        if ($NomEmprea != "AUDITORIA") { ?>
+                        if ($Empresa != "AUDITORIA") { ?>
                             <li>
                                 <a class="has-arrow" href="#">
                                     <span class="educate-icon educate-data-table icon-wrap"></span>
@@ -191,7 +190,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                 <ul class="submenu-angle" aria-expanded="false">
                                 <?php
 
-                                    $Empresa=$_SESSION['Empresa'];
+                                    $Empresa=$_SESSION['NombreEmpresa'];
                                     $directorio = opendir("../Ajustes/".$Empresa); //ruta actual
                                     while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
                                     {
@@ -216,7 +215,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                 <ul class="submenu-angle" aria-expanded="false">
                                 <?php
 
-                                    $Empresa=$_SESSION['Empresa'];
+                                    $Empresa=$_SESSION['NombreEmpresa'];
                                     $directorio = opendir("../Reportes/".$Empresa); //ruta actual
                                     while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
                                     {
@@ -361,7 +360,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                         <div class="header-top-menu tabl-d-n">
                                             <ul class="nav navbar-nav mai-top-nav">
                                             <?php 
-                                            if ($_SESSION['NomEmpresa']!="AUDITORIA") { ?>
+                                            if ($_SESSION['NombreEmpresa']!="AUDITORIA") { ?>
                                                 <li class="nav-item">
                                                     <a href="../Interfaz/Index.php" class="nav-link external">
                                                         Inicio
@@ -544,7 +543,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                             <?php
 
-                                                $Empresa=$_SESSION['Empresa'];
+                                                $Empresa=$_SESSION['NombreEmpresa'];
                                                 $directorio = opendir("../Reportes/".$Empresa); //ruta actual
                                                 while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
                                                 {
@@ -570,7 +569,7 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
                                             <?php
 
-                                            $Empresa=$_SESSION['Empresa'];
+                                            $Empresa=$_SESSION['NombreEmpresa'];
                                             $directorio = opendir("../Reportes/".$Empresa); //ruta actual
                                             while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
                                             {

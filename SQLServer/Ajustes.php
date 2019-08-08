@@ -6,7 +6,7 @@
     $Almacen=$_POST['Almacen'];
     date_default_timezone_set('America/Mexico_City');
     $FechaActual = date("d-m-Y H:i:s:v",time());
-    $ArcEmpresa=$_SESSION['Empresa'];
+    $ArcEmpresa=$_SESSION['NombreEmpresa'];
     $Año=date("Y");
   
 

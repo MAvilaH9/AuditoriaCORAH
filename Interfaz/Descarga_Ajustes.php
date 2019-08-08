@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $Empresa=$_SESSION['Empresa'];
+    $Empresa=$_SESSION['NombreEmpresa'];
     
     // Descraga
     if (!empty($_REQUEST['Archivo'])) {
@@ -22,10 +22,10 @@
     }
 
     // Elimina
-    if (!empty($_REQUEST['id'])) {
-
+    if (!empty($_REQUEST['id'] && $_REQUEST['anio'])) {
+        $anio = $_REQUEST["anio"];
         $Archivo = $_REQUEST["id"];
-        $ruta = '../Ajustes/'.$Empresa.'/'.$Archivo;
+        $ruta = '../Ajustes/'.$Empresa.'/'.$anio.'/'.$Archivo;
         unlink($ruta);
         echo 1;
         exit;

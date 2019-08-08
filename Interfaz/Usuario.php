@@ -174,7 +174,7 @@
                             <br>
                             <input type="hidden" name="IdUsuario" id="IdUsuario" />
                             <input type="hidden" name="operation" id="operation" />
-                            <button type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
+                            <button id="Cancelar" type="button" class="btn btn-custon-rounded-two btn-danger" data-dismiss="modal">
                                 <i class="fa fa-times edu-danger-error" aria-hidden="true"></i>
                                 Cancelar
                             </button>
@@ -212,6 +212,11 @@
             $('.modal-title').text("Agregar Nuevo Auditor");
             $('#action').val("Add");
             $('#operation').val("Add");
+        });
+
+        // Boton Cancelar
+        $('#Cancelar').click(function () {
+            location.reload();
         });
 
         // Agregar

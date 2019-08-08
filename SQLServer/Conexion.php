@@ -21,7 +21,7 @@
 	} 
 
 	
-	$Empresa=$_SESSION['Empresa'];
+	$Empresa=$_SESSION['BDEmpresa'];
 	$server = 'MAVILAHU\SQLEXPRESS';
 	$dbName = $Empresa;
 	$uid = '';

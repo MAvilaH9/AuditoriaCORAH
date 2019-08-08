@@ -12,7 +12,7 @@
             $Usuario = $_POST["Usuario"]; $Usuario= strtoupper($Usuario); $Usuario=trim($Usuario);
             $Contraseña= $_POST["Contrasenia"]; $Contraseña= trim($Contraseña);
             $Perfil = "_JEFEAUDIT";
-            $Empresa = $_SESSION['NomEmpresa'];
+            $Empresa = $_SESSION['NombreEmpresa'];
             $Estatus="ALTA";
             $Contraseña = password_hash($Contraseña, PASSWORD_DEFAULT);
 

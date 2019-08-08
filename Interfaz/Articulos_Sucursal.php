@@ -291,38 +291,6 @@ require "../SQLServer/Conexion.php";
     </div>
 </div>
 
-<!-- Combos Dinamicos -->
-<script language="javascript">
-    // // Municipio
-    // $(document).ready(function () {
-    //     $("#Almacen").change(function () { 
-    //         // e.preventDefault();
-
-    //         $("#Almacen option:selected").each(function () {
-    //             id_estado = $(this).val();
-    //             $.post("../Recursos/Prueba.php",{ id_estado: id_estado},
-    //             function(data){
-    //                 $("#Categoria").html(data);
-    //             });            
-    //         });
-    //     });
-    // });
-
-    // $(document).ready(function () {
-    //     $("#Categoria").change(function () {
-
-    //         $("#Categoria option:selected").each(function () {
-    //             id_municipio = $(this).val();
-    //             $.post("../Recursos/Prueba2.php",{ id_municipio: id_municipio},
-    //             function(data) {
-    //                 $("#Rama").html(data);
-    //             });
-
-    //         });
-
-    //     });
-    // });
-</script>
 
 <!-- Envia formulario para realizar la consulta -->
 <script type="text/javascript" language="javascript">
