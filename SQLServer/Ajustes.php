@@ -6,6 +6,7 @@
     $Almacen=$_POST['Almacen'];
     date_default_timezone_set('America/Mexico_City');
     $FechaActual = date("d-m-Y H:i:s:v",time());
+    $fecha = date("d-m-Y");
     $ArcEmpresa=$_SESSION['NombreEmpresa'];
     $Año=date("Y");
   
@@ -20,19 +21,20 @@
             $NombAlm=$resultadoAlm['Nombre'];
 
             // print_r ($_FILES);
-            $archivo= $usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
+            $archivo= $usuario."_"."$NombAlm"."_".$fecha;
+            $NombreArchivo=$archivo."_".$_FILES['excel']['name'];
             $Guardado=$_FILES['excel']['tmp_name'];
-            $destino='../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo;
+            $destino='../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo;
             
             if (!file_exists($destino)) {
                 if (!file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año)) {
                     mkdir('../Ajustes/'.$ArcEmpresa.'/'.$Año,0777,true);
                     if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año)) {
-                        if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
+                        if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo)) {
     
-                            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
+                            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo)) {
                                 
-                                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo);
+                                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo);
                     
                                 $objPHPExcel->setActiveSheetIndex(0);
                         
@@ -83,7 +85,7 @@
                                 </script>
                                 
                                 <?php
-                                $_SESSION['Archivo'] = $archivo;
+                                $_SESSION['Archivo'] = $NombreArchivo;
                                 // $data= array();
                                 // $data['Archivo']= $archivo;
                                 // echo json_encode($data);
@@ -91,9 +93,9 @@
                         } else { ?>
                             <script>
                                 Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Error al cargar archivo',
-                                    type: 'error',
+                                    title: 'Advertencia!',
+                                    text: 'El Archivo ya existe, Valide con jefe',
+                                    type: 'warning',
                                     confirmButtonText: 'Aceptar'
                                 })
                                 setTimeout('document.location.reload()',1000);
@@ -108,7 +110,7 @@
                         
                     <?php
                     } else { ?>
-                        <script>
+                    <script>
                         Swal.fire({
                             title: 'Error!',
                             text: 'Error al cargar archivo',
@@ -121,11 +123,11 @@
                     }
                 } else{
 
-                    if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
+                    if (move_uploaded_file($Guardado,'../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo)) {
     
-                        if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
+                        if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo)) {
                             
-                            $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo);
+                            $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo);
                 
                             $objPHPExcel->setActiveSheetIndex(0);
                     
@@ -176,7 +178,7 @@
                             </script>
                             
                             <?php
-                            $_SESSION['Archivo'] = $archivo;
+                            $_SESSION['Archivo'] = $NombreArchivo;
                             // $data= array();
                             // $data['Archivo']= $archivo;
                             // echo json_encode($data);
@@ -184,12 +186,12 @@
                     } else { ?>
                         <script>
                             Swal.fire({
-                                title: 'Error!',
-                                text: 'Error al cargar archivo',
-                                type: 'error',
+                                title: 'Advertencia!',
+                                text: 'El Archivo ya existe, Valide con jefe',
+                                type: 'warning',
                                 confirmButtonText: 'Aceptar'
                             })
-                            setTimeout('document.location.reload()',1000);
+                            setTimeout('document.location.reload()',1000)
                         </script>
                     <?php
                     } 
@@ -204,13 +206,16 @@
                 
             } else { ?>
                 <script>
-                     Swal.fire({
-                         title: 'Error!',
-                        text: 'Error al cargar archivo',
-                        type: 'error',
+                    Swal.fire({
+                        title: 'Advertencia!',
+                        text: 'El Archivo ya existe, Valide con jefe',
+                         type: 'warning',
                         confirmButtonText: 'Aceptar'
+                    }).then((result) => {
+                        if (result.value) {
+                            setTimeout('document.location.reload()',1);
+                        }
                     })
-                    setTimeout('document.location.reload()',1000);
                 </script>
             <?php 
             }
@@ -218,15 +223,17 @@
         }
 
         if ($_POST['operacion'] == "Guardar") {
+
             $sqlAlm = $pdo->prepare("SELECT Nombre FROM Alm where Almacen='$Almacen'");
             $sqlAlm -> execute(array($Almacen));
             $resultadoAlm = $sqlAlm->fetch();
             $NombAlm=$resultadoAlm['Nombre'];
 
             // print_r ($_FILES);            
-            $archivo=$usuario."_"."$NombAlm"."_".$_FILES['excel']['name'];
+            $archivo=$usuario."_"."$NombAlm"."_".$fecha;
+            $NombreArchivo=$archivo."_".$_FILES['excel']['name'];
 
-            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo)) {
+            if (file_exists('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo)) {
 
                 $Empresa="VAL";
                 $Moneda="Pesos";
@@ -246,7 +253,7 @@
                 $sentencia->execute(array($sqlAgregarMOv));
                 $IdInv = $pdo->lastInsertId();
 
-                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$archivo);
+                $objPHPExcel = PHPExcel_IOFactory::load('../Ajustes/'.$ArcEmpresa.'/'.$Año.'/'.$NombreArchivo);
 
                 $objPHPExcel->setActiveSheetIndex(0);
     
@@ -293,6 +300,8 @@
                         })
                     </script>
                 <?php   
+                unset($_SESSION['Archivo']);
+
                 } else { 
                 ?>  
                 <!-- Alerta error -->

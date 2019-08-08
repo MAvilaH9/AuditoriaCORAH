@@ -146,7 +146,7 @@
                                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                     <a id="can"
                                                                         class="btn btn-custon-rounded-two btn-danger external"
-                                                                        href="Descarga_Reportes.php?Cancelar2=Cancelar2" tabindex="9">
+                                                                        href="Descarga_Ajustes.php?Cancelar2=Cancelar2" tabindex="9">
                                                                         <i class="fa fa-times edu-danger-error"
                                                                             aria-hidden="true"></i>
                                                                         Cancelar
@@ -211,6 +211,7 @@
                                             </div> <br>
                                             <div id="Resultado" class="datatable-dashv1-list custom-datatable-overright"
                                                 align="right">
+                                               
                                             </div>
                                         </div>
                                     </div>

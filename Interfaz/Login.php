@@ -140,7 +140,7 @@ require_once ("../SQLServer/Conexion_Auditoria.php");
         </div>
       </div><br> <br>
       <div class="text-center login-footer">
-        <p> <a href="#">CORAH | Corporativo de Aluminios y Herrajes</a></p>
+        <p> CORAH | Corporativo de Aluminios y Herrajes</p>
       </div>
     </div>
   </div>

@@ -29,7 +29,8 @@
             $BD = $_POST["NombreBD"]; $BD=trim($BD);
 
 
-            $sql_actualizar = "UPDATE Empresa SET NombreEmpresa='$Nombre', NombreBaseDatos='$BD'";
+            $sql_actualizar = "UPDATE Empresa SET NombreEmpresa='$Nombre', NombreBaseDatos='$BD'
+            WHERE IdEmpresa='$IdEmpresa'";
             $sentencia = $pdo->prepare($sql_actualizar);
             
             if ($sentencia->execute(array($Nombre, $BD))) {

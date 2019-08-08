@@ -31,7 +31,8 @@
             $Contrasenia = $_POST["Contrasenia"]; $Contrasenia=trim($Contrasenia);
             $Contrasenia = password_hash($Contrasenia, PASSWORD_DEFAULT);
 
-            $sql_actualizar = "UPDATE UsuarioBD SET Usuario='$Nombre', Contrasena='$Contrasenia'";
+            $sql_actualizar = "UPDATE UsuarioBD SET Usuario='$Nombre', Contrasena='$Contrasenia'
+            WHERE IdUsuarioBD='$IdUsuarioBD'";
             $sentencia = $pdo->prepare($sql_actualizar);
             
             if ($sentencia->execute(array($Nombre, $Contrasenia))) {
