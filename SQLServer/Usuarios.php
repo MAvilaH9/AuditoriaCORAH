@@ -11,16 +11,14 @@
             $ApellidoMat = $_POST["ApellidoMat"]; $ApellidoMat= ucwords($ApellidoMat); $ApellidoMat=trim($ApellidoMat);
             $Usuario = $_POST["Usuario"]; $Usuario= strtoupper($Usuario); $Usuario=trim($Usuario);
             $Contraseña= $_POST["Contrasenia"]; $Contraseña= trim($Contraseña);
-            $Perfil = "_JEFEAUDIT";
             $Empresa = $_SESSION['NombreEmpresa'];
-            $Estatus="ALTA";
             $Contraseña = password_hash($Contraseña, PASSWORD_DEFAULT);
 
-            $sql_agregar = 'INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasena, Perfil, Empresa, Estatus) 
-            VALUES (?,?,?,?,?,?,?,?)';
+            $sql_agregar = 'INSERT INTO Usuario (Nombre, ApellidoPaterno, ApellidoMaterno, Usuario, Contrasena, Empresa) 
+            VALUES (?,?,?,?,?,?)';
             $sentencia_agregar = $pdo->prepare($sql_agregar);
 
-            if ($sentencia_agregar->execute(array($Nombre, $ApellidoPat, $ApellidoMat, $Usuario, $Contraseña, $Perfil, $Empresa, $Estatus))) {
+            if ($sentencia_agregar->execute(array($Nombre, $ApellidoPat, $ApellidoMat, $Usuario, $Contraseña, $Empresa))) {
                 echo 1;
             } else {
                 echo 2;

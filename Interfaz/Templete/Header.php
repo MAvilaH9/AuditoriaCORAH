@@ -489,59 +489,87 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                 <nav id="dropdown">
                                     <ul class="mobile-menu-nav">
                                         <br>
-                                        <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">
-                                                Auditar
-                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
-                                            </a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                                <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Almacen" class="external"
-                                                        href="../Interfaz/Articulos_Almacen.php">Almacén</a>
-                                                </li>
-                                                <!-- <li>
-                                                    <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
-                                                        href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
-                                                </li> -->
-                                            </ul>
+                                        <?php
+                                        if ($Empresa != "AUDITORIA") { ?>
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#demoevent" href="#">
+                                                    Auditar
+                                                    <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                                </a>
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                                    <li>
+                                                        <a data-toggle="tooltip" tile="Articulos Almacen" class="external"
+                                                            href="../Interfaz/Articulos_Almacen.php">Almacén</a>
+                                                    </li>
+                                                    <!-- <li>
+                                                        <a data-toggle="tooltip" tile="Articulos Sucursal" class="external"
+                                                            href="../Interfaz/Articulos_Sucursal.php">Sucursal</a>
+                                                    </li> -->
+                                                </ul>
 
-                                        </li>
-                                        <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Auditores
-                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
-                                            </a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                                <li>
-                                                    <a data-toggle="tooltip" tile="Auditores" class="external"
-                                                        href="../Interfaz/Usuario.php">Lista de Auditores</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Calendario
-                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
-                                            </a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                                <li>
-                                                    <a data-toggle="tooltip" tile="Almacenes" class="external"
-                                                        href="../Interfaz/Calendario_Almacen.php">Almacen</a>
-                                                </li>
-                                                <!-- <li>
-                                                    <a data-toggle="tooltip" title="Sucursales" class="external"
-                                                        href="../Interfaz/Calendario_Sucursal.php">
-                                                       Sucursal
-                                                    </a>
-                                                </li> -->
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">
-                                                Ajustes
-                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
-                                            </a>
-                                            
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                            <?php
+                                            </li>
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#demoevent" href="#">Auditores
+                                                    <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                                </a>
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                                    <li>
+                                                        <a data-toggle="tooltip" tile="Auditores" class="external"
+                                                            href="../Interfaz/Usuario.php">Lista de Auditores</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#demoevent" href="#">Calendario
+                                                    <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                                </a>
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                                    <li>
+                                                        <a data-toggle="tooltip" tile="Almacenes" class="external"
+                                                            href="../Interfaz/Calendario_Almacen.php">Almacen</a>
+                                                    </li>
+                                                    <!-- <li>
+                                                        <a data-toggle="tooltip" title="Sucursales" class="external"
+                                                            href="../Interfaz/Calendario_Sucursal.php">
+                                                        Sucursal
+                                                        </a>
+                                                    </li> -->
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#demoevent" href="#">
+                                                    Ajustes
+                                                    <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                                </a>
+                                                
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <?php
+
+                                                    $Empresa=$_SESSION['NombreEmpresa'];
+                                                    $directorio = opendir("../Reportes/".$Empresa); //ruta actual
+                                                    while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+                                                    {
+                                                        if ($archivo != "." && $archivo !="..") { ?>
+                                                            <li>
+                                                                <a data-toggle="tooltip" tile="Año" class="external"
+                                                                    href="../Interfaz/Archivos_Ajustes.php?Año=<?php echo $archivo;?>">
+                                                                    <span class="mini-sub-pro"><?php echo $archivo; ?></span>
+                                                                </a>
+                                                            </li>
+                                                        <?php        
+                                                        }
+                                                    }
+                                                ?>
+                                                </ul>
+
+                                            </li>
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#demoevent" href="#">
+                                                    Reportes
+                                                    <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                                </a>
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                                <?php
 
                                                 $Empresa=$_SESSION['NombreEmpresa'];
                                                 $directorio = opendir("../Reportes/".$Empresa); //ruta actual
@@ -550,61 +578,40 @@ if (!empty($_SESSION['Perfil'] == 1)) {?>
                                                     if ($archivo != "." && $archivo !="..") { ?>
                                                         <li>
                                                             <a data-toggle="tooltip" tile="Año" class="external"
-                                                                href="../Interfaz/Archivos_Ajustes.php?Año=<?php echo $archivo;?>">
+                                                                href="../Interfaz/Archivos_Reportes.php?Año=<?php echo $archivo;?>">
                                                                 <span class="mini-sub-pro"><?php echo $archivo; ?></span>
                                                             </a>
                                                         </li>
                                                     <?php        
                                                     }
                                                 }
-                                            ?>
-                                            </ul>
-
-                                        </li>
-                                        <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">
-                                                Reportes
-                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
-                                            </a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                            <?php
-
-                                            $Empresa=$_SESSION['NombreEmpresa'];
-                                            $directorio = opendir("../Reportes/".$Empresa); //ruta actual
-                                            while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-                                            {
-                                                if ($archivo != "." && $archivo !="..") { ?>
+                                                ?>
+                                                </ul>
+                                            </li>
+                                        <?php 
+                                        } else { ?>
+                                            <li>
+                                                <a data-toggle="collapse" data-target="#demoevent" href="#">Configuaración
+                                                    <span class="admin-project-icon edu-icon edu-down-arrow"></span>
+                                                </a>
+                                                <ul id="demoevent" class="collapse dropdown-header-top">
                                                     <li>
-                                                        <a data-toggle="tooltip" tile="Año" class="external"
-                                                            href="../Interfaz/Archivos_Reportes.php?Año=<?php echo $archivo;?>">
-                                                            <span class="mini-sub-pro"><?php echo $archivo; ?></span>
-                                                        </a>
+                                                        <a data-toggle="tooltip" tile="Empresas" class="external"
+                                                            href="../Interfaz/Empresas.php">Empresas</a>
                                                     </li>
-                                                <?php        
-                                                }
-                                            }
-                                            ?>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="collapse" data-target="#demoevent" href="#">Configuaración
-                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span>
-                                            </a>
-                                            <ul id="demoevent" class="collapse dropdown-header-top">
-                                                <li>
-                                                    <a data-toggle="tooltip" tile="Empresas" class="external"
-                                                        href="../Interfaz/Empresas.php">Empresas</a>
-                                                </li>
-                                                <li>
-                                                    <a data-toggle="tooltip" tile="Usuario" class="external"
-                                                        href="../Interfaz/Empresas.php">Usuario</a>
-                                                </li>
-                                                <li>
-                                                    <a data-toggle="tooltip" tile="Usuario base de datos" class="external"
-                                                        href="../Interfaz/Empresas.php">Usuario base de datos</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                                    <li>
+                                                        <a data-toggle="tooltip" tile="Usuario" class="external"
+                                                            href="../Interfaz/Empresas.php">Usuario</a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-toggle="tooltip" tile="Usuario base de datos" class="external"
+                                                            href="../Interfaz/Empresas.php">Usuario base de datos</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        <?php 
+                                        }
+                                        ?> 
                                     </ul>
                                 </nav>
                             </div>

@@ -1,5 +1,7 @@
 
-<?php include_once "Templete/Header.php";?>
+<?php 
+    include_once "Templete/Header.php";
+?>
 <!-- Titulo -->
 <div class="breadcome-area">
     <div class="container-fluid">

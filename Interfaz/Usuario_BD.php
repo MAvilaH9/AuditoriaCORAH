@@ -97,6 +97,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+
+                                </div>
+
+                                <!-- Descripcion -->
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="form-group">
+                                        <label class="login2">Descripción</label>
+                                        <input name="Descripcion" id="Descripcion" type="text" class="form-control"
+                                            placeholder="Descripción del usuario" required />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+
+                                </div>
+                            </div>
                             <br> <br>
                             <input type="hidden" name="IdUsuarioBD" id="IdUsuarioBD" />
                             <input type="hidden" name="operation" id="operation" />
@@ -189,7 +206,7 @@
         // Actualizar
         $(document).on("click", "#Editar", function () {
             var IdUsuarioBD = $(this).data("id");
-            alert(IdUsuarioBD);
+            // alert(IdUsuarioBD);
             $.ajax({
                 url: "../SQLServer/Datos_UsuarioBD.php",
                 method: "POST",
@@ -202,6 +219,7 @@
                     $('#ModalUsuario').modal('show');
                     $('#UsuarioBD').val(data.Usuario);
                     $('#Contrasenia').val(data.Contrasena);
+                    $('#Descripcion').val(data.Descripcion);
                     $('.modal-title').text("Actualizar datos");
                     $('#IdUsuarioBD').val(IdUsuarioBD);
                     $('#action').val("Edit");

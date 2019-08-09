@@ -223,7 +223,7 @@
         // Actualizar
         $(document).on("click", "#Editar", function () {
             var IdUsuario = $(this).data("id");
-            alert(IdUsuario);
+            // alert(IdUsuario);
             $.ajax({
                 url: "../SQLServer/Datos_Usuarios.php",
                 method: "POST",

@@ -18,6 +18,7 @@
             $Departamento=$_POST['Departamento'];
             $GpoTrabajo="Auditoria";
             $Auditor= $Nombre." ".$ApellidoPat." ".$ApellidoMat;
+            // $Contraseña=md5($Contraseña);
             // $Contraseña = password_hash($Contraseña, PASSWORD_DEFAULT);
 
 
@@ -41,6 +42,7 @@
             $Contra= $_POST["Contrasenia"]; $Contra= trim($Contra);
             $Perfil = $_POST["Perfil"];
             $Departamento = $_POST['Departamento'];
+            // $Contra=md5($Contra);
             // $Contra = password_hash($Contra, PASSWORD_DEFAULT);
 
             $sql_actualizar = "UPDATE Usuario SET Nombre='$Nombre', Usuario='$Usuario', Contrasena='$Contra', 

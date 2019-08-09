@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th>Usuario</th>
+                <th>Descripción</th>
                 <th>Contraseña</th>
                 <th>Opciones</th>
             </tr>
@@ -19,6 +20,7 @@
             foreach ($resultado as $dato) {?>
             <tr>
                 <td><?php echo $dato['Usuario'];?></td>
+                <td><?php echo $dato['Descripcion'];?></td>
                 <td><?php echo $dato['Contrasena'];?></td>
 
                 <td>

@@ -17,7 +17,7 @@
 
 			$output["Usuario"] = $row["Usuario"];
 			$output["Contrasena"] = $row["Contrasena"];
-
+			$output["Descripcion"] = $row["Descripcion"];
 		}
 		echo json_encode($output);
 	}
